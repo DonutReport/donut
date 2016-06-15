@@ -38,17 +38,6 @@ class JSONProcessorTest extends FlatSpec with Matchers {
     jsonFiles.contains("empty_json.json") shouldBe false
   }
 
-  it should "bind all json object to feature object" in {
-    pending
-//    val features = JSONProcessor.parseJsonFile(rootDir + "1.json").get
-//    features.size shouldBe 1
-//    features.head.name shouldBe "Google Journey Performance"
-//    features.head.elements.size shouldBe 1
-//    features.head.elements.head.name shouldBe "Google Journey Performance"
-//    features.head.elements.head.steps.size shouldBe 2
-//    features.head.tags.size shouldBe 2
-  }
-
   it should "not parse incorrect file" in {
     intercept[FileNotFoundException] {
       val features = JSONProcessor.parseJsonFile(rootDir + "test.json")
@@ -58,6 +47,7 @@ class JSONProcessorTest extends FlatSpec with Matchers {
 
   it should "return empty list if no files available" in {
     JSONProcessor.loadFrom(new File("src/test/resources/samples-empty")) shouldBe List.empty
+    pending
   }
 
   it should "handle all weirdos" in {
