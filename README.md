@@ -13,14 +13,14 @@ You can either use Donut directly or check out the available plugins:
 
 ### download
 ```
-wget TODO
+wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.1/donut-0.0.1-one-jar.jar
 ```
-or download the latest release from: TODO
+or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/0.0.1/donut-0.0.1-one-jar.jar)
 
 ### run from command line
 
 ```
-java -jar donut-TODO.jar -s /source/dir 
+java -jar donut-<Version>.jar -s /source/dir 
 ```
 
 ### options
