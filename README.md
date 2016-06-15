@@ -18,7 +18,7 @@ or download the latest release from: TODO
 ### run from command line
 
 ```
-java -jar donut-1.0.0.jar -s /source/dir 
+java -jar donut-TODO.jar -s /source/dir 
 ```
 
 ### options
@@ -73,8 +73,14 @@ default values:
 ```
 
 * SBT 
+```
+libraryDependencies += "io.magentys" % "donut" % "0.0.1"
+```
 
 * Gradle
+```
+compile 'io.magentys:donut:0.0.1'
+```
 
 Example usage of the `Generator`
 
