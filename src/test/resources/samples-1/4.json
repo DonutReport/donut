@@ -1,0 +1,991 @@
+[
+  {
+    "id": "input-actions",
+    "tags": [
+      {
+        "name": "@local",
+        "line": 1
+      }
+    ],
+    "description": "In order to test applications\nAs a tester\nI want to input data into a page",
+    "name": "Input Actions",
+    "keyword": "Feature",
+    "line": 2,
+    "elements": [
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 2391616000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;delete-the-text-from-an-input",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 10
+          }
+        ],
+        "description": "",
+        "name": "Delete the text from an input",
+        "keyword": "Scenario",
+        "line": 11,
+        "steps": [
+          {
+            "result": {
+              "duration": 382311000,
+              "status": "passed"
+            },
+            "name": "I choose to delete the text from \"withContent\"",
+            "keyword": "When ",
+            "line": 12,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 34
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_delete_the_text_from(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 73347000,
+              "status": "passed"
+            },
+            "name": "\"withContent\" shall contain \"\"",
+            "keyword": "Then ",
+            "line": 13,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 1
+                },
+                {
+                  "val": "",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.shall_contain(String,String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1602320000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;clear-the-text-from-an-input",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 15
+          }
+        ],
+        "description": "",
+        "name": "Clear the text from an input",
+        "keyword": "Scenario",
+        "line": 16,
+        "steps": [
+          {
+            "result": {
+              "duration": 79538000,
+              "status": "passed"
+            },
+            "name": "I choose to clear the text from \"withContent\"",
+            "keyword": "When ",
+            "line": 17,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 33
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_clear_the_text_from(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 71442000,
+              "status": "passed"
+            },
+            "name": "\"withContent\" shall contain \"\"",
+            "keyword": "Then ",
+            "line": 18,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 1
+                },
+                {
+                  "val": "",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.shall_contain(String,String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1621120000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;type-text-into-input,-clearing-the-input-first",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 20
+          }
+        ],
+        "description": "",
+        "name": "Type text into input, clearing the input first",
+        "keyword": "Scenario",
+        "line": 21,
+        "steps": [
+          {
+            "result": {
+              "duration": 135459000,
+              "status": "passed"
+            },
+            "name": "I choose to type \"This is my new content\" from \"withContent\"",
+            "keyword": "When ",
+            "line": 22,
+            "match": {
+              "arguments": [
+                {
+                  "val": "This is my new content",
+                  "offset": 18
+                },
+                {
+                  "val": "withContent",
+                  "offset": 48
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_type_from(String\u003e,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 85672000,
+              "status": "passed"
+            },
+            "name": "\"withContent\" shall contain \"This is my new content\"",
+            "keyword": "Then ",
+            "line": 23,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 1
+                },
+                {
+                  "val": "This is my new content",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.shall_contain(String,String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1628108000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;type-text-into-input,-with-a-delay",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 25
+          }
+        ],
+        "description": "",
+        "name": "Type text into input, with a delay",
+        "keyword": "Scenario",
+        "line": 26,
+        "steps": [
+          {
+            "result": {
+              "duration": 1567645000,
+              "status": "passed"
+            },
+            "name": "I choose to type \"This is my new content\" from \"withContent\" with keystroke delay 50 milliseconds",
+            "keyword": "When ",
+            "line": 27,
+            "match": {
+              "arguments": [
+                {
+                  "val": "This is my new content",
+                  "offset": 18
+                },
+                {
+                  "val": "withContent",
+                  "offset": 48
+                },
+                {
+                  "val": "50",
+                  "offset": 82
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_type_from_with_keystroke_delay_milliseconds(String,String,int)"
+            }
+          },
+          {
+            "result": {
+              "duration": 71580000,
+              "status": "passed"
+            },
+            "name": "\"withContent\" shall contain \"This is my new content\"",
+            "keyword": "Then ",
+            "line": 28,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 1
+                },
+                {
+                  "val": "This is my new content",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.shall_contain(String,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 8388000,
+              "status": "passed"
+            },
+            "name": "it shall take over 1 seconds",
+            "keyword": "And ",
+            "line": 29,
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 19
+                }
+              ],
+              "location": "InputStepDef.it_shall_take_over_seconds(int)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1598838000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;type-text-into-input,-using-selenium-keys-enum",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 31
+          }
+        ],
+        "description": "",
+        "name": "Type text into input, using Selenium Keys enum",
+        "keyword": "Scenario",
+        "line": 32,
+        "steps": [
+          {
+            "result": {
+              "duration": 158786000,
+              "status": "passed"
+            },
+            "name": "I choose to type \"This is my con, BACK_SPACE, BACK_SPACE, BACK_SPACE,new content\" from \"withContent\"",
+            "keyword": "When ",
+            "line": 33,
+            "match": {
+              "arguments": [
+                {
+                  "val": "This is my con, BACK_SPACE, BACK_SPACE, BACK_SPACE,new content",
+                  "offset": 18
+                },
+                {
+                  "val": "withContent",
+                  "offset": 88
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_type_from(String\u003e,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 74071000,
+              "status": "passed"
+            },
+            "name": "\"withContent\" shall contain \"This is my new content\"",
+            "keyword": "Then ",
+            "line": 34,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 1
+                },
+                {
+                  "val": "This is my new content",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.shall_contain(String,String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1641232000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;type-special-characters-into-input-using-selenium-keys-enum",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 36
+          }
+        ],
+        "description": "",
+        "name": "Type special characters into input using Selenium Keys enum",
+        "keyword": "Scenario",
+        "line": 37,
+        "steps": [
+          {
+            "result": {
+              "duration": 100746000,
+              "status": "passed"
+            },
+            "name": "I choose to send keys \"BACK_SPACE,MULTIPLY\" into \"withContent\"",
+            "keyword": "When ",
+            "line": 38,
+            "match": {
+              "arguments": [
+                {
+                  "val": "BACK_SPACE,MULTIPLY",
+                  "offset": 23
+                },
+                {
+                  "val": "withContent",
+                  "offset": 50
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_send_keys_into(String\u003e,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 78470000,
+              "status": "passed"
+            },
+            "name": "\"withContent\" shall contain \"I contain conten*\"",
+            "keyword": "Then ",
+            "line": 39,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withContent",
+                  "offset": 1
+                },
+                {
+                  "val": "I contain conten*",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.shall_contain(String,String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1639409000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;double-click-on-an-element",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 41
+          }
+        ],
+        "description": "",
+        "name": "Double click on an element",
+        "keyword": "Scenario",
+        "line": 42,
+        "steps": [
+          {
+            "result": {
+              "duration": 94724000,
+              "status": "passed"
+            },
+            "name": "I choose to click on \"b1\"",
+            "keyword": "When ",
+            "line": 43,
+            "match": {
+              "arguments": [
+                {
+                  "val": "b1",
+                  "offset": 22
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_click_on(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 44307000,
+              "status": "passed"
+            },
+            "name": "I should see \"You double clicked button: NONE\"",
+            "keyword": "Then ",
+            "line": 44,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You double clicked button: NONE",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 81135000,
+              "status": "passed"
+            },
+            "name": "I choose to double click on \"b1\"",
+            "keyword": "When ",
+            "line": 45,
+            "match": {
+              "arguments": [
+                {
+                  "val": "b1",
+                  "offset": 29
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_double_click_on(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 40260000,
+              "status": "passed"
+            },
+            "name": "I should see \"You double clicked button: B1\"",
+            "keyword": "Then ",
+            "line": 46,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You double clicked button: B1",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1626309000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;scroll-an-element-into-view",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 48
+          }
+        ],
+        "description": "",
+        "name": "Scroll an element into view",
+        "keyword": "Scenario",
+        "line": 49,
+        "steps": [
+          {
+            "result": {
+              "duration": 115114000,
+              "status": "passed"
+            },
+            "name": "I choose to scroll element \"offscreen\" into view",
+            "keyword": "When ",
+            "line": 50,
+            "match": {
+              "arguments": [
+                {
+                  "val": "offscreen",
+                  "offset": 28
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_scroll_element_into_view(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 104152000,
+              "status": "passed"
+            },
+            "name": "I should see element \"offscreen\" in the viewport",
+            "keyword": "Then ",
+            "line": 51,
+            "match": {
+              "arguments": [
+                {
+                  "val": "should",
+                  "offset": 2
+                },
+                {
+                  "val": "offscreen",
+                  "offset": 22
+                }
+              ],
+              "location": "InputStepDef.i_should_see_element_in_the_viewport(String,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 43025000,
+              "status": "passed"
+            },
+            "name": "I should not see element \"b1\" in the viewport",
+            "keyword": "And ",
+            "line": 52,
+            "match": {
+              "arguments": [
+                {
+                  "val": "should not",
+                  "offset": 2
+                },
+                {
+                  "val": "b1",
+                  "offset": 26
+                }
+              ],
+              "location": "InputStepDef.i_should_see_element_in_the_viewport(String,String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with inputs",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1617030000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/input.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/input.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "input-actions;multiple-elements-have-the-same-locator-but-different-text-/-attribute",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 54
+          }
+        ],
+        "description": "",
+        "name": "Multiple Elements have the same locator but different text / attribute",
+        "keyword": "Scenario",
+        "line": 55,
+        "steps": [
+          {
+            "result": {
+              "duration": 2016000,
+              "status": "passed"
+            },
+            "name": "the following elements:",
+            "keyword": "Given ",
+            "line": 56,
+            "match": {
+              "location": "InputStepDef.the_following_elements(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "locator",
+                  "name attribute",
+                  "value"
+                ],
+                "line": 57
+              },
+              {
+                "cells": [
+                  "sameLocator",
+                  "user",
+                  "username"
+                ],
+                "line": 58
+              },
+              {
+                "cells": [
+                  "sameLocator",
+                  "password",
+                  "password"
+                ],
+                "line": 59
+              }
+            ]
+          },
+          {
+            "result": {
+              "duration": 95569000,
+              "status": "passed"
+            },
+            "name": "I choose to type \"This is my user name\" for element \"sameLocator\" with \"name\" \"user\"",
+            "keyword": "When ",
+            "line": 60,
+            "match": {
+              "arguments": [
+                {
+                  "val": "This is my user name",
+                  "offset": 18
+                },
+                {
+                  "val": "sameLocator",
+                  "offset": 53
+                },
+                {
+                  "val": "name",
+                  "offset": 72
+                },
+                {
+                  "val": "user",
+                  "offset": 79
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_type_for_element_with(String,String,String,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 77083000,
+              "status": "passed"
+            },
+            "name": "the following elements shall be displayed:",
+            "keyword": "Then ",
+            "line": 61,
+            "match": {
+              "location": "InputStepDef.the_following_elements_shall_be_displayed(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "locator",
+                  "name attribute",
+                  "value"
+                ],
+                "line": 62
+              },
+              {
+                "cells": [
+                  "sameLocator",
+                  "user",
+                  "This is my user name"
+                ],
+                "line": 63
+              },
+              {
+                "cells": [
+                  "sameLocator",
+                  "password",
+                  "password"
+                ],
+                "line": 64
+              }
+            ]
+          },
+          {
+            "result": {
+              "duration": 92457000,
+              "status": "passed"
+            },
+            "name": "I choose to type \"This is my password\" for element \"sameLocator\" with \"name\" \"password\"",
+            "keyword": "When ",
+            "line": 65,
+            "match": {
+              "arguments": [
+                {
+                  "val": "This is my password",
+                  "offset": 18
+                },
+                {
+                  "val": "sameLocator",
+                  "offset": 52
+                },
+                {
+                  "val": "name",
+                  "offset": 71
+                },
+                {
+                  "val": "password",
+                  "offset": 78
+                }
+              ],
+              "location": "InputStepDef.i_choose_to_type_for_element_with(String,String,String,String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 34686000,
+              "status": "passed"
+            },
+            "name": "the following elements shall be displayed:",
+            "keyword": "Then ",
+            "line": 66,
+            "match": {
+              "location": "InputStepDef.the_following_elements_shall_be_displayed(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "locator",
+                  "name attribute",
+                  "value"
+                ],
+                "line": 67
+              },
+              {
+                "cells": [
+                  "sameLocator",
+                  "user",
+                  "This is my user name"
+                ],
+                "line": 68
+              },
+              {
+                "cells": [
+                  "sameLocator",
+                  "password",
+                  "This is my password"
+                ],
+                "line": 69
+              }
+            ]
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "uri": "features/samples/local/input.feature"
+  }
+]

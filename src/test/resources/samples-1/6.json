@@ -1,0 +1,291 @@
+[
+  {
+    "id": "performance",
+    "tags": [
+      {
+        "name": "@local",
+        "line": 1
+      }
+    ],
+    "description": "In order to minimise test execution times\nAs a tester\nI want JmCore to be performant",
+    "name": "Performance",
+    "keyword": "Feature",
+    "line": 2,
+    "elements": [
+      {
+        "description": "",
+        "name": "On page lots of stuff",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 2582762000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/performance.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/performance.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 9944000,
+              "status": "passed"
+            },
+            "name": "I am timing performance",
+            "keyword": "And ",
+            "line": 9,
+            "match": {
+              "location": "PerformanceStepDef.i_am_timing_performance()"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "performance;find-the-first-match",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 11
+          }
+        ],
+        "description": "",
+        "name": "Find the first match",
+        "keyword": "Scenario",
+        "line": 12,
+        "steps": [
+          {
+            "result": {
+              "duration": 267354000,
+              "status": "passed"
+            },
+            "name": "I search for the first element containing \"Foxtrot\"",
+            "keyword": "When ",
+            "line": 13,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Foxtrot",
+                  "offset": 43
+                }
+              ],
+              "location": "PerformanceStepDef.i_search_for_the_first_containing(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 8543000,
+              "status": "passed"
+            },
+            "name": "it should complete in under 2 seconds",
+            "keyword": "Then ",
+            "line": 14,
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 28
+                }
+              ],
+              "location": "PerformanceStepDef.it_should_complete_in_under_seconds(int)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page lots of stuff",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1757009000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/performance.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/performance.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 1457000,
+              "status": "passed"
+            },
+            "name": "I am timing performance",
+            "keyword": "And ",
+            "line": 9,
+            "match": {
+              "location": "PerformanceStepDef.i_am_timing_performance()"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "performance;find-the-first-match---accessors",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 16
+          }
+        ],
+        "description": "",
+        "name": "Find the first match - Accessors",
+        "keyword": "Scenario",
+        "line": 17,
+        "steps": [
+          {
+            "result": {
+              "duration": 236698000,
+              "status": "passed"
+            },
+            "name": "I use the accessor to search for the first element containing \"Foxtrot\"",
+            "keyword": "When ",
+            "line": 18,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Foxtrot",
+                  "offset": 63
+                }
+              ],
+              "location": "PerformanceStepDef.i_use_the_accessor_to_search_for_the_first_element_containing(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 123000,
+              "status": "passed"
+            },
+            "name": "it should complete in under 2 seconds",
+            "keyword": "Then ",
+            "line": 19,
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 28
+                }
+              ],
+              "location": "PerformanceStepDef.it_should_complete_in_under_seconds(int)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page lots of stuff",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1664584000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/performance.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/performance.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 1371000,
+              "status": "passed"
+            },
+            "name": "I am timing performance",
+            "keyword": "And ",
+            "line": 9,
+            "match": {
+              "location": "PerformanceStepDef.i_am_timing_performance()"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "performance;wait-until-match---synchroniser",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 21
+          }
+        ],
+        "description": "",
+        "name": "Wait until match - Synchroniser",
+        "keyword": "Scenario",
+        "line": 22,
+        "steps": [
+          {
+            "result": {
+              "duration": 224125000,
+              "status": "passed"
+            },
+            "name": "I use the synchroniser to wait for the first element containing \"Foxtrot\"",
+            "keyword": "When ",
+            "line": 23,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Foxtrot",
+                  "offset": 65
+                }
+              ],
+              "location": "PerformanceStepDef.i_use_the_synchroniser_to_wait_for_the_first_element_containing(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 134000,
+              "status": "passed"
+            },
+            "name": "it should complete in under 2 seconds",
+            "keyword": "Then ",
+            "line": 24,
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 28
+                }
+              ],
+              "location": "PerformanceStepDef.it_should_complete_in_under_seconds(int)"
+            }
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "uri": "features/samples/local/performance.feature"
+  }
+]

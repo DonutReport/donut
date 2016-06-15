@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Donut - {{dashboardPage.reportDashboard.executionDateTime}}</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!--Custom styles-->
+    <style>
+        html{width: 100%;height: 100%}
+        body{width: 100%;height: 100%;font-family:'Lato',sans-serif;font-weight:300;color: #797979;background-color:#fff; webkit-tap-highlight-color: rgba(255,255,255,.2)}
+
+        a{-webkit-transition: all .2s ease-in-out;-moz-transition: all .2s ease-in-out;transition: all .2s ease-in-out}
+        a:hover,a:focus{text-decoration: none;color: #1d9b6c}
+
+        img::selection{background: 0 0}
+        img::-moz-selection{background: 0 0}
+
+        footer{padding: 50px 0}
+        footer p{margin: 0}
+
+        .navbar-custom{margin-bottom: 0;border-bottom: 1px solid rgba(255,255,255,.3);text-transform: uppercase;font-family:'Lato',sans-serif;font-weight:300;background-color: #000}
+        .navbar-custom .navbar-brand{font-weight: 700}
+        .navbar-custom .navbar-brand:focus{outline: 0}
+        .navbar-custom .navbar-brand .navbar-toggle{padding: 4px 6px;font-size: 16px;color: #fff}
+        .navbar-custom .navbar-brand .navbar-toggle:focus,
+        .navbar-custom .navbar-brand .navbar-toggle:active{outline: 0}
+        .navbar-custom a {color: #797979}
+        .navbar-custom .nav li a{-webkit-transition: background .3s ease-in-out;-moz-transition: background .3s ease-in-out;transition: background .3s ease-in-out; line-height:40px;}
+        .navbar-custom .nav li a:hover{outline: 0;color: rgba(255,255,255,.8);background-color: transparent}
+        .navbar-custom .nav li a:focus,
+        .navbar-custom .nav li a:active{outline: 0;background-color: transparent}
+        .navbar-custom .nav li.active{outline: 0}
+        .navbar-custom .nav li.active a{background-color: rgba(255,255,255,.3)}
+        .navbar-custom .nav li.active a:hover{color: #fff}
+
+        .intro{display: table;width: 100%;height: auto;padding: 100px 0;color: #797979;background-color: #ebeff2;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover}
+        .intro .intro-body{display: table-cell;vertical-align: middle}
+        .content-section{padding-top: 50px}
+
+        ::-moz-selection{text-shadow: none;background: #fcfcfc;background: rgba(255,255,255,.2)}
+        ::selection{text-shadow: none;background: #fcfcfc;background: rgba(255,255,255,.2)}
+
+        @-webkit-keyframes pulse{
+        0%{-webkit-transform: scale(1);transform: scale(1)}50%{-webkit-transform: scale(1.2);transform: scale(1.2)}
+        100%{-webkit-transform: scale(1);transform: scale(1)}
+        }
+        @-moz-keyframes pulse{
+        0%{-moz-transform: scale(1);transform: scale(1)}50%{-moz-transform: scale(1.2);transform: scale(1.2)}
+        100%{-moz-transform: scale(1);transform: scale(1)}
+        }
+
+        @media(min-width:767px){ .content-section{padding-top: 100px} }
+        @media(min-width:768px){
+        .navbar-custom{padding: 20px 0;border-bottom: 0;letter-spacing: 1px;background: 0 0;-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;-moz-transition: background .5s ease-in-out,padding .5s ease-in-out;transition: background .5s ease-in-out,padding .5s ease-in-out}
+        .navbar-custom.top-nav-collapse{padding: 0;border-bottom: 1px solid rgba(255,255,255,.3);background: #000}
+        }
+
+        .wrapped-text{word-wrap:break-word}
+        .error-message{padding:10px}
+        .modal-lg{width:90%}
+        .modal-title{padding-top: 5px;}
+        .white{color:#797979}
+        .chart{min-width:300px;height:250px;max-width:600px;margin:0 auto}
+        .dashboard-steps {border-bottom: 1px #ebeff2 solid; padding:8px}
+        .steps{font-size:18px}
+        .steps-icon-total {color:darkgrey;}
+        .steps-icon-passed {color:#7AB340;}
+        .steps-icon-failed {color:#D44848;}
+        .steps-icon-skipped {color:#7cb5ec;}
+        .steps-icon-pending {color:#f7a35c;}
+        .step-table {border:1px black solid; margin-left:15px; margin-top:5px;}
+        .step-table-cell {border:1px black solid;padding:5px;background-color:#ccc;}
+        .step-custom-output {white-space: pre-wrap;background-color:beige; margin-top: 10px;}
+        .passed{background-color:rgba(122,179,64,0.5);color:#2b2b2b}
+        .failed{background-color:rgba(212,72,72,0.5);color:#2b2b2b}
+        .skipped{background-color:rgba(124,181,236,0.5);color:#2b2b2b}
+        .pending{background-color:rgba(247,163,92,0.5);color:#2b2b2b}
+        .list-group-item{padding:5px 15px}
+        .stat-number{font-size:50px;color:#797979;padding-right:5px}
+        .stat-number-percentage-pass{font-size:25px;font-weight:400;color:#7AB340}
+        .stat-number-percentage-fail{font-size:25px;font-weight:400;color:#D44848}
+        .stat-percentage{font-size:15px}
+
+        .table {color:#333;background-color:#EEEEEE; border-color:#333;}
+        .table>tbody {font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
+        .table>tbody>tr.failed>td{background-color:#DE7676;}
+        .table-bordered>thead>tr>th{border-bottom-width:0;border-color:#222;color:darkgrey;background-color:#424242}
+        .table>tbody>tr>td>a {color:#2b2b2b;cursor:hand;}
+        .table-feature-name {min-width:300px;}
+        .table-tag-name {color:#2b2b2b;cursor:hand;}
+        .table-status: {max-width:30px;}
+
+        .durationBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #333;background-color: #fff;border-color: #ccc}
+        .tagBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;background-color: #777;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #fff;border-color: #ccc}
+        .tagBadgeStyle {text-decoration:none; color:#fff;}
+        .logo{background: url('http://magentys.github.io/donut/img/Donut-01.png') 0 0px no-repeat;position: absolute;width: 95px; height:70px;top: 0;z-index: 100;display: block;background-size: 95px 60px!important;background-color: transparent!important; background-position: 5% 5%;margin-top:7px;}
+        .toggle-button {margin-left:10px;}
+
+        .dashboard-panel {background-color:#fff;margin-top:15px;margin-right:15px;padding:15px;}
+        .dashboard-panel-top {background-color:#fff;margin-top:15px;margin-bottom:15px;padding-top:15px}
+        .dashboard-panel2 {background-color:#fff;margin-top:15px;padding-top:15px }
+
+        .bs-callout {display: none;}
+        .bs-callout-passed{padding:20px;margin-bottom:15px;border:1px solid #eee;border-left-width:5px;border-radius:3px;border-left-color:#7AB340}
+        .bs-callout-failed{padding:20px;margin-bottom:15px;border:1px solid #eee;border-left-width:5px;border-radius:3px;border-left-color:#D44848}
+
+        .open-button {float: left;margin-right: 10px;}
+        .closed-button {display: none;float: left;margin-right: 10px;}
+
+        .status-span-fail {color:red;margin:5px;}
+        .status-span-pass {color:green;margin:5px;}
+
+        .hide {display:none;}
+    </style>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="glyphicon glyphicon-th-list white"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <span class="logo"></span>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#featuresPage"><span class="sub_icon glyphicon glyphicon-th-list"></span> Features</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#tagPage"><span class="sub_icon glyphicon glyphicon-tag"></span> Tags</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#failuresPage"><span class="sub_icon glyphicon glyphicon-exclamation-sign"></span> Failures</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#aboutPage">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- Intro Header -->
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 dashboard-panel">
+                    <h2>Features</h2>
+                    <div class="row">
+                        <div class="col-md-3 stat-number">
+                            {{dashboardPage.reportDashboard.featureMetrics.total}}
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.featurePassRate}}<span class="stat-percentage">%</span></span>
+                            <br>
+                            <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.featureFailRate}}<span class="stat-percentage">%</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div id="features-donut-chart" class="chart"></div>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-4 dashboard-panel">
+
+                    <h2>Scenarios</h2>
+                    <div class="row">
+                        <div class="col-md-3 stat-number">
+                            {{dashboardPage.reportDashboard.scenarioMetrics.total}}
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.scenariosPassRate}}<span class="stat-percentage">%</span></span>
+                            <br>
+                            <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.scenariosFailRate}}<span class="stat-percentage">%</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div id="scenarios-donut-chart" class="chart"></div>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-md-3" >
+                    <div class="row dashboard-panel-top">
+                        <div class="col-md-12">
+                            <h2>Steps</h2>
+                            <ul class="list-unstyled steps">
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-total"> Total</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.total}}</b></span></li>
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-passed"> Passed</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.passed}}</b></span></li>
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-failed"> Failed</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.failed}}</b></span></li>
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-skipped"> Skipped</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.skipped}}</b></span></li>
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-pending"> Pending</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.pending}}</b></span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row dashboard-panel2">
+                        <div class="col-md-12">
+                            <h2><span class="stat-number">{{dashboardPage.reportDashboard.totalTags}}</span>Tags</h2>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Started <span class="white">{{dashboardPage.reportDashboard.executionDateTime}}</span></h4>
+                    <h4>Duration <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
+                    <h4>{{projectMetadata.projectName}} {{projectMetadata.projectVersion}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- featuresPage -->
+<section id="featuresPage" class="container content-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Feature Summary</h3>
+            <br>
+            <table id="featuresTable" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3" class="text-center">Scenarios</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Feature</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Failed</th>
+                    <th class="text-center">Passed</th>
+                    <th>Duration</th>
+                    <th class="table-status"></th>
+                    <th class="hide">Duration-H</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{#featuresPage.features}}
+                <tr>
+                    <td class="table-feature-name">
+                        <a data-toggle="modal" data-target="#modal-{{@index}}" href="#modal-{{@index}}">{{name}}</a>
+                    </td>
+                    <td class="text-center">{{scenarioMetrics.total}}</td>
+                    <td class="text-center">{{scenarioMetrics.failed}}</td>
+                    <td class="text-center">{{scenarioMetrics.passed}}</td>
+
+                    <td>{{duration.durationStr}}</td>
+                    <td class="status">{{status.statusStr}} </td>
+                    <td class="hide">{{duration.duration}}</td>
+                </tr>
+                {{/featuresPage.features}}
+                </tbody>
+
+                <tfoot>
+                <tr>
+                    <th>
+                        Total Features: {{dashboardPage.reportDashboard.featureMetrics.total}}<br>
+                        Passed Features: {{dashboardPage.reportDashboard.featureMetrics.passed}}<br>
+                        Failed Features: {{dashboardPage.reportDashboard.featureMetrics.failed}}<br>
+                    </th>
+                    <th class="text-center">{{dashboardPage.reportDashboard.scenarioMetrics.total}}</th>
+                    <th class="text-center">{{dashboardPage.reportDashboard.scenarioMetrics.failed}}</th>
+                    <th class="text-center">{{dashboardPage.reportDashboard.scenarioMetrics.passed}}</th>
+                    <th>{{dashboardPage.reportDashboard.executionDuration}}</th>
+                    <th></th>
+                </tr>
+                </tfoot>
+            </table>
+
+            {{#featuresPage.features}}
+            <!-- Modal -->
+            <div class="modal" id="modal-{{@index}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel-{{@index}}">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <a href="#" id="openInfo-{{@index}}" onclick="toggleInfo('#featureInfo-{{@index}}', '{{@index}}', 'open')"
+                               class="btn btn-default open-button">
+                                <span class="glyphicon glyphicon-info-sign"></span>
+                            </a>
+                            <a href="#" id="closeInfo-{{@index}}" onclick="toggleInfo('#featureInfo-{{@index}}', '{{@index}}', 'close')"
+                               class="btn btn-default  pull-left closed-button">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </a>
+                            <h4 class="modal-title" id="modalLabel-{{@index}}">
+                                Feature: {{name}}
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div id="featureInfo-{{@index}}" class="row bs-callout">
+                                    <div class="bs-callout-{{status.statusStr}}">
+                                        <p><b>Total scenarios:</b> {{scenarioMetrics.total}},
+                                            <b>Passed scenarios:</b> {{scenarioMetrics.passed}},
+                                            <b>Failed scenarios:</b> {{scenarioMetrics.failed}}</p>
+                                        <p><b>Total Duration:</b> {{duration.durationStr}}</p>
+                                        <p><b>Feature file:</b> {{uri}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    {{#htmlFeatureTags}}
+                                     <span class="tagBadge">
+                                          <a data-dismiss="modal" data-toggle="modal" data-target="#tag-{{.}}" href="#tag-{{.}}" class="tagBadgeStyle">
+                                              <span class="sub_icon glyphicon glyphicon-tag"></span>{{.}}
+                                          </a>
+                                        </span>
+                                    {{/htmlFeatureTags}}
+                                </div>
+
+                                <div class="row">
+                                    <b>Description:</b>
+                                    <p class="wrapped-text" style="white-space: pre-wrap;">{{description}}</p>
+                                </div>
+                                {{htmlElements}}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/featuresPage.features}}
+
+        </div>
+    </div>
+</section>
+
+<!-- TagPage Section -->
+<section id="tagPage" class="content-section">
+    <div class="container">
+        <div class="col-lg-12">
+            <h3>Tag Summary</h3>
+            <br>
+            <!--chart-->
+            <div  id="tag-chart" class="col-lg-10 col-md-10 col-sm-10"> </div>
+
+            <!--table-->
+            <table id="tags" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <thead >
+                <tr>
+                    <th></th>
+                    <th colspan="3" class="text-center">Scenarios</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Tag</th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Failed</th>
+                    <th class="text-center">Passed</th>
+                    <th class="table-status"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{#tagPage.reportTag}}
+                <tr>
+                    <td class="table-tag-name"><a data-toggle="modal" data-target="#tag-{{tag}}" href="#tag-{{tag}}">@{{tag}}</a>
+                    </td>
+                    <td class="text-center">{{scenariosMetrics.total}}</td>
+                    <td class="text-center">{{scenariosMetrics.failed}}</td>
+                    <td class="text-center">{{scenariosMetrics.passed}}</td>
+                    <td class="status">{{tagStatus}}</td>
+                </tr>
+                {{/tagPage.reportTag}}
+                </tbody>
+            </table>
+
+            {{#tagPage.reportTag}}
+                <!-- Modal tag -->
+                <div class="modal" id="tag-{{tag}}" tabindex="-1" role="dialog" aria-labelledby="tagLabel-{{tag}}">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="tagLabel-{{tag}}">
+                                Tag: @{{tag}}
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                {{htmlElements}}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/tagPage.reportTag}}
+
+        </div>
+    </div>
+</section>
+
+<!-- Failures Section -->
+<section id="failuresPage" class="container content-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Failures ({{failuresPage.totalFailures}})
+                <a id="toggleFailuresButton" href="" onclick="toggleAllFailures()" class="btn btn-default btn-xs hide">toggle all <span class="glyphicon glyphicon-menu-down"></span></a>
+            </h3>
+            <br>
+            {{failuresPage.htmlElements}}
+        </div>
+    </div>
+    <input type="text" value="{{failuresPage.totalFailures}}" id="failuresSize" hidden>
+    <br><br><br><br><br><br><br><br>
+</section>
+
+<!--About Section-->
+<section id="aboutPage"  class="container content-section text-center">
+    <br>
+    <div class="container text-center">
+        <h3>About</h3>
+        <img src="http://magentys.github.io/donut/img/Donut-02.png" width="150px"> <br>
+        <a class="github-button" href="https://github.com/magentys/donut/fork" data-icon="octicon-repo-forked" data-count-href="/magentys/donut/network" data-count-api="/repos/magentys/donut#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork magentys/donut on GitHub">Fork</a>
+        <a class="github-button" href="https://github.com/magentys/donut/issues" data-icon="octicon-issue-opened" data-count-api="/repos/magentys/donut#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue magentys/donut on GitHub">Issue</a>
+        <a class="github-button" href="https://github.com/magentys/donut" data-icon="octicon-star" data-count-href="/magentys/donut/stargazers" data-count-api="/repos/magentys/donut#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star magentys/donut on GitHub">Star</a>
+    </div>
+    <br>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container text-center">
+        <p>Copyright &copy; Magentys 2016</p>
+    </div>
+</footer>
+
+<!--Scripts-->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+
+<script>
+
+   function getClass(status) { if (status == 'passed') { return "success" } else { return "danger" } }
+
+    function tableRawColorStatus() {
+       $('#featuresTable tbody tr').each(function() {
+            $(this).find('td.status').each(function() {
+                if ($(this).text().trim() == 'failed') {
+                    $(this).parent().addClass('failed');
+                    $(this).addClass('danger text-center');
+                    $(this).html('<span hidden="true">failed</span><span class="glyphicon glyphicon-exclamation-sign"></span>');
+                } else if  ($(this).text().trim() == 'passed') {
+                    $(this).addClass('success text-center');
+                    $(this).html('<span hidden="true">passed</span><span class="glyphicon glyphicon-ok-sign"></span>');
+                }
+            });
+        });
+    }
+
+  function tableRawColorStatusTags() {
+       $('#tags tbody tr').each(function() {
+            $(this).find('td.status').each(function() {
+                if ($(this).text().trim() == 'failed') {
+                    $(this).parent().addClass('failed');
+                    $(this).addClass('danger text-center');
+                    $(this).html('<span hidden="true">failed</span><span class="glyphicon glyphicon-exclamation-sign"></span>');
+                } else if  ($(this).text().trim() == 'passed') {
+                    $(this).addClass('success text-center');
+                    $(this).html('<span hidden="true">passed</span><span class="glyphicon glyphicon-ok-sign"></span>');
+                }
+            });
+        });
+    }
+
+   function toggleInfo(featureInfoIdDiv, id, action) {
+        var closeInfo = '#closeInfo-'+id;
+        var openInfo = '#openInfo-'+id;
+        if (action === 'open') {
+            $(closeInfo).show();
+            $(openInfo).hide();
+            $(featureInfoIdDiv).show();
+        } else {
+            $(closeInfo).hide();
+            $(openInfo).show();
+            $(featureInfoIdDiv).hide();
+        }
+    };
+
+  /* SCENARIOS FUNCTIONS */
+  function toggleScenario(id) {
+    event.preventDefault();
+    $('#'+id).slideToggle('slow');
+  }
+
+  function toggleAllFailures() {
+    var idsArray = $('#failureIds').val().split(",");
+
+    for(var i = 0; i < idsArray.length; i++){
+        toggleScenario(idsArray[i]);
+    }
+  }
+
+  /* SCREENSHOT FUNCTIONS */
+
+   function toggleScreenshot(id,type, imageIds) {
+        event.preventDefault();
+        var screenshotId = '#'+ type.trim() +'-'+id.trim();
+        console.log(screenshotId);
+        getAllImagesForScenario(screenshotId, imageIds);
+        //$(screenshotId).append(getImage(imageIds));
+        $(screenshotId).slideToggle('slow');
+        return false;
+    };
+
+    function getAllImagesForScenario(divId, imageIds) {
+       var images = imageIds.split(",")
+        console.log("Image IDs are " + imageIds)
+        for(var i = 0; i < images.length; i++){
+            console.log("hell "+images[i]);
+            $(divId).append(getImage(images[i]));
+        }
+    }
+
+    function getImage(imageId)  {
+        var id = parseInt(imageId);
+        for(var i = 0; i < allImages.length; i++){
+            var a = allImages[i].id;
+            if(a == id) {
+              return "<img class=\"error-message\" src=\"data:"+ allImages[i].mime_type + ";base64,"+ allImages[i].data +"\" width=\"100%\"/>"
+            }
+        }
+    }
+
+    /* CHARTING FUNCTIONS */
+
+    // Data
+    var data = {{tagPage.chart}}
+
+    function getCategoriesStackChart()  {
+        var i;
+        var xCategories = [];
+        for(i = 0; i < data.length; i++){
+             xCategories.push(data[i].tag);
+        }
+        return xCategories;
+    }
+
+    //TODO error handling: http://stackoverflow.com/questions/11472947/how-to-format-my-json-data-for-stack-column-chart-in-highcharts
+    function getSeriesStackChart() {
+       var seriesData = [];
+       var passes = [];
+       var fails = [];
+
+        console.log(data.length);
+
+       for(i = 0; i < data.length; i++){
+            passes.push(data[i].scenariosMetrics.passed);
+            fails.push(data[i].scenariosMetrics.failed);
+        }
+        var a = {name: 'passed', data: passes, color: '#5cb85c'}
+        var b = {name: 'failed', data: fails, color: '#d9534f'}
+        seriesData.push(b);
+        seriesData.push(a);
+        return seriesData;
+    }
+
+    $(function () {
+        $('#features-donut-chart').highcharts({
+            chart: {
+                plotBackgroundColor: 'transparent',
+                plotBorderWidth: 0,
+                plotShadow: false,
+                type: 'pie',
+                margin: [0, 0, 0, 0],
+                backgroundColor: "#ffffff"
+            },
+            title: { text: '' },
+            tooltip: { pointFormat: '<b>{point.percentage:.1f}</b>' },
+            credits: { enabled: false },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        color: '#797979',
+                        style: { fontFamily: '"Open Sans", sans-serif', fontSize: '15px', color: '#797979', textShadow: false }
+                    },
+                    showInLegend: false,
+                     point: {
+                        events:{
+                            click: function() {
+                                 if(this.options.name.startsWith('Failed')) {
+                                    $('html, body').stop().animate({ scrollTop: $(this.options.url).offset().top }, 1500, 'easeInOutExpo');
+                                    event.preventDefault();
+                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                innerSize: '60%',
+                colorByPoint: true,
+                data: [{name: "Passed: " + {{dashboardPage.reportDashboard.featureMetrics.passed}}, y: {{dashboardPage.reportDashboard.featureMetrics.passed}}, color: '#5cb85c' },
+                       {name: "Failed: " + {{dashboardPage.reportDashboard.featureMetrics.failed}}, y: {{dashboardPage.reportDashboard.featureMetrics.failed}}, color: '#d9534f', sliced: true, selected: true, url: '#failuresPage'}]
+            }]
+        });
+
+      $('#scenarios-donut-chart').highcharts({
+            chart: {
+                plotBackgroundColor: 'transparent',
+                plotBorderWidth: 0,
+                plotShadow: false,
+                type: 'pie',
+                margin: [0, 0, 0, 0],
+                backgroundColor: "#ffffff"
+            },
+            title: { text: '' },
+            tooltip: { pointFormat: '<b>{point.percentage:.1f}</b>' },
+            credits: { enabled: false },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        color: '#797979',
+                        style: {
+                            fontFamily: '"Open Sans", sans-serif',
+                            fontSize: '15px',
+                            color: '#797979',
+                            textShadow: false
+                        }
+                    },
+                    showInLegend: false,
+                    point: {
+                        events:{
+                            click: function() {
+                                 if(this.options.name.startsWith('Failed')) {
+                                    $('html, body').stop().animate({ scrollTop: $(this.options.url).offset().top }, 1500, 'easeInOutExpo');
+                                    event.preventDefault();
+                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                innerSize: '60%',
+                colorByPoint: true,
+                data: [{name: "Passed: " + {{dashboardPage.reportDashboard.scenarioMetrics.passed}}, y: {{dashboardPage.reportDashboard.scenarioMetrics.passed}}, color: '#5cb85c'},
+                       {name: "Failed: " + {{dashboardPage.reportDashboard.scenarioMetrics.failed}}, y: {{dashboardPage.reportDashboard.scenarioMetrics.failed}}, color: '#d9534f', sliced: true, selected: true, url: '#failuresPage'}]
+            }]
+        });
+
+        function tagChartSize() {
+            if(data.length > 10)
+               return (data.length * 20);
+            else
+               return 350;
+        }
+
+       tagChart();
+       function tagChart() {
+         if(data.length > 0) {
+           $('#tag-chart').highcharts({
+             chart: { type: 'bar', height: tagChartSize(), zoomType: 'x' },
+             title: { text: '' },
+             xAxis: { categories: getCategoriesStackChart() },
+             yAxis: { allowDecimals: false, min: 0, title: { text: 'Scenarios' } },
+             legend: { reversed: true },
+             credits: { enabled: false },
+             plotOptions: {
+                series: { stacking: 'normal' }
+             },
+             series: getSeriesStackChart()
+           });
+         } else {
+            return;
+         }
+       }
+});
+
+ $(function () {
+    /* color datatables */
+    tableRawColorStatus();
+    tableRawColorStatusTags();
+
+     /* initialize datatables */
+     // Initialise the table with the required column ordering data types
+    $('#featuresTable').DataTable( {
+       "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+
+            {"iDataSort": 6},
+            null,
+            {"bVisible": false, "orderDataType": "numeric", "className": "never"}]
+    });
+    $('#tags').DataTable();
+
+    if( $('#failuresSize').val() > 0 ) {
+        $('#toggleFailuresButton').removeClass("hide");
+    }
+ });
+
+// jQuery to collapse the navbar on scroll
+$(window).scroll(function() {
+    if ($(".navbar").offset().top > 50) {
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
+});
+
+// jQuery for page scrolling feature - requires jQuery Easing plugin
+$(function() {
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1500, 'easeInOutExpo');
+        event.preventDefault();
+    });
+});
+
+// Closes the Responsive Menu on Menu Item Click
+$('.navbar-collapse ul li a').click(function() {
+    $('.navbar-toggle:visible').click();
+});
+
+var allImages = {{allImages}}
+
+
+</script>
+</body>
+</html>

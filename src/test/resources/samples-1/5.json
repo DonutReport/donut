@@ -1,0 +1,176 @@
+[
+  {
+    "id": "mouse-actions",
+    "tags": [
+      {
+        "name": "@local",
+        "line": 1
+      }
+    ],
+    "description": "In order to test pages that require the mouse\nAs a tester\nI want to move the mouse around screen",
+    "name": "Mouse actions",
+    "keyword": "Feature",
+    "line": 2,
+    "elements": [
+      {
+        "description": "",
+        "name": "On page with elements responding to mouse events",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 2396635000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/mouse.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/mouse.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "mouse-actions;hover-over-an-element",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 11
+          }
+        ],
+        "description": "",
+        "name": "Hover over an element",
+        "keyword": "Scenario",
+        "line": 12,
+        "steps": [
+          {
+            "result": {
+              "duration": 47759000,
+              "status": "passed"
+            },
+            "name": "I choose to hover over element \"withMouseEnter\"",
+            "keyword": "When ",
+            "line": 13,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withMouseEnter",
+                  "offset": 32
+                }
+              ],
+              "location": "MouseStepDef.i_choose_to_hover_over_element(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 74099000,
+              "status": "passed"
+            },
+            "name": "I shall see the text \"Element Hovered\"",
+            "keyword": "Then ",
+            "line": 14,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Element Hovered",
+                  "offset": 22
+                }
+              ],
+              "location": "MouseStepDef.i_shall_see_the_text(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with elements responding to mouse events",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1613396000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/mouse.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/mouse.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "mouse-actions;hover-over-an-element-with-hover-pseudo-class",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 16
+          }
+        ],
+        "description": "",
+        "name": "Hover over an element with hover pseudo-class",
+        "keyword": "Scenario",
+        "line": 17,
+        "steps": [
+          {
+            "result": {
+              "duration": 55876000,
+              "status": "passed"
+            },
+            "name": "I choose to hover over element \"withHoverPseudoClass\"",
+            "keyword": "When ",
+            "line": 18,
+            "match": {
+              "arguments": [
+                {
+                  "val": "withHoverPseudoClass",
+                  "offset": 32
+                }
+              ],
+              "location": "MouseStepDef.i_choose_to_hover_over_element(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 65180000,
+              "status": "passed"
+            },
+            "name": "I shall see the text \"Pseudo Hovered\"",
+            "keyword": "Then ",
+            "line": 19,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Pseudo Hovered",
+                  "offset": 22
+                }
+              ],
+              "location": "MouseStepDef.i_shall_see_the_text(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "uri": "features/samples/local/mouse.feature"
+  }
+]

@@ -1,0 +1,65 @@
+[
+    {
+        "id": "google-journey-performance",
+        "tags": [
+            {
+                "name": "@google",
+                "line": 2
+            },
+            {
+                "name": "@performance",
+                "line": 2
+            }
+        ],
+        "description": "",
+        "name": "Google Journey Performance",
+        "keyword": "Feature",
+        "line": 3,
+        "elements": [
+            {
+                "after": [
+                    {
+                        "result": {
+                            "duration": 2747000,
+                            "status": "passed"
+                        },
+                        "match": {
+                            "location": "PerformanceStepDef.afterScenario()"
+                        }
+                    }
+                ],
+                "id": "google-journey-performance;google-journey-performance",
+                "tags": [
+                    {
+                        "name": "@complete",
+                        "line": 5
+                    }
+                ],
+                "description": "",
+                "name": "Google Journey Performance",
+                "keyword": "Scenario",
+                "line": 6,
+                "steps": [
+                    {
+                        "name": "I run the google journey test for 7000 milliseconds",
+                        "keyword": "Given ",
+                        "line": 7
+                    },
+                    {
+                        "name": "the average journey should not exceed the 3000 milliseconds threshold",
+                        "keyword": "Then ",
+                        "line": 8
+                    }
+                ],
+                "type": "scenario"
+            }
+        ],
+        "uri": "features/samples/google/google_performance.feature",
+        "comments": [
+            {
+                "value": "# encoding: ISO-8859-1",
+                "line": 1
+            }
+        ]
+    }
+]

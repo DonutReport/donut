@@ -1,0 +1,749 @@
+[
+  {
+    "id": "select",
+    "tags": [
+      {
+        "name": "@local",
+        "line": 1
+      }
+    ],
+    "description": "In order to test applications\nAs a tester\nI want to choose options from a select element",
+    "name": "Select",
+    "keyword": "Feature",
+    "line": 2,
+    "elements": [
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 2405483000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-value",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 10
+          }
+        ],
+        "description": "",
+        "name": "Choose item by value",
+        "keyword": "Scenario",
+        "line": 11,
+        "steps": [
+          {
+            "result": {
+              "duration": 89849000,
+              "status": "passed"
+            },
+            "name": "I choose value 3",
+            "keyword": "When ",
+            "line": 12,
+            "match": {
+              "arguments": [
+                {
+                  "val": "3",
+                  "offset": 15
+                }
+              ],
+              "location": "SelectStepDef.i_choose_value(int)"
+            }
+          },
+          {
+            "result": {
+              "duration": 47426000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value 3\"",
+            "keyword": "Then ",
+            "line": 13,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value 3",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 38582000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text Three\"",
+            "keyword": "Then ",
+            "line": 14,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text Three",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1659325000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-text",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 16
+          }
+        ],
+        "description": "",
+        "name": "Choose item by text",
+        "keyword": "Scenario",
+        "line": 17,
+        "steps": [
+          {
+            "result": {
+              "duration": 81720000,
+              "status": "passed"
+            },
+            "name": "I choose text \"Two\"",
+            "keyword": "When ",
+            "line": 18,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Two",
+                  "offset": 15
+                }
+              ],
+              "location": "SelectStepDef.i_choose_text(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 38870000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value 2\"",
+            "keyword": "Then ",
+            "line": 19,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value 2",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 35900000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text Two\"",
+            "keyword": "Then ",
+            "line": 20,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text Two",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1621073000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-index",
+        "tags": [
+          {
+            "name": "@complete",
+            "line": 22
+          }
+        ],
+        "description": "",
+        "name": "Choose item by index",
+        "keyword": "Scenario",
+        "line": 23,
+        "steps": [
+          {
+            "result": {
+              "duration": 95467000,
+              "status": "passed"
+            },
+            "name": "I choose index 1",
+            "keyword": "When ",
+            "line": 24,
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 15
+                }
+              ],
+              "location": "SelectStepDef.i_choose_index(int)"
+            }
+          },
+          {
+            "result": {
+              "duration": 40886000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value 4\"",
+            "keyword": "Then ",
+            "line": 25,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value 4",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          },
+          {
+            "result": {
+              "duration": 36048000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text Four\"",
+            "keyword": "Then ",
+            "line": 26,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text Four",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1604001000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-text-contains---\u003crule\u003e;;2",
+        "tags": [
+          {
+            "name": "@local",
+            "line": 1
+          },
+          {
+            "name": "@complete",
+            "line": 28
+          }
+        ],
+        "description": "",
+        "name": "Choose item by text contains - only partial match",
+        "keyword": "Scenario Outline",
+        "line": 36,
+        "steps": [
+          {
+            "result": {
+              "duration": 79213000,
+              "status": "passed"
+            },
+            "name": "I choose text contains \"Tw\"",
+            "keyword": "When ",
+            "line": 30,
+            "match": {
+              "arguments": [
+                {
+                  "val": "Tw",
+                  "offset": 24
+                }
+              ],
+              "location": "SelectStepDef.i_choose_text_contains(String)"
+            },
+            "matchedColumns": [
+              0
+            ]
+          },
+          {
+            "result": {
+              "duration": 44136000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value 2\"",
+            "keyword": "Then ",
+            "line": 31,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value 2",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              1
+            ]
+          },
+          {
+            "result": {
+              "duration": 35240000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text Two\"",
+            "keyword": "Then ",
+            "line": 32,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text Two",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              2
+            ]
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1597095000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-text-contains---\u003crule\u003e;;3",
+        "tags": [
+          {
+            "name": "@local",
+            "line": 1
+          },
+          {
+            "name": "@complete",
+            "line": 28
+          }
+        ],
+        "description": "",
+        "name": "Choose item by text contains - multiple matches picks first",
+        "keyword": "Scenario Outline",
+        "line": 37,
+        "steps": [
+          {
+            "result": {
+              "duration": 77801000,
+              "status": "passed"
+            },
+            "name": "I choose text contains \"T\"",
+            "keyword": "When ",
+            "line": 30,
+            "match": {
+              "arguments": [
+                {
+                  "val": "T",
+                  "offset": 24
+                }
+              ],
+              "location": "SelectStepDef.i_choose_text_contains(String)"
+            },
+            "matchedColumns": [
+              0
+            ]
+          },
+          {
+            "result": {
+              "duration": 45148000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value 3\"",
+            "keyword": "Then ",
+            "line": 31,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value 3",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              1
+            ]
+          },
+          {
+            "result": {
+              "duration": 35678000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text Three\"",
+            "keyword": "Then ",
+            "line": 32,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text Three",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              2
+            ]
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1596489000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-text-contains---\u003crule\u003e;;4",
+        "tags": [
+          {
+            "name": "@local",
+            "line": 1
+          },
+          {
+            "name": "@complete",
+            "line": 28
+          }
+        ],
+        "description": "",
+        "name": "Choose item by text contains - match item with spaces",
+        "keyword": "Scenario Outline",
+        "line": 38,
+        "steps": [
+          {
+            "result": {
+              "duration": 80512000,
+              "status": "passed"
+            },
+            "name": "I choose text contains \"has spaces\"",
+            "keyword": "When ",
+            "line": 30,
+            "match": {
+              "arguments": [
+                {
+                  "val": "has spaces",
+                  "offset": 24
+                }
+              ],
+              "location": "SelectStepDef.i_choose_text_contains(String)"
+            },
+            "matchedColumns": [
+              0
+            ]
+          },
+          {
+            "result": {
+              "duration": 37877000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value spaces\"",
+            "keyword": "Then ",
+            "line": 31,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value spaces",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              1
+            ]
+          },
+          {
+            "result": {
+              "duration": 37213000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text This has spaces\"",
+            "keyword": "Then ",
+            "line": 32,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text This has spaces",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              2
+            ]
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "name": "On page with select element",
+        "keyword": "Background",
+        "line": 7,
+        "steps": [
+          {
+            "result": {
+              "duration": 1618196000,
+              "status": "passed"
+            },
+            "name": "I have navigated to the local page \"/select.html\"",
+            "keyword": "Given ",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "val": "/select.html",
+                  "offset": 36
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            }
+          }
+        ],
+        "type": "background"
+      },
+      {
+        "id": "select;choose-item-by-text-contains---\u003crule\u003e;;5",
+        "tags": [
+          {
+            "name": "@local",
+            "line": 1
+          },
+          {
+            "name": "@complete",
+            "line": 28
+          }
+        ],
+        "description": "",
+        "name": "Choose item by text contains - match text spanning multiple lines",
+        "keyword": "Scenario Outline",
+        "line": 39,
+        "steps": [
+          {
+            "result": {
+              "duration": 77233000,
+              "status": "passed"
+            },
+            "name": "I choose text contains \"over multiple\"",
+            "keyword": "When ",
+            "line": 30,
+            "match": {
+              "arguments": [
+                {
+                  "val": "over multiple",
+                  "offset": 24
+                }
+              ],
+              "location": "SelectStepDef.i_choose_text_contains(String)"
+            },
+            "matchedColumns": [
+              0
+            ]
+          },
+          {
+            "result": {
+              "duration": 44073000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected value spacesMultiline\"",
+            "keyword": "Then ",
+            "line": 31,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected value spacesMultiline",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              1
+            ]
+          },
+          {
+            "result": {
+              "duration": 37942000,
+              "status": "passed"
+            },
+            "name": "I should see \"You selected text Spread over multiple lines\"",
+            "keyword": "Then ",
+            "line": 32,
+            "match": {
+              "arguments": [
+                {
+                  "val": "You selected text Spread over multiple lines",
+                  "offset": 14
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "matchedColumns": [
+              2
+            ]
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "uri": "features/samples/local/select.feature"
+  }
+]

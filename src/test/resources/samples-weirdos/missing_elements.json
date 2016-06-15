@@ -1,0 +1,27 @@
+[
+    {
+        "id": "google-journey-performance",
+        "tags": [
+            {
+                "name": "@google",
+                "line": 2
+            },
+            {
+                "name": "@performance",
+                "line": 2
+            }
+        ],
+        "description": "",
+        "name": "Google Journey Performance",
+        "keyword": "Feature",
+        "line": 3,
+        "elements": [ ],
+        "uri": "features/samples/google/google_performance.feature",
+        "comments": [
+            {
+                "value": "# encoding: ISO-8859-1",
+                "line": 1
+            }
+        ]
+    }
+]
