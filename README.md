@@ -1,7 +1,7 @@
 # donut
 [![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
 
-![](http://magentys.github.io/donut/img/Donut-03.png)
+![](http://magentys.github.io/donut/img/Donut-05.png)
 # How to use
 You can either use Donut directly or check out the available plugins: 
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
