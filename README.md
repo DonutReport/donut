@@ -1,25 +1,25 @@
-# donut
 [![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
 
 ![](http://magentys.github.io/donut/img/Donut-05.png)
-# How to use
+
+## Quick start
 You can either use Donut directly or check out the available plugins: 
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Jenkins plugin] (https://github.com/MagenTys/donut-jenkins-plugin)
 
-## Download
+### Download
 ```
 wget TODO
 ```
 or download the latest release from: TODO
 
-## Run from command line
+### Run from command line
 
 ```
 java -jar donut-1.0.0.jar -s /source/dir 
 ```
 
-## Options
+### Options
 
 `-s` or `--sourcedir` is a mandatory parameter, and it should be the directory that hold the generated JSON files to be visualised. 
 
@@ -62,6 +62,13 @@ Default values:
 ## Use as a dependency
 
 * Maven
+```
+<dependency>
+  <groupId>io.magentys</groupId>
+  <artifactId>donut</artifactId>
+  <version>0.0.1</version>
+</dependency>
+```
 
 * SBT 
 
@@ -96,7 +103,7 @@ duration: String
 buildFailed: Boolean
 ```
 
-# Build from source
+## Build from source
 
 ### Prerequisites
 
