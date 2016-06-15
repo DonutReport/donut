@@ -1,25 +1,27 @@
-[![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
-
 ![](http://magentys.github.io/donut/img/Donut-05.png)
 
-## Quick start
+[![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
+[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
+
+## quickstart
 You can either use Donut directly or check out the available plugins: 
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Jenkins plugin] (https://github.com/MagenTys/donut-jenkins-plugin)
 
-### Download
+### download
 ```
 wget TODO
 ```
 or download the latest release from: TODO
 
-### Run from command line
+### run from command line
 
 ```
 java -jar donut-1.0.0.jar -s /source/dir 
 ```
 
-### Options
+### options
 
 `-s` or `--sourcedir` is a mandatory parameter, and it should be the directory that hold the generated JSON files to be visualised. 
 
@@ -53,13 +55,13 @@ Usage: MagenTys Donut reports [options]
         Use --projectVersion 1.0
 ```
 
-Default values:
+default values:
 * **outputDir** : by default a `donut` folder will be generated
 * **prefix** : the generated file is `donut-report.html`, however you can specify prefix i.e. `myproject-`
 * **datetime** : refers to the start time of your execution. If not specified by the user reports will use `now`
 * **template** : donut supports 2 themes, `default` and `light`. `default` is the default value
 
-## Use as a dependency
+## use as a dependency
 
 * Maven
 ```
@@ -103,15 +105,15 @@ duration: String
 buildFailed: Boolean
 ```
 
-## Build from source
+## build from source
 
-### Prerequisites
+### prerequisites
 
 * install java 8+
 * install scala 2.11+
 * install SBT ([www.scala-sbt.org](www.scala-sbt.org))
 
-### Run from sbt
+### run from sbt
 
 `sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir" `
 
