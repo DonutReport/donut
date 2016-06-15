@@ -45,11 +45,6 @@ class JSONProcessorTest extends FlatSpec with Matchers {
     }
   }
 
-  it should "return empty list if no files available" in {
-    JSONProcessor.loadFrom(new File("src/test/resources/samples-empty")) shouldBe List.empty
-    pending
-  }
-
   it should "handle all weirdos" in {
     val weirdos = JSONProcessor.loadFrom(new File("src/test/resources/samples-weirdos"))
     pending
