@@ -1,3 +1,5 @@
+Donut is an open-source framework by the [MagenTys](http://magentys.io) team which is designed to produce clear and concise test execution reports over your unit, integration and acceptance tests.
+
 ![](http://magentys.github.io/donut/img/Donut-05.png)
 
 [![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
