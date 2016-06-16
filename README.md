@@ -4,7 +4,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
 
-Live Demo => here (TODO)
+Live Demo => here (http://magentys.github.io/donut/demo.html)
 
 ## quickstart
 You can either use Donut directly or check out the available plugins: 
