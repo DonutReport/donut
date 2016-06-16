@@ -125,6 +125,10 @@ buildFailed: Boolean
 
 `sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir" `
 
+### credits
+* JQuery
+* Bootstrap
+* Highcharts 
 
 
 ### License
