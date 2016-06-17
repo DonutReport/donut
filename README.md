@@ -128,6 +128,12 @@ buildFailed: Boolean
 
 `sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir" `
 
+### credits
+
+* JQuery
+* Bootstrap
+* Highcharts
+
 ## Road map
 
 We currently have plans to support:
