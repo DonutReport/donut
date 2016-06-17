@@ -4,6 +4,9 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
 
+Donut is an open-source framework by the [MagenTys](http://magentys.io) team which is designed to produce clear and concise test execution reports over your unit, integration and acceptance tests.
+Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc).
+
 Live Demo => [here] (http://magentys.github.io/donut/demo.html)
 
 ## quickstart
@@ -126,10 +129,19 @@ buildFailed: Boolean
 `sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir" `
 
 ### credits
+
 * JQuery
 * Bootstrap
-* Highcharts 
+* Highcharts
 
+## Road map
+
+We currently have plans to support:
+* junit
+* nunit
+* specflow
+* jasmine
+* rspec
 
 ### License
 
