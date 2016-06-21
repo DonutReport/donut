@@ -537,19 +537,17 @@
    function toggleScreenshot(id,type, imageIds) {
         event.preventDefault();
         var screenshotId = '#'+ type.trim() +'-'+id.trim();
-        console.log(screenshotId);
         getAllImagesForScenario(screenshotId, imageIds);
-        //$(screenshotId).append(getImage(imageIds));
         $(screenshotId).slideToggle('slow');
         return false;
     };
 
     function getAllImagesForScenario(divId, imageIds) {
        var images = imageIds.split(",")
-        console.log("Image IDs are " + imageIds)
         for(var i = 0; i < images.length; i++){
-            console.log("hell "+images[i]);
-            $(divId).append(getImage(images[i]));
+            if ($(divId).is(':empty')){
+                $(divId).append(getImage(images[i]));
+            }
         }
     }
 
@@ -582,8 +580,6 @@
        var seriesData = [];
        var passes = [];
        var fails = [];
-
-        console.log(data.length);
 
        for(i = 0; i < data.length; i++){
             passes.push(data[i].scenariosMetrics.passed);
