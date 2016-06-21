@@ -122,7 +122,7 @@ buildFailed: Boolean
 
 * install java 8+
 * install scala 2.11+
-* install SBT ([www.scala-sbt.org](www.scala-sbt.org))
+* install SBT ([www.scala-sbt.org](http://www.scala-sbt.org))
 
 ### run from sbt
 
