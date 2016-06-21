@@ -134,7 +134,7 @@ private[processors] object HTMLProcessor {
     if (step.error_message != "")
       s"""
         |<div style="white-space: pre-wrap;margin-left:15px;">
-        | ${step.error_message}
+        | <code> ${step.error_message} </code>
         |</div>
       """.stripMargin
     else
