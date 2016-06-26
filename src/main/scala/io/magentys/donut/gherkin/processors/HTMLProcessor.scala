@@ -73,7 +73,7 @@ private[processors] object HTMLProcessor {
        |        $backgroundHtml
        |        <p class="scenario">
        |          <b>$icon ${element.keyword} </b>${element.name}
-       |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick=toggleScenario('ul-$parentType-$index')>
+       |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick="toggleScenario('ul-$parentType-$index', event)">
        |            <span class="glyphicon glyphicon-menu-down"></span>
        |          </a>
        |          <span class="durationBadge pull-right">${element.duration.durationStr} </span>
@@ -124,7 +124,7 @@ private[processors] object HTMLProcessor {
 
   def scenariosScreenshots(index: String, style: String, screenshotsIds: String, screenshotsSize: Int, parentType: String) = {
     s"""
-       |<a href="#" id="openScreenshotsFeatures-$index" onclick="toggleScreenshot('$index', 'screenshot-$parentType', '$screenshotsIds')" style="$style">screenshots (${screenshotsSize})</a>
+       |<a href="#" id="openScreenshotsFeatures-$index" onclick="toggleScreenshot('$index', 'screenshot-$parentType', '$screenshotsIds', event)" style="$style">screenshots (${screenshotsSize})</a>
        |   <div id="screenshot-$parentType-$index" class="row" style="display: none;"></div>
     """.stripMargin
   }
