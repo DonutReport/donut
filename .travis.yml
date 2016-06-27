@@ -3,7 +3,7 @@ scala:
    - 2.11.7
 
 after_success:
-   - bash int-tests.sh
+   - bash deploy-baked-donut.sh
 
 env:
     global:

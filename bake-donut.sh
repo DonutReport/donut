@@ -1,0 +1,1 @@
+sbt "run-main io.magentys.donut.Boot -s src/test/resources/samples-2"

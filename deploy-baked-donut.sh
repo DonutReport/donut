@@ -2,17 +2,8 @@ echo "Start integration tests for build number: $TRAVIS_BUILD_NUMBER"
 
 TARGET_BRANCH="gh-pages"
 
-function doRun {
-  # cd $TRAVIS_BUILD_DIR
-  sbt "run-main io.magentys.donut.Boot -s src/test/resources/samples-2"
-}
-
-# Clean out existing contents
-# rm -rf out/*test.html || exit 0
-
-# Run to create the donut file
-doRun
-
+# Run to create the baked donut file
+./bake-donut.sh
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -26,7 +17,6 @@ cd out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
-
 # Now let's go have some fun with the cloned repo
 cd out
 git config user.name "Travis CI"
@@ -38,7 +28,7 @@ ls -al
 # copy donut file to gh-pages branch
 rm -rf donut-report.html
 cp ../donut/donut-report.html .
-mv donut-report.html int-test.html
+mv donut-report.html baked-donut.html
 
 echo "Checking copied file.."
 ls -al
