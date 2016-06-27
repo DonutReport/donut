@@ -9,3 +9,6 @@ env:
     global:
         - ENCRYPTION_LABEL: "e95fb731c984"
         - COMMIT_AUTHOR_EMAIL: "chdask@gmail.com"
+
+notifications:
+    slack: magentys:hTBVaA9gGjBPhW5OAqnMwePI
