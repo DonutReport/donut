@@ -2,8 +2,12 @@ echo "Start integration tests for build number: $TRAVIS_BUILD_NUMBER"
 
 TARGET_BRANCH="gh-pages"
 
-# Run to create the baked donut file
-./bake-donut.sh
+# Run to create the baked donut file, probably to another file
+function doBakeDonut {
+  sbt "run-main io.magentys.donut.Boot -s src/test/resources/samples-2"
+}
+
+doBakeDonut
 
 # Save some useful information
 REPO=`git config remote.origin.url`
