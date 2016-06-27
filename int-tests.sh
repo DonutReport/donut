@@ -38,6 +38,7 @@ ls -al
 # copy donut file to gh-pages branch
 rm -rf donut-report.html
 cp ../donut/donut-report.html .
+mv donut-report.html int-test.html
 
 echo "Checking copied file.."
 ls -al
