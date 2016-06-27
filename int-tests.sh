@@ -36,7 +36,8 @@ echo "Before copy file in gh-pages"
 ls -al
 
 # copy donut file to gh-pages branch
-cp -f ../donut/donut-report.html .
+rm -rf donut-report.html
+cp ../donut/donut-report.html .
 
 echo "Checking copied file.."
 ls -al
