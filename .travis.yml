@@ -1,5 +1,11 @@
 language: scala
 scala:
    - 2.11.7
+
 after_success:
    - bash int-tests.sh
+
+env:
+    global:
+        - ENCRYPTION_LABEL: "e95fb731c984"
+        - COMMIT_AUTHOR_EMAIL: "chdask@gmail.com"
