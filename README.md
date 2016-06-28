@@ -16,9 +16,9 @@ You can either use Donut directly or check out the available plugins:
 
 ### download
 ```
-wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.1/donut-0.0.1-one-jar.jar
+wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.3/donut-0.0.3-one-jar.jar
 ```
-or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/0.0.1/donut-0.0.1-one-jar.jar)
+or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/0.0.3/donut-0.0.3-one-jar.jar)
 
 ### run from command line
 
@@ -73,18 +73,18 @@ default values:
 <dependency>
   <groupId>io.magentys</groupId>
   <artifactId>donut</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.3</version>
 </dependency>
 ```
 
 * SBT 
 ```
-libraryDependencies += "io.magentys" % "donut" % "0.0.1"
+libraryDependencies += "io.magentys" % "donut" % "0.0.3"
 ```
 
 * Gradle
 ```
-compile 'io.magentys:donut:0.0.1'
+compile 'io.magentys:donut:0.0.3'
 ```
 
 Example usage of the `Generator`
