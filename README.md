@@ -9,7 +9,7 @@ Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm e
 
 Live Demo => [here] (http://magentys.github.io/donut/demo.html)
 
-## quickstart
+## Quickstart
 You can either use Donut directly or check out the available plugins: 
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Jenkins plugin] (https://github.com/MagenTys/donut-jenkins-plugin)
@@ -66,7 +66,7 @@ default values:
 * **datetime** : refers to the start time of your execution. If not specified by the user reports will use `now`
 * **template** : donut supports 2 themes, `default` and `light`. `default` is the default value
 
-## use as a dependency
+## Use as a dependency
 
 * Maven
 ```
@@ -116,7 +116,7 @@ duration: String
 buildFailed: Boolean
 ```
 
-## build from source
+## Build from source
 
 ### prerequisites
 
@@ -142,8 +142,17 @@ We currently have plans to support:
 * specflow
 * jasmine
 * rspec
+* jbehave
 
-### License
+## Contributing
+
+1. Fork it
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new Pull Request
+
+## License
 
 This project is under an MIT license
 
