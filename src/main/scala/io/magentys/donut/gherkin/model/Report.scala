@@ -28,7 +28,7 @@ object Report {
   */
 case class ProjectMetadata(projectName: String,
                            projectVersion: String,
-                           customAttributes: Map[String, String] = Map())
+                           customAttributes: Map[String, String])
 
 /**
   * Features Page

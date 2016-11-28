@@ -96,7 +96,7 @@ object Boot extends App with Log {
         appargs.countMissingAsFailure,
         appargs.projectName,
         appargs.projectVersion,
-        appargs.customAttributes)
+        collection.mutable.Map[String, String]() ++= appargs.customAttributes)
     }
     case None =>
       // error message will have first been displayed

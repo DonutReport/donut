@@ -29,10 +29,10 @@ object Generator extends Log with PerformanceSupport {
             countMissingAsFailure: Boolean = false,
             projectName: String,
             projectVersion: String,
-            customAttributes: Map[String, String] = Map()): ReportConsole = {
+            customAttributes: scala.collection.mutable.Map[String, String]): ReportConsole = {
 
     createReport(sourcePath, outputPath, filePrefix, dateTime, template, countSkippedAsFailure, countPendingAsFailure,
-      countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes) match {
+      countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes.toMap) match {
       case Some(report) => ReportConsole(report)
       case None => throw new DonutException("An error occurred while generating donut report.")
     }

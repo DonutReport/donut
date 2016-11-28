@@ -129,7 +129,7 @@ buildFailed: Boolean
 
 ### run from sbt
 
-`sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir" `
+`sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir -n myProjectName" `
 
 ### credits
 
