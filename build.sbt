@@ -8,7 +8,7 @@ organization := "io.magentys"
 
 description := "Magentys Donut - Reporting Tool"
 
-version := "0.0.3"
+version := "0.0.4"
 
 scalaVersion := "2.11.7"
 
@@ -74,6 +74,11 @@ pomExtra := (
       <developer>
         <id>chdask</id>
         <name>Christina Daskalaki</name>
+        <url>http://www.magentys.io</url>
+      </developer>
+      <developer>
+        <id>davebassan</id>
+        <name>Dave Bassan</name>
         <url>http://www.magentys.io</url>
       </developer>
     </developers>
