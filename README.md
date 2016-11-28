@@ -28,7 +28,8 @@ java -jar donut-<Version>.jar -s /source/dir
 
 ### options
 
-`-s` or `--sourcedir` is a mandatory parameter, and it should be the directory that hold the generated JSON files to be visualised. 
+`-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.
+`-s` or `--sourcedir` is a mandatory parameter, and it should be the path to the directory that holds the generated JSON result files. 
 
 Other parameters can also be specified as bellow:
 
@@ -54,10 +55,12 @@ Usage: MagenTys Donut reports [options]
         Use --undefinedFails true/false
   --missingFails <value>
         Use --missingFails true/false
-  --projectName <value>
+  -n <value> | --projectName <value>
         Use --projectName myProject
-  --projectVersion <value>
+  -v <value> | --projectVersion <value>
         Use --projectVersion 1.0
+  -c <value> | --customAttributes <value>
+        Use --customAttributes k1=v1,k2=v2...
 ```
 
 default values:
@@ -73,18 +76,18 @@ default values:
 <dependency>
   <groupId>io.magentys</groupId>
   <artifactId>donut</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
 </dependency>
 ```
 
 * SBT 
 ```
-libraryDependencies += "io.magentys" % "donut" % "0.0.3"
+libraryDependencies += "io.magentys" % "donut" % "0.0.4"
 ```
 
 * Gradle
 ```
-compile 'io.magentys:donut:0.0.3'
+compile 'io.magentys:donut:0.0.4'
 ```
 
 Example usage of the `Generator`
@@ -92,7 +95,7 @@ Example usage of the `Generator`
 ```
 ReportConsole report = 
        Generator.apply(sourceDirectory, outputDirectory, filePrefix, timestamp, template, countSkippedAsFailure,         
-       countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion);
+       countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes);
 ```
 
 This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object: 
@@ -133,6 +136,7 @@ buildFailed: Boolean
 * JQuery
 * Bootstrap
 * Highcharts
+* handlebars-scala
 
 ## Road map
 

@@ -11,8 +11,8 @@ object TemplateEngine {
   def apply(report: Report, templatePath: String): Renderer = {
     val inputStream = getClass.getResourceAsStream(templatePath)
     val template = scala.io.Source.fromInputStream(inputStream).mkString
-    val t: Handlebars[Any] = Handlebars(template)
-    val rep = SpecialCharHandler(t(report))
+    val hbs: Handlebars[Any] = Handlebars(template)
+    val rep = SpecialCharHandler(hbs(report))
     Renderer(rep)
   }
 }
@@ -26,7 +26,7 @@ case class Renderer(boundTemplate: String) extends Log {
         outputDir.getAbsolutePath
       }
 
-    val prefix = if (filePrefix!="") filePrefix + "-" else ""
+    val prefix = if (filePrefix != "") filePrefix + "-" else ""
     val out = new PrintWriter(outputPath + File.separator + prefix + "donut-report.html")
     out.write(boundTemplate.toString)
     out.close()
@@ -53,7 +53,7 @@ object SpecialCharHandler {
   def escapeErrorMessages(htmlReport: String) = {
     htmlReport
       .split("<code>")
-      .map( htmlSnip => {
+      .map(htmlSnip => {
         if (!htmlSnip.contains("</code>")) htmlSnip
         else {
           val codeSnip = htmlSnip.split("</code>")

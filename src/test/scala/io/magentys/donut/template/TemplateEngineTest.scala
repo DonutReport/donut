@@ -3,7 +3,7 @@ package io.magentys.donut.template
 import io.magentys.donut.DonutTestData
 import io.magentys.donut.gherkin.model.{ProjectMetadata, Report}
 import org.joda.time.DateTime
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
 class TemplateEngineTest extends FlatSpec with Matchers {
 

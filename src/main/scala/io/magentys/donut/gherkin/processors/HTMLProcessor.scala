@@ -43,14 +43,6 @@ object HTMLFailuresProcessor {
   }
 }
 
-object HTMLProjectMetadata {
-  def apply(projectMetadata: ProjectMetadata) = {
-    val pname = if (projectMetadata.projectName != "") s"""Project: <span class="white">${projectMetadata.projectName}</span>""" else projectMetadata.projectName
-    val pversion = if (projectMetadata.projectVersion != "") s"""| Build: <span class="white">#${projectMetadata.projectVersion}</span>""" else projectMetadata.projectVersion
-    new ProjectMetadata(pname, pversion)
-  }
-}
-
 private[processors] object HTMLProcessor {
 
   def apply(elements: List[Scenario], parentIndex: String, parentType: String): String =

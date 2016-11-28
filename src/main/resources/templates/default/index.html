@@ -230,9 +230,17 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Started <span class="white">{{dashboardPage.reportDashboard.executionDateTime}}</span></h4>
-                    <h4>Duration <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
-                    <h4>{{projectMetadata.projectName}} {{projectMetadata.projectVersion}}</h4>
+                    <h4>Started: <span class="white">{{dashboardPage.reportDashboard.executionDateTime}}</span></h4>
+                    <h4>Duration: <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
+                    <h4>
+                        Project: <span class="white">{{projectMetadata.projectName}}</span>
+                        {{#if projectMetadata.projectVersion}}
+                            | Build: <span class="white">{{projectMetadata.projectVersion}}</span>
+                        {{/if}}
+                        {{#each projectMetadata.customAttributes}}
+                            | {{@key}}: <span class="white">{{this}}</span>
+                        {{/each}}
+                    </h4>
                 </div>
             </div>
         </div>
