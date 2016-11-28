@@ -13,9 +13,8 @@ case class Report(projectMetadata: ProjectMetadata,
 object Report {
   def apply(features: List[Feature], timestamp: DateTime = DateTime.now, projectMetadata: ProjectMetadata) = {
 
-    val prMetadata = HTMLProjectMetadata(projectMetadata)
     val executionData = ExecutionData(features, timestamp)
-    new Report(prMetadata,
+    new Report(projectMetadata,
       DashboardPage(features, executionData),
       FeaturesPage(features, executionData.allFeatureMetrics),
       TagPage(features),
@@ -27,8 +26,9 @@ object Report {
 /**
   * Project metadata
   */
-case class ProjectMetadata(projectName:String = "",
-                           projectVersion:String = "")
+case class ProjectMetadata(projectName: String,
+                           projectVersion: String,
+                           customAttributes: Map[String, String] = Map())
 
 /**
   * Features Page

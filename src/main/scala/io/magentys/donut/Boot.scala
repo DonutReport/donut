@@ -10,25 +10,32 @@ import scopt.OptionParser
 
 object Boot extends App with Log {
 
-  case class DonutArguments(sourceDir: String ="",
+  case class DonutArguments(sourceDir: String = "",
                             outputDir: String = "donut",
                             prefix: String = "",
                             datetime: String = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm").print(DateTime.now),
-                            template:  String = "default",
+                            template: String = "default",
                             countSkippedAsFailure: Boolean = false,
                             countPendingAsFailure: Boolean = false,
                             countUndefinedAsFailure: Boolean = false,
                             countMissingAsFailure: Boolean = false,
-                            projectName: String = "",
-                            projectVersion : String = "")
+                            // DynamicBinding behavior of com.gilt handlebars does not match JavaScript truth evaluation for empty string.
+                            projectName: String = null,
+                            projectVersion: String = null,
+                            customAttributes: Map[String, String] = Map())
 
   val optionParser = new OptionParser[DonutArguments]("MagenTys Donut reports") {
 
     head("\nDonut help")
+    head("----------")
 
-    opt[String]('s', "sourcedir") action { (arg, config) =>
+    opt[String]('s', "sourcedir").required() action { (arg, config) =>
       config.copy(sourceDir = arg)
-    } text "Use --sourcedir /my/path/cucumber-reports -> Required"
+    } text "Required -> Use --sourcedir /my/path/cucumber-reports"
+
+    opt[String]('n', "projectName").required() action { (arg, config) =>
+      config.copy(projectName = arg)
+    } text "Required -> Use --projectName myProject"
 
     opt[String]('o', "outputdir") action { (arg, config) =>
       config.copy(outputDir = arg)
@@ -46,6 +53,14 @@ object Boot extends App with Log {
       config.copy(template = arg)
     } text "Use --template default/light"
 
+    opt[String]('v', "projectVersion") action { (arg, config) =>
+      config.copy(projectVersion = arg)
+    } text "Use --projectVersion 1.0"
+
+    opt[Map[String, String]]('c', "customAttributes") action { (arg, config) =>
+      config.copy(customAttributes = arg)
+    } text ("Use --customAttributes k1=v1,k2=v2...")
+
     opt[Boolean]("skippedFails") action { (arg, config) =>
       config.copy(countSkippedAsFailure = arg)
     } text "Use --skippedFails true/false"
@@ -62,15 +77,6 @@ object Boot extends App with Log {
       config.copy(countMissingAsFailure = arg)
     } text "Use --missingFails true/false"
 
-    opt[String]("projectName") action { (arg, config) =>
-      config.copy(projectName = arg)
-    } text "Use --projectName myProject"
-
-    opt[String]("projectVersion") action { (arg, config) =>
-      config.copy(projectVersion = arg)
-    } text "Use --projectVersion 1.0"
-
-
     checkConfig { c =>
       if (c.sourceDir == "") failure("Missing source dir.") else success
       if (!new File(c.sourceDir).exists()) failure("Source dir does not exist") else success
@@ -80,26 +86,20 @@ object Boot extends App with Log {
   optionParser parse(args, DonutArguments()) match {
     case Some(appargs) => {
       Generator(appargs.sourceDir,
-                              appargs.outputDir,
-                              appargs.prefix,
-                              appargs.datetime,
-                              appargs.template,
-                              appargs.countSkippedAsFailure,
-                              appargs.countPendingAsFailure,
-                              appargs.countUndefinedAsFailure,
-                              appargs.countMissingAsFailure,
-                              appargs.projectName,
-                              appargs.projectVersion)}
+        appargs.outputDir,
+        appargs.prefix,
+        appargs.datetime,
+        appargs.template,
+        appargs.countSkippedAsFailure,
+        appargs.countPendingAsFailure,
+        appargs.countUndefinedAsFailure,
+        appargs.countMissingAsFailure,
+        appargs.projectName,
+        appargs.projectVersion,
+        appargs.customAttributes)
+    }
     case None =>
-      println("\nERROR: No valid arguments specified.")
+      // error message will have first been displayed
       System.exit(-1)
   }
-
 }
-
-
-
-
-
-
-

@@ -10,10 +10,10 @@ class GeneratorTest  extends FlatSpec with Matchers {
   val features = DonutTestData.features_sample_2;
 
   it should "return None if source directory does not exist" in {
-    Generator.createReport("") shouldBe None
+    Generator.createReport("", projectName = "", projectVersion = "") shouldBe None
   }
 
   it should "return None if json files not found" in {
-    Generator.createReport("src/test/resources/samples-empty") shouldBe None
+    Generator.createReport("src/test/resources/samples-empty", projectName = "", projectVersion = "") shouldBe None
   }
 }

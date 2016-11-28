@@ -3,12 +3,12 @@ package io.magentys.donut.template
 import io.magentys.donut.DonutTestData
 import io.magentys.donut.gherkin.model.{ProjectMetadata, Report}
 import org.joda.time.DateTime
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
 class TemplateEngineTest extends FlatSpec with Matchers {
 
   val features = DonutTestData.features_sample_2;
-  val report = Report(features, DateTime.now, ProjectMetadata())
+  val report = Report(features, DateTime.now, ProjectMetadata("", "", Map()))
 
   behavior of "Template Engine"
 

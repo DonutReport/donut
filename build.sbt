@@ -8,7 +8,7 @@ organization := "io.magentys"
 
 description := "Magentys Donut - Reporting Tool"
 
-version := "0.0.3"
+version := "0.0.4"
 
 scalaVersion := "2.11.7"
 
@@ -20,7 +20,7 @@ libraryDependencies ++= {
     "com.github.nscala-time" %% "nscala-time" % "1.8.0",
     "org.json4s" %% "json4s-native" % "3.3.0",
     "org.json4s" %% "json4s-jackson" % "3.2.11",
-    "com.gilt" %% "handlebars-scala" % "2.0.1",
+    "com.gilt" %% "handlebars-scala" % "2.1.1",
     "io.dropwizard.metrics" % "metrics-core" % "3.1.2",
     "com.github.scopt" %% "scopt" % "3.3.0",
     "org.scalatest" %% "scalatest" % "2.2.4" % "test"
@@ -74,6 +74,11 @@ pomExtra := (
       <developer>
         <id>chdask</id>
         <name>Christina Daskalaki</name>
+        <url>http://www.magentys.io</url>
+      </developer>
+      <developer>
+        <id>davebassan</id>
+        <name>Dave Bassan</name>
         <url>http://www.magentys.io</url>
       </developer>
     </developers>
