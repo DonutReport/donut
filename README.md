@@ -12,6 +12,7 @@ Live Demo => [here] (http://magentys.github.io/donut/demo.html)
 ## Quickstart
 You can either use Donut directly or check out the available plugins: 
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
+* [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
 * [Jenkins plugin] (https://github.com/MagenTys/donut-jenkins-plugin)
 
 ### download
@@ -142,8 +143,6 @@ buildFailed: Boolean
 
 We currently have plans to support:
 * junit
-* nunit
-* specflow
 * jasmine
 * rspec
 * jbehave
