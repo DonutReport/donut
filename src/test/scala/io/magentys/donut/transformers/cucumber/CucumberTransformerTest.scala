@@ -16,7 +16,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
 
   behavior of "CucumberAdaptor"
 
-  it should "transoform all files json values to list of Features" in {
+  it should "transform all files json values to list of Features" in {
       features.size shouldBe 9
       features(0).name shouldBe "Google Journey Performance"
       features(1).name shouldBe "Google search"
