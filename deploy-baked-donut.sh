@@ -4,7 +4,7 @@ TARGET_BRANCH="gh-pages"
 
 # Run to create the baked donut file, probably to another file
 function doBakeDonut {
-  sbt "run-main io.magentys.donut.Boot -s src/test/resources/samples-2"
+  sbt "run-main io.magentys.donut.Boot -s src/test/resources/samples-2 -n MagenTys"
 }
 
 doBakeDonut
