@@ -20,43 +20,45 @@ object CucumberTransformer extends Log {
   }
 
   private[cucumber] def mapToDonutFeatures(features: List[Feature], statusConfiguration: StatusConfiguration): List[model.Feature] = {
-    val donutFeatures = new ListBuffer[model.Feature]()
-
+    var donutFeatures = new ListBuffer[model.Feature]
     var i = 0
     for (feature <- features) {
 
       if (isFeatureAlreadyAdded(feature.name, donutFeatures)) {
-
         val donutFeature = donutFeatures.find(df => df.name.equals(feature.name)).get
-        addScenariosToFeature(feature, donutFeature, statusConfiguration)
+        val index = donutFeatures.indexOf(donutFeature)
+        donutFeatures(index) = addScenariosToFeature(feature, donutFeature, statusConfiguration)
 
       } else {
-
-        i += 1
         val index = 10000 + i
         donutFeatures += mapToDonutFeature(feature, index.toString.trim, statusConfiguration)
-
+        i += 1
       }
     }
     donutFeatures.toList
   }
 
-  def isFeatureAlreadyAdded(name: String, donutFeatures: ListBuffer[model.Feature]): Boolean = {
+  private def isFeatureAlreadyAdded(name: String, donutFeatures: ListBuffer[model.Feature]): Boolean = {
     donutFeatures.exists(df => df.name.equals(name))
   }
 
-  def addScenariosToFeature(feature: Feature, donutFeature: model.Feature, statusConfiguration: StatusConfiguration) = {
+  private[cucumber] def addScenariosToFeature(feature: Feature, donutFeature: model.Feature, statusConfiguration: StatusConfiguration): model.Feature = {
 
-    val currentScenarios = donutFeature.scenarios
-    val currentTags = donutFeature.tags
-
-    val scenarios: List[Scenario] = mapToDonutScenarios(feature.elements, feature.name, donutFeature.index, statusConfiguration)
-    val scenariosExcludeBackground = scenarios.filterNot(e => e.keyword == "Background")
+    val scenarios = mapToDonutScenarios(feature.elements, feature.name, donutFeature.index, statusConfiguration)
     val tags = donutTags(feature.tags)
+    val combinedScenarios = donutFeature.scenarios ++ scenarios
+    val combinedTags = donutFeature.tags ++ tags
+    val scenariosExcludeBackground = combinedScenarios.filterNot(e => e.keyword == "Background")
 
-    //    TODO: Need to modify the donut gherkin model to use ListBuffer for scenarios, tags before enabling these
-    //    currentScenarios ++= scenarios
-    //    currentTags ++= tags
+    donutFeature.copy(
+      scenarios = combinedScenarios,
+      tags = combinedTags,
+      status = donutFeatureStatus(combinedScenarios, statusConfiguration),
+      duration = donutFeatureDuration(combinedScenarios),
+      scenarioMetrics = ScenarioMetrics(scenariosExcludeBackground),
+      htmlFeatureTags = combinedTags,
+      htmlElements = HTMLFeatureProcessor(scenariosExcludeBackground, donutFeature.index)
+    )
   }
 
   private[cucumber] def mapToDonutFeature(feature: Feature, featureIndex: String, statusConfiguration: StatusConfiguration) = {
@@ -82,7 +84,7 @@ object CucumberTransformer extends Log {
   }
 
   private[cucumber] def mapToDonutScenarios(elements: List[Element], featureName: String, featureIndex: String, statusConfiguration: StatusConfiguration): List[Scenario] = {
-    if (!elements.isEmpty) {
+    if (elements.nonEmpty) {
       if (elements.head.keyword == "Background") {
         elements.grouped(2).toList.flatMap(backgroundAndScenario => {
           val background = mapToDonutScenario(backgroundAndScenario.head, None, featureName, featureIndex, statusConfiguration)
@@ -144,7 +146,7 @@ object CucumberTransformer extends Log {
   private[cucumber] def donutScenarioScreenshots(e: Element) = {
     val elementScreenshots: List[Embedding] = e.steps.flatMap(s => s.embeddings)
     val screenshotsSize = elementScreenshots.size
-    val screenshotStyle = if (elementScreenshots.size > 0) "" else "display:none;"
+    val screenshotStyle = if (elementScreenshots.nonEmpty) "" else "display:none;"
     val screenshots = elementScreenshots.map(e => model.Embedding(e.mime_type, e.data, e.id))
     val screenshotIDs: String = ImageProcessor.getScreenshotIds(screenshots)
     Screenshots(screenshotIDs, screenshotsSize, screenshotStyle)
