@@ -1,7 +1,5 @@
 package io.magentys.donut.gherkin.model
 
-import scala.collection.mutable.ListBuffer
-
 case class BeforeHook(hookName: String, status: Status = Status(false, ""), duration: Duration = Duration(0L, ""), error_message: String = "")
 
 case class AfterHook(hookName: String, status: Status = Status(false, ""), duration: Duration = Duration(0L, ""), error_message: String = "")
