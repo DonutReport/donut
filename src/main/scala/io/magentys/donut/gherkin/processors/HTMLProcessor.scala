@@ -32,7 +32,7 @@ object HTMLTagsProcessor {
 
 object HTMLFailuresProcessor {
   def apply(failedElements: List[Scenario]): String = {
-    if(failedElements.length > 0) {
+    if (failedElements.nonEmpty) {
       val indexes = failedElements.zipWithIndex
       val failedScenariosHtml = indexes.map { case (e, i) => HTMLProcessor.scenarios(e, i.toString.trim, "failure") }.mkString
       val failedScenariosIds = HTMLProcessor.scenariosAllIds("failure", indexes.map { case (e, i) => "ul-" + "failure-" + i.toString.trim }.mkString(","))
@@ -45,8 +45,25 @@ object HTMLFailuresProcessor {
 
 private[processors] object HTMLProcessor {
 
+
   def apply(elements: List[Scenario], parentIndex: String, parentType: String): String =
-    elements.zipWithIndex.map { case (e, i) => scenarios(e, parentIndex + i.toString.trim, parentType) }.mkString
+
+    scenarioType(elements.head).mkString +
+      elements.zipWithIndex.map { case (e, i) => scenarios(e, parentIndex + i.toString.trim, parentType) }.mkString
+
+  private def scenarioType(scenario: Scenario): String = {
+    s"""
+       |<div class="row">
+       |   <div class="panel panel-default">
+       |      <div>
+       |        <p class="scenario header"">
+       |          <b>${scenario.keyword}s</b>
+       |        </p>
+       |      </div>
+       |   </div>
+       | </div>
+     """.stripMargin
+  }
 
   def scenarios(element: Scenario, index: String, parentType: String): String = {
     val featureName = getFeatureLink(parentType, element.featureIndex, element.featureName)
@@ -64,7 +81,7 @@ private[processors] object HTMLProcessor {
        |        <p>${elementTags(element.tags)}</p>
        |        $backgroundHtml
        |        <p class="scenario">
-       |          <b>$icon ${element.keyword} </b>${element.name}
+       |          <b>$icon </b>${element.name}
        |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick="toggleScenario('ul-$parentType-$index', event)">
        |            <span class="glyphicon glyphicon-menu-down"></span>
        |          </a>
@@ -125,9 +142,9 @@ private[processors] object HTMLProcessor {
 
     if (step.error_message != "")
       s"""
-        |<div style="white-space: pre-wrap;margin-left:15px;">
-        | <code> ${step.error_message} </code>
-        |</div>
+         |<div style="white-space: pre-wrap;margin-left:15px;">
+         | <code> ${step.error_message} </code>
+         |</div>
       """.stripMargin
     else
       """"""
@@ -149,10 +166,10 @@ private[processors] object HTMLProcessor {
   }
 
   def stepTable(rows: List[Row]): String = {
-    if (rows.size > 0)
+    if (rows.nonEmpty)
       "<table class=\"step-table\">" +
         rows.map(row => {
-          val cell = if (row.cells.size > 0) row.cells.map(c => s"""<td class="step-table-cell">""" + c.mkString + """</td>""").mkString else ""
+          val cell = if (row.cells.nonEmpty) row.cells.map(c => s"""<td class="step-table-cell">""" + c.mkString + """</td>""").mkString else ""
           "<tr>" + cell + "</tr>"
         }).mkString +
         "</table>"
