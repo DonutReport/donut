@@ -7,8 +7,8 @@
         "name": "Add four numbers: 1,2,5,10",
         "description": "",
         "id": "add-numbers;add-four-numbers:-1,2,5,10",
-        "type": "scenario",
-        "keyword": "Scenario",
+        "type": "unit-test",
+        "keyword": "Unit Test",
         "steps": [
           {
             "result": {
@@ -20,51 +20,7 @@
             "match": {
               "location": "Stepdefs.iAddTheFollowingNumbers(Integer\u003e)"
             },
-            "rows": [
-              {
-                "cells": [
-                  "1"
-                ],
-                "line": 21
-              },
-              {
-                "cells": [
-                  "2"
-                ],
-                "line": 22
-              },
-              {
-                "cells": [
-                  "5"
-                ],
-                "line": 23
-              },
-              {
-                "cells": [
-                  "10"
-                ],
-                "line": 24
-              }
-            ],
             "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 5015136,
-              "status": "passed"
-            },
-            "line": 25,
-            "name": "total should be 18",
-            "match": {
-              "arguments": [
-                {
-                  "val": "18",
-                  "offset": 16
-                }
-              ],
-              "location": "Stepdefs.totalShouldBe(int)"
-            },
-            "keyword": "Then "
           }
         ],
         "tags": [

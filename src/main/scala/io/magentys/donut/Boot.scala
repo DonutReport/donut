@@ -11,6 +11,7 @@ import scopt.OptionParser
 object Boot extends App with Log {
 
   case class DonutArguments(sourceDir: String = "",
+                            nonBDDSourceDir: String = "",
                             outputDir: String = "donut",
                             prefix: String = "",
                             datetime: String = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm").print(DateTime.now),
@@ -32,6 +33,10 @@ object Boot extends App with Log {
     opt[String]('s', "sourcedir").required() action { (arg, config) =>
       config.copy(sourceDir = arg)
     } text "Required -> Use --sourcedir /my/path/cucumber-reports"
+
+    opt[String]('e', "nonBDDSourcedir") action { (arg, config) =>
+      config.copy(nonBDDSourceDir = arg)
+    } text "Use --nonBDDSourcedir /my/path/non-BDD-reports"
 
     opt[String]('n', "projectName").required() action { (arg, config) =>
       config.copy(projectName = arg)
@@ -59,7 +64,7 @@ object Boot extends App with Log {
 
     opt[Map[String, String]]('c', "customAttributes") action { (arg, config) =>
       config.copy(customAttributes = arg)
-    } text ("Use --customAttributes k1=v1,k2=v2...")
+    } text "Use --customAttributes k1=v1,k2=v2..."
 
     opt[Boolean]("skippedFails") action { (arg, config) =>
       config.copy(countSkippedAsFailure = arg)
@@ -84,8 +89,9 @@ object Boot extends App with Log {
   }
 
   optionParser parse(args, DonutArguments()) match {
-    case Some(appargs) => {
+    case Some(appargs) =>
       Generator(appargs.sourceDir,
+        appargs.nonBDDSourceDir,
         appargs.outputDir,
         appargs.prefix,
         appargs.datetime,
@@ -97,7 +103,6 @@ object Boot extends App with Log {
         appargs.projectName,
         appargs.projectVersion,
         collection.mutable.Map[String, String]() ++= appargs.customAttributes)
-    }
     case None =>
       // error message will have first been displayed
       System.exit(-1)
