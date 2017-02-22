@@ -17,7 +17,6 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   val features = CucumberTransformer.transform(values, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
 
 
-
   behavior of "CucumberAdaptor"
 
   it should "transform all files json values to list of Features" in {
@@ -61,6 +60,16 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
 
   behavior of "CucumberAdaptor units"
 
+  it should "loadCukeFeatures" in {
+    val rootDir = List("src", "test", "resources", "samples-7").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
+    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
+
+    originalFeatures.size shouldEqual 1
+  }
+
+  // TODO: Add more tests for samples that aren't supposed to be loaded
+
   it should "mapToDonutFeatures" in {
     val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
     val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
@@ -74,8 +83,6 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
       g.index.toInt shouldBe >=(10000)
     }
   }
-
-
 
   it should "mapToDonutFeature" in {
     val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
