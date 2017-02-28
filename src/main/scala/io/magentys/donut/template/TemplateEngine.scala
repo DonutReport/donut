@@ -6,6 +6,7 @@ import com.gilt.handlebars.scala.Handlebars
 import com.gilt.handlebars.scala.binding.dynamic._
 import io.magentys.donut.gherkin.model.Report
 import io.magentys.donut.log.Log
+import scalaz.\/
 
 object TemplateEngine {
   def apply(report: Report, templatePath: String): Renderer = {
@@ -18,7 +19,7 @@ object TemplateEngine {
 }
 
 case class Renderer(boundTemplate: String) extends Log {
-  def renderToHTML(outputPath: String, filePrefix: String) = {
+  def renderToHTML(outputPath: String, filePrefix: String) = \/.fromTryCatchNonFatal {
     val path =
       if (outputPath != "") {
         val outputDir = new File(outputPath)
@@ -31,7 +32,7 @@ case class Renderer(boundTemplate: String) extends Log {
     out.write(boundTemplate.toString)
     out.close()
     log.info(s"Donuts created at: $path/${prefix}donut-report.html")
-  }
+  }.leftMap(_.getMessage)
 }
 
 object SpecialCharHandler {

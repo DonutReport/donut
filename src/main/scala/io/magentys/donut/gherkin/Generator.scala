@@ -10,8 +10,12 @@ import io.magentys.donut.template.TemplateEngine
 import io.magentys.donut.transformers.cucumber.CucumberTransformer
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+import org.json4s.JsonAST.JValue
+
 
 import scala.util.Try
+import scalaz.{-\/, \/, \/-}
+import scalaz.\/.{right, left}
 
 object Generator extends Log with PerformanceSupport {
 
@@ -33,8 +37,8 @@ object Generator extends Log with PerformanceSupport {
 
     createReport(sourcePath, outputPath, filePrefix, dateTime, template, countSkippedAsFailure, countPendingAsFailure,
       countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes.toMap) match {
-      case Some(report) => ReportConsole(report)
-      case None => throw new DonutException("An error occurred while generating donut report.")
+      case \/-(report) => ReportConsole(report)
+      case -\/(error) => throw new DonutException(s"An error occurred while generating donut report. $error")
     }
   }
 
@@ -49,7 +53,7 @@ object Generator extends Log with PerformanceSupport {
                                     countMissingAsFailure: Boolean = false,
                                     projectName: String,
                                     projectVersion: String,
-                                    customAttributes: Map[String, String] = Map()): Option[Report] = {
+                                    customAttributes: Map[String, String] = Map()): \/[String, Report] = {
 
     //Prepare objects
     val statusConf = StatusConfiguration(countSkippedAsFailure, countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure)
@@ -57,36 +61,15 @@ object Generator extends Log with PerformanceSupport {
     val sourceDir = new File(sourcePath)
     val reportStartedTimestamp = Try(formatter.parseDateTime(datetime)).getOrElse(DateTime.now)
 
-    if (sourceDir.exists) {
-      //Step 1: load json files from dir
-      val donutFeatures = timed("step1", "Loaded JSON files") {
-        val jsonValues = JSONProcessor.loadFrom(sourceDir)
-        CucumberTransformer.transform(jsonValues, statusConf)
-      }
-
-      if (donutFeatures.nonEmpty) {
-        //Step 2: Main Engine - do calculations and produce the report object to bind
-        val report: Report = timed("step3", "Produced report") {
-          Report(donutFeatures, reportStartedTimestamp, projectMetadata)
-        }
-
-        //Step 3: Bind and render the final result
-        timed("step4", "Rendered report to html") {
-          TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix)
-        }
-
-        Some(report)
-
-      } else {
-        log.error(s"No feature reports found at: $sourceDir")
-        None
-      }
-    } else {
-      log.error(s"The source directory: $sourceDir does not exist")
-      None
-    }
+    for {
+      folder          <- if (sourceDir.exists()) right(sourceDir) else left("Source directory doesn't exist")
+      jsons           <- JSONProcessor.loadFrom(folder)
+      _               <- if (jsons.isEmpty) left("No files found of correct format") else right(jsons)
+      features        <- timed("step1", "Loaded JSON files") { CucumberTransformer.transform(jsons, statusConf) }
+      report          <- right(timed("step3", "Produced report") { Report(features, reportStartedTimestamp, projectMetadata) })
+      _               <- TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix)
+    } yield report
   }
-
 }
 
 case class DonutException(mgs: String) extends Exception

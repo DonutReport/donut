@@ -12,39 +12,49 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
 
   val rootDir = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
   val values = JSONProcessor.loadFrom(new File(rootDir))
-  val features = CucumberTransformer.transform(values, DonutTestData.statusConfiguration)
+  val features = values.flatMap {e => CucumberTransformer.transform(e, DonutTestData.statusConfiguration) }
 
   behavior of "CucumberAdaptor"
 
   it should "transoform all files json values to list of Features" in {
-      features.size shouldBe 9
-      features(0).name shouldBe "Google Journey Performance"
-      features(1).name shouldBe "Google search"
-      features(2).name shouldBe "Offset Actions"
-      features(3).name shouldBe "Input Actions"
-      features(4).name shouldBe "Mouse actions"
-      features(5).name shouldBe "Performance"
-      features(6).name shouldBe "Select"
-      features(7).name shouldBe "Switch to window"
-      features(8).name shouldBe "Tables"
-    }
+    features.fold(
+      e => fail(e),
+      f => {
+        f.size shouldBe 9
+        f(0).name shouldBe "Google Journey Performance"
+        f(1).name shouldBe "Google search"
+        f(2).name shouldBe "Offset Actions"
+        f(3).name shouldBe "Input Actions"
+        f(4).name shouldBe "Mouse actions"
+        f(5).name shouldBe "Performance"
+        f(6).name shouldBe "Select"
+        f(7).name shouldBe "Switch to window"
+        f(8).name shouldBe "Tables"
+      }
+    )
+  }
 
   it should "return empty list if there are no features" in {
     CucumberTransformer.transform(List.empty, DonutTestData.statusConfiguration) shouldEqual List.empty
   }
 
   it should "enhance scenarios with extra values" in {
-    val enhancedScenarios = features.flatMap(f => f.scenarios)
-    enhancedScenarios(0).status.status shouldEqual(false)
-    enhancedScenarios(0).status.statusStr shouldEqual("failed")
-    enhancedScenarios(0).featureName shouldEqual("Google Journey Performance")
-    enhancedScenarios(0).featureIndex shouldEqual("10000")
-    enhancedScenarios(0).duration.duration shouldEqual(7984105000L)
-    enhancedScenarios(0).duration.durationStr shouldEqual("7 secs and 984 ms")
-    enhancedScenarios(0).screenshotsSize shouldEqual(1)
-    enhancedScenarios(0).screenshotStyle shouldEqual("")
-//    enhancedScenarios(0).screenshotIDs shouldEqual(embeddings(0).data.hashCode.toString)
-    enhancedScenarios(0).background shouldEqual(None)
+    val enhancedScenarios = features.map(f => f.map(e => e.scenarios)).fold(
+      fail,
+      s => {
+        s(0).status.status shouldEqual(false)
+        s(0).status.statusStr shouldEqual("failed")
+        s(0).featureName shouldEqual("Google Journey Performance")
+        s(0).featureIndex shouldEqual("10000")
+        s(0).duration.duration shouldEqual(7984105000L)
+        s(0).duration.durationStr shouldEqual("7 secs and 984 ms")
+        s(0).screenshotsSize shouldEqual(1)
+        s(0).screenshotStyle shouldEqual("")
+        // enhancedScenarios(0).screenshotIDs shouldEqual(embeddings(0).data.hashCode.toString)
+        s(0).background shouldEqual(None)
+      }
+    )
+
   }
 
   it should "enhance steps with user friendly duration" in {

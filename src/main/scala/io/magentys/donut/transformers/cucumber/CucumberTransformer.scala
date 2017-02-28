@@ -6,15 +6,17 @@ import io.magentys.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcesso
 import io.magentys.donut.log.Log
 import org.json4s._
 
+import scalaz.\/
+import scalaz.\/.fromTryCatchNonFatal
 object CucumberTransformer extends Log {
 
-  def transform(json: List[JValue], conf: StatusConfiguration): List[model.Feature] = {
-    mapToDonutFeatures(loadCukeFeatures(json), conf)
+  def transform(json: List[JValue], conf: StatusConfiguration): String \/ List[model.Feature] = {
+    fromTryCatchNonFatal(mapToDonutFeatures(loadCukeFeatures(json), conf)).leftMap(_.getMessage)
   }
 
   private[cucumber] def loadCukeFeatures(json: List[JValue]) = {
     implicit val formats = DefaultFormats
-    json.flatMap(f => f.extractOpt[List[Feature]]).flatten
+    json.flatMap(f => f.extract[List[Feature]])
   }
 
   private[cucumber] def mapToDonutFeatures(features: List[Feature], statusConfiguration: StatusConfiguration) = {
