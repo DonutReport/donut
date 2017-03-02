@@ -10,12 +10,8 @@ import io.magentys.donut.template.TemplateEngine
 import io.magentys.donut.transformers.cucumber.CucumberTransformer
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
-import org.json4s.JsonAST.JValue
-
 
 import scala.util.Try
-import scalaz.{-\/, \/, \/-}
-import scalaz.\/.{right, left}
 
 object Generator extends Log with PerformanceSupport {
 
@@ -37,8 +33,8 @@ object Generator extends Log with PerformanceSupport {
 
     createReport(sourcePath, outputPath, filePrefix, dateTime, template, countSkippedAsFailure, countPendingAsFailure,
       countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes.toMap) match {
-      case \/-(report) => ReportConsole(report)
-      case -\/(error) => throw new DonutException(s"An error occurred while generating donut report. $error")
+      case Right(report) => ReportConsole(report)
+      case Left(error) => throw new DonutException(s"An error occurred while generating donut report. $error")
     }
   }
 
@@ -53,7 +49,7 @@ object Generator extends Log with PerformanceSupport {
                                     countMissingAsFailure: Boolean = false,
                                     projectName: String,
                                     projectVersion: String,
-                                    customAttributes: Map[String, String] = Map()): \/[String, Report] = {
+                                    customAttributes: Map[String, String] = Map()): Either[String, Report] = {
 
     //Prepare objects
     val statusConf = StatusConfiguration(countSkippedAsFailure, countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure)
@@ -62,12 +58,12 @@ object Generator extends Log with PerformanceSupport {
     val reportStartedTimestamp = Try(formatter.parseDateTime(datetime)).getOrElse(DateTime.now)
 
     for {
-      folder          <- if (sourceDir.exists()) right(sourceDir) else left("Source directory doesn't exist")
-      jsons           <- JSONProcessor.loadFrom(folder)
-      _               <- if (jsons.isEmpty) left("No files found of correct format") else right(jsons)
-      features        <- timed("step1", "Loaded JSON files") { CucumberTransformer.transform(jsons, statusConf) }
-      report          <- right(timed("step3", "Produced report") { Report(features, reportStartedTimestamp, projectMetadata) })
-      _               <- TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix)
+      folder          <- if (sourceDir.exists()) Right(sourceDir).right else Left("Source directory doesn't exist").right
+      jsons           <- JSONProcessor.loadFrom(folder).right
+      _               <- if (jsons.isEmpty) Left("No files found of correct format").right else Right(jsons).right
+      features        <- timed("step1", "Loaded JSON files") { CucumberTransformer.transform(jsons, statusConf).right }
+      report          <- timed("step3", "Produced report") { Right(Report(features, reportStartedTimestamp, projectMetadata)).right }
+      _               <- TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix).right
     } yield report
   }
 }

@@ -6,7 +6,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class TagProcessorTest extends FlatSpec with Matchers {
 
-  val features = DonutTestData.features_sample_2;
+  val features = DonutTestData.features_sample_2.right.get
 
   val scenarios  = features.flatMap(f => f.scenarios)
   val featureTags = features.flatMap(f => f.tags)

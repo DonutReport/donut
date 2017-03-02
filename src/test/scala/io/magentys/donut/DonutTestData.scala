@@ -6,23 +6,21 @@ import io.magentys.donut.gherkin.model.{Embedding, Feature, StatusConfiguration}
 import io.magentys.donut.gherkin.processors.JSONProcessor
 import io.magentys.donut.transformers.cucumber.CucumberTransformer
 
-import scalaz.\/
-
 object DonutTestData {
 
   val statusConfiguration = StatusConfiguration(false, false, false, false)
 
-  val features_sample_2:  String \/ List[Feature] = {
+  val features_sample_2:  Either[String, List[Feature]] = {
     for {
-      jsonValues  <- JSONProcessor.loadFrom(new File("src/test/resources/samples-2"))
-      transformed <- CucumberTransformer.transform(jsonValues, DonutTestData.statusConfiguration)
+      jsonValues  <- JSONProcessor.loadFrom(new File("src/test/resources/samples-2")).right
+      transformed <- CucumberTransformer.transform(jsonValues, DonutTestData.statusConfiguration).right
     } yield transformed
   }
 
-  val features_sample_3: String \/ List[Feature] = {
+  val features_sample_3: Either[String, List[Feature]] = {
     for {
-      jsonValues  <- JSONProcessor.loadFrom(new File("src/test/resources/samples-3"))
-      transformed <- CucumberTransformer.transform(jsonValues, DonutTestData.statusConfiguration)
+      jsonValues  <- JSONProcessor.loadFrom(new File("src/test/resources/samples-3")).right
+      transformed <- CucumberTransformer.transform(jsonValues, DonutTestData.statusConfiguration).right
     } yield transformed
   }
 

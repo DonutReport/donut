@@ -5,13 +5,11 @@ import io.magentys.donut.gherkin.model._
 import io.magentys.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcessor}
 import io.magentys.donut.log.Log
 import org.json4s._
-
-import scalaz.\/
-import scalaz.\/.fromTryCatchNonFatal
+import scala.util.{Either, Try}
 object CucumberTransformer extends Log {
 
-  def transform(json: List[JValue], conf: StatusConfiguration): String \/ List[model.Feature] = {
-    fromTryCatchNonFatal(mapToDonutFeatures(loadCukeFeatures(json), conf)).leftMap(_.getMessage)
+  def transform(json: List[JValue], conf: StatusConfiguration): Either[String, List[io.magentys.donut.gherkin.model.Feature]] = {
+    Try(mapToDonutFeatures(loadCukeFeatures(json), conf)).toEither(_.getMessage)
   }
 
   private[cucumber] def loadCukeFeatures(json: List[JValue]) = {
@@ -19,7 +17,7 @@ object CucumberTransformer extends Log {
     json.flatMap(f => f.extract[List[Feature]])
   }
 
-  private[cucumber] def mapToDonutFeatures(features: List[Feature], statusConfiguration: StatusConfiguration) = {
+  private[cucumber] def mapToDonutFeatures(features: List[Feature], statusConfiguration: StatusConfiguration): List[io.magentys.donut.gherkin.model.Feature] = {
     features.zipWithIndex.map {
       case (f, i) =>
         val index = 10000 + i //just creating an offset here to start indexing from 10000

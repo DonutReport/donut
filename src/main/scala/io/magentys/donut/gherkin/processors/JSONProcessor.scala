@@ -3,16 +3,10 @@ package io.magentys.donut.gherkin.processors
 import java.io.File
 
 import io.magentys.donut.log.Log
-import org.json4s.JsonAST.JValue
 import org.json4s.{DefaultFormats, JValue}
 import org.json4s.jackson.JsonMethods._
-
 import scala.util.Try
-import scalaz.\/
-import scalaz.\/.{left, right}
-import scalaz.std.list._
-import scalaz.syntax.traverse._
-
+import io.magentys.donut._
 object JSONProcessor extends Log {
 
   /**
@@ -20,9 +14,12 @@ object JSONProcessor extends Log {
     * Excludes empty files based on size.
     * @param directory The root directory for the reports
     */
-  def loadFrom(directory: File):  String \/ List[JValue] = {
+  def loadFrom(directory: File):  Either[String, List[JValue]] = {
     log.debug("Loading files from directory: " + directory)
-    getValidFiles(directory).map(parseJsonFile).sequenceU
+    sequenceEither(getValidFiles(directory).map(parseJsonFile)) match {
+      case Left(errors) => Left(errors.foldLeft("")(_ + _ + ","))
+      case Right(r) => Right(r)
+    }
   }
 
   /**
@@ -30,14 +27,11 @@ object JSONProcessor extends Log {
     * @param jsonPath the file canonical path
     * @return list of Feature per file
     */
-  def parseJsonFile(jsonPath: String): \/[String, JValue] = {
+  def parseJsonFile(jsonPath: String): Either[String, JValue] = {
     log.debug("Parsing file: " + jsonPath)
     val json = scala.io.Source.fromFile(jsonPath).mkString
     implicit val formats = DefaultFormats
-    Try(parse(json, useBigDecimalForDouble = true)).toOption match {
-      case Some(e) => right(e)
-      case _ => left(s"Json could not be parsed for $jsonPath")
-    }
+    Try(parse(json, useBigDecimalForDouble = true)).toEither(_ => s"Json could not be parsed for $jsonPath")
   }
 
   /**
@@ -58,5 +52,4 @@ object JSONProcessor extends Log {
 
     validJsonFiles.toList
   }
-
 }

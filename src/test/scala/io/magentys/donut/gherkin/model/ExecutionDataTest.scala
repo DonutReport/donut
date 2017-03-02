@@ -8,7 +8,7 @@ class ExecutionDataTest  extends FlatSpec with Matchers {
 
   behavior of "ExecutionData"
 
-  val features = DonutTestData.features_sample_3;
+  val features = DonutTestData.features_sample_3.right.get;
 
   val timestamp = DateTime.now
   val executionData = ExecutionData(features, timestamp)
