@@ -10,8 +10,8 @@ import scala.collection.mutable.ListBuffer
 
 object CucumberTransformer extends Log {
 
-  def transform(json: List[JValue], conf: StatusConfiguration): List[model.Feature] = {
-    mapToDonutFeatures(loadCukeFeatures(json), conf)
+  def transform(json: List[JValue], donutFeatures: ListBuffer[model.Feature], conf: StatusConfiguration): ListBuffer[model.Feature] = {
+    mapToDonutFeatures(loadCukeFeatures(json), donutFeatures, conf)
   }
 
   private[cucumber] def loadCukeFeatures(json: List[JValue]) = {
@@ -19,8 +19,7 @@ object CucumberTransformer extends Log {
     json.flatMap(f => f.extractOpt[List[Feature]]).flatten
   }
 
-  private[cucumber] def mapToDonutFeatures(features: List[Feature], statusConfiguration: StatusConfiguration): List[model.Feature] = {
-    var donutFeatures = new ListBuffer[model.Feature]
+  private[cucumber] def mapToDonutFeatures(features: List[Feature], donutFeatures: ListBuffer[model.Feature], statusConfiguration: StatusConfiguration): ListBuffer[model.Feature] = {
     var i = 0
     for (feature <- features) {
 
@@ -30,12 +29,12 @@ object CucumberTransformer extends Log {
         donutFeatures(index) = addScenariosToFeature(feature, donutFeature, statusConfiguration)
 
       } else {
-        val index = 10000 + i
+        val index = if(donutFeatures.nonEmpty) donutFeatures.last.index.toInt + 1 else 10000 + i
         donutFeatures += mapToDonutFeature(feature, index.toString.trim, statusConfiguration)
         i += 1
       }
     }
-    donutFeatures.toList
+    donutFeatures
   }
 
   private def isFeatureAlreadyAdded(name: String, donutFeatures: ListBuffer[model.Feature]): Boolean = {
