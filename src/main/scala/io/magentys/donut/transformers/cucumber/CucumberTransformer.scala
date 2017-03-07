@@ -45,18 +45,14 @@ object CucumberTransformer extends Log {
   private[cucumber] def addScenariosToFeature(feature: Feature, donutFeature: model.Feature, statusConfiguration: StatusConfiguration): model.Feature = {
 
     val scenarios = mapToDonutScenarios(feature.elements, feature.name, donutFeature.index, statusConfiguration)
-    val tags = donutTags(feature.tags)
     val combinedScenarios = donutFeature.scenarios ++ scenarios
-    val combinedTags = donutFeature.tags ++ tags
     val scenariosExcludeBackground = combinedScenarios.filterNot(e => e.keyword == "Background")
 
     donutFeature.copy(
       scenarios = combinedScenarios,
-      tags = combinedTags,
       status = donutFeatureStatus(combinedScenarios, statusConfiguration),
       duration = donutFeatureDuration(combinedScenarios),
       scenarioMetrics = ScenarioMetrics(scenariosExcludeBackground),
-      htmlFeatureTags = combinedTags,
       htmlElements = HTMLFeatureProcessor(scenariosExcludeBackground, donutFeature.index)
     )
   }
