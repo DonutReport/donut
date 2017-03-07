@@ -1,0 +1,72 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 28,
+        "name": "Only 1 number is provided",
+        "description": "",
+        "id": "add-numbers;only-1-number-is-provided",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 149092779,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "I add the following numbers:",
+            "match": {
+              "location": "Stepdefs.iAddTheFollowingNumbers(Integer\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "1"
+                ],
+                "line": 30
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5562562,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "the error message \"Please provide at least two numbers.\" should be displayed",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Please provide at least two numbers.",
+                  "offset": 19
+                }
+              ],
+              "location": "Stepdefs.theErrorMessageShouldBeDisplayed(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 27,
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Add numbers",
+    "description": "\nIn order to calculate,\nAs a user I want to add two or more numbers\n\nRules:\n1. Addition of two or more numbers should result in the total\n2. If less than 2 numbers are provided, an error message should be displayed",
+    "id": "add-numbers",
+    "keyword": "Feature",
+    "uri": "/Users/Amit/git-repositories/allure-reporting-demo/src/test/resources/features/allure_reporting_demo.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@group_by_feature"
+      }
+    ]
+  }
+]
