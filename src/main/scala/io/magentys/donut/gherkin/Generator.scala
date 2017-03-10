@@ -10,14 +10,14 @@ import io.magentys.donut.template.TemplateEngine
 import io.magentys.donut.transformers.cucumber.CucumberTransformer
 import org.apache.commons.lang3.StringUtils
 import org.joda.time.DateTime
-import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 
 import scala.collection.mutable.ListBuffer
 import scala.util.Try
 
 object Generator extends Log with PerformanceSupport {
 
-  val formatter = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm")
+  val formatter: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm")
 
   //this wrapper is currently used to help the java maven plugin
   def apply(sourcePaths: String,
@@ -36,7 +36,7 @@ object Generator extends Log with PerformanceSupport {
     createReport(sourcePaths, outputPath, filePrefix, dateTime, template, countSkippedAsFailure, countPendingAsFailure,
       countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes.toMap) match {
       case Some(report) => ReportConsole(report)
-      case None => throw new DonutException("An error occurred while generating donut report.")
+      case None => throw DonutException("An error occurred while generating donut report.")
     }
   }
 

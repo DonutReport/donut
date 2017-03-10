@@ -4,16 +4,17 @@ import java.io.File
 
 import io.magentys.donut.DonutTestData
 import io.magentys.donut.gherkin.model
-import io.magentys.donut.gherkin.model.Metrics
+import io.magentys.donut.gherkin.model.{Feature, Metrics}
 import io.magentys.donut.gherkin.processors.JSONProcessor
+import org.json4s.JValue
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.mutable.ListBuffer
 
 class CucumberTransformerTest extends FlatSpec with Matchers {
 
-  val rootDir = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
-  val values = JSONProcessor.loadFrom(new File(rootDir))
+  val rootDir: String = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
+  val values: List[JValue] = JSONProcessor.loadFrom(new File(rootDir))
   val features = CucumberTransformer.transform(values, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
 
 
@@ -94,7 +95,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     feature.status.statusStr shouldEqual "failed"
     feature.htmlFeatureTags shouldEqual List("google", "performance")
     feature.scenarioMetrics shouldEqual Metrics(1, 0, 1)
-    feature.stepMetrics shouldEqual Metrics(0, 0, 0, 0, 0, 0, 0)
+    feature.stepMetrics shouldEqual Metrics(0, 0, 0, 0, 0, 0)
     feature.index shouldEqual "10000"
   }
 

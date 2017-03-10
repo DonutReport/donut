@@ -72,7 +72,7 @@ object CucumberTransformer extends Log {
       donutFeatureStatus(scenarios, statusConfiguration),
       donutFeatureDuration(scenarios),
       ScenarioMetrics(scenariosExcludeBackground), //TODO what if background fails?
-      Metrics(0, 0, 0, 0, 0),
+      Metrics(0, 0, 0, 0),
       tags,
       HTMLFeatureProcessor(scenariosExcludeBackground, featureIndex),
       "cucumber", featureIndex)
