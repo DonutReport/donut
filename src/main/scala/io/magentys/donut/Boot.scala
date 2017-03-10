@@ -1,7 +1,5 @@
 package io.magentys.donut
 
-import java.io.File
-
 import io.magentys.donut.gherkin.Generator
 import io.magentys.donut.log.Log
 import org.joda.time.DateTime
@@ -10,8 +8,7 @@ import scopt.OptionParser
 
 object Boot extends App with Log {
 
-  case class DonutArguments(sourceDir: String = "",
-                            nonBDDSourceDir: String = "",
+  case class DonutArguments(sourceDirs: String = "",
                             outputDir: String = "donut",
                             prefix: String = "",
                             datetime: String = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm").print(DateTime.now),
@@ -30,13 +27,9 @@ object Boot extends App with Log {
     head("\nDonut help")
     head("----------")
 
-    opt[String]('s', "sourcedir").required() action { (arg, config) =>
-      config.copy(sourceDir = arg)
-    } text "Required -> Use --sourcedir /my/path/cucumber-reports"
-
-    opt[String]('e', "nonBDDSourcedir") action { (arg, config) =>
-      config.copy(nonBDDSourceDir = arg)
-    } text "Use --nonBDDSourcedir /my/path/non-BDD-reports"
+    opt[String]('s', "sourcedirs").required() action { (arg, config) =>
+      config.copy(sourceDirs = arg)
+    } text "Required -> Use --sourcedirs specflow(or cucumber):/my/path/cucumber-reports,/my/path/nunit-reports"
 
     opt[String]('n', "projectName").required() action { (arg, config) =>
       config.copy(projectName = arg)
@@ -83,15 +76,13 @@ object Boot extends App with Log {
     } text "Use --missingFails true/false"
 
     checkConfig { c =>
-      if (c.sourceDir == "") failure("Missing source dir.") else success
-      if (!new File(c.sourceDir).exists()) failure("Source dir does not exist") else success
+      if (c.sourceDirs == "") failure("Missing source dir.") else success
     }
   }
 
   optionParser parse(args, DonutArguments()) match {
     case Some(appargs) =>
-      Generator(appargs.sourceDir,
-        appargs.nonBDDSourceDir,
+      Generator(appargs.sourceDirs,
         appargs.outputDir,
         appargs.prefix,
         appargs.datetime,
