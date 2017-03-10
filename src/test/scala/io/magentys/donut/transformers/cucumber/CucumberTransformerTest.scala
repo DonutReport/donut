@@ -4,7 +4,7 @@ import java.io.File
 
 import io.magentys.donut.DonutTestData
 import io.magentys.donut.gherkin.model
-import io.magentys.donut.gherkin.model.{Feature, Metrics}
+import io.magentys.donut.gherkin.model.Metrics
 import io.magentys.donut.gherkin.processors.JSONProcessor
 import org.json4s.JValue
 import org.scalatest.{FlatSpec, Matchers}
