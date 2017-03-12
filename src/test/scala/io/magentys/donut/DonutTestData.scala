@@ -2,9 +2,12 @@ package io.magentys.donut
 
 import java.io.File
 
-import io.magentys.donut.gherkin.model.{Feature, Embedding, StatusConfiguration}
+import io.magentys.donut.gherkin.model
+import io.magentys.donut.gherkin.model.{Embedding, Feature, StatusConfiguration}
 import io.magentys.donut.gherkin.processors.JSONProcessor
 import io.magentys.donut.transformers.cucumber.CucumberTransformer
+
+import scala.collection.mutable.ListBuffer
 
 object DonutTestData {
 
@@ -12,12 +15,12 @@ object DonutTestData {
 
   val features_sample_2: List[Feature] = {
     val jsonValues = JSONProcessor.loadFrom(new File("src/test/resources/samples-2"))
-    CucumberTransformer.transform(jsonValues, DonutTestData.statusConfiguration)
+    CucumberTransformer.transform(jsonValues, new ListBuffer[model.Feature],DonutTestData.statusConfiguration).toList
   }
 
   val features_sample_3: List[Feature] = {
     val jsonValues = JSONProcessor.loadFrom(new File("src/test/resources/samples-3"))
-    CucumberTransformer.transform(jsonValues, DonutTestData.statusConfiguration)
+    CucumberTransformer.transform(jsonValues, new ListBuffer[model.Feature],DonutTestData.statusConfiguration).toList
   }
 
   val embedding = Embedding("image/png",

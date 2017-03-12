@@ -2,6 +2,8 @@ package io.magentys.donut.gherkin.processors
 
 import io.magentys.donut.gherkin.model._
 
+import scala.collection.mutable.ListBuffer
+
 /*
  *
  * DOM creation for scenarios
@@ -45,11 +47,43 @@ object HTMLFailuresProcessor {
 
 private[processors] object HTMLProcessor {
 
+  def apply(elements: List[Scenario], parentIndex: String, parentType: String): String = {
+    var map = Map[String, ListBuffer[Scenario]]()
+    val bddScenarios = new ListBuffer[Scenario]
+    val nonBddScenarios = new ListBuffer[Scenario]
+    val builder = new StringBuilder()
 
-  def apply(elements: List[Scenario], parentIndex: String, parentType: String): String =
+    for (e <- elements) {
+      map += (e.keyword -> addToList(e, bddScenarios, nonBddScenarios, map))
+    }
+
+    for (entry <- map) {
+      builder ++=
+        buildScenariosHtml(entry._2.toList, parentIndex, parentType)
+    }
+    builder.toString()
+  }
+
+  def addToList(e: Scenario, bddScenarios: ListBuffer[Scenario], nonBddScenarios: ListBuffer[Scenario], map: Map[String, ListBuffer[Scenario]]): ListBuffer[Scenario] = {
+
+    if (map.keys.exists(key => key.equals(e.keyword))) {
+      var list = map.get(e.keyword).get
+      list += e
+    } else {
+      if ("Scenario".equals(e.keyword)) {
+        bddScenarios += e
+      } else {
+        nonBddScenarios += e
+      }
+    }
+  }
+
+
+  def buildScenariosHtml(elements: List[Scenario], parentIndex: String, parentType: String): String = {
 
     scenarioType(elements.head).mkString +
-      elements.zipWithIndex.map { case (e, i) => scenarios(e, parentIndex + i.toString.trim, parentType) }.mkString
+      elements.zipWithIndex.map { case (e, i) => scenarios(e, e.keyword.replace(" ", "-").toLowerCase + "-" + parentIndex + i.toString.trim, parentType) }.mkString
+  }
 
   private def scenarioType(scenario: Scenario): String = {
     s"""
@@ -104,7 +138,7 @@ private[processors] object HTMLProcessor {
   def backgroundForScenario(elementOpt: Option[Scenario], index: String, parentType: String) = {
 
     elementOpt match {
-      case Some(element) => {
+      case Some(element) =>
         val icon = statusIcon(element.status.statusStr)
         val style = if (element.status.statusStr == "passed") """style="display:none;"""" else ""
         val output = element.steps.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">$o</div>""").mkString
@@ -112,7 +146,7 @@ private[processors] object HTMLProcessor {
         s"""
            |        <p class="scenario">
            |          <b>$icon ${element.keyword} </b>${element.name}
-           |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick=toggleScenario('ul-$parentType-$index')>
+           |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick="toggleScenario('ul-$parentType-$index', event)">
            |            <span class="glyphicon glyphicon-menu-down"></span>
            |          </a>
            |          <span class="durationBadge pull-right">${element.duration.durationStr} </span>
@@ -125,7 +159,6 @@ private[processors] object HTMLProcessor {
            |        </div>
            |        $screenshots
      """.stripMargin
-      }
       case None => ""
     }
 
@@ -133,7 +166,7 @@ private[processors] object HTMLProcessor {
 
   def scenariosScreenshots(index: String, style: String, screenshotsIds: String, screenshotsSize: Int, parentType: String) = {
     s"""
-       |<a href="#" id="openScreenshotsFeatures-$index" onclick="toggleScreenshot('$index', 'screenshot-$parentType', '$screenshotsIds', event)" style="$style">screenshots (${screenshotsSize})</a>
+       |<a href="#" id="openScreenshotsFeatures-$index" onclick="toggleScreenshot('$index', 'screenshot-$parentType', '$screenshotsIds', event)" style="$style">screenshots ($screenshotsSize)</a>
        |   <div id="screenshot-$parentType-$index" class="row" style="display: none;"></div>
     """.stripMargin
   }
@@ -158,7 +191,7 @@ private[processors] object HTMLProcessor {
          |<li class="list-group-item step ${step.status.statusStr}">
          |  <span class="durationBadge pull-right"> ${step.duration.durationStr} </span>
          |  ${statusIcon(step.status.statusStr)} <b> ${step.keyword} </b>  <span class="wrapped-text" style="white-space: pre-wrap;">${step.name}</span>
-         |  ${error}
+         |  $error
          |  ${stepTable(step.rows)}
          |</li>
      """.stripMargin

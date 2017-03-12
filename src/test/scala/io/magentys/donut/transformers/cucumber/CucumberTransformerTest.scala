@@ -6,17 +6,17 @@ import io.magentys.donut.DonutTestData
 import io.magentys.donut.gherkin.model
 import io.magentys.donut.gherkin.model.Metrics
 import io.magentys.donut.gherkin.processors.JSONProcessor
+import org.json4s.JValue
 import org.scalatest.{FlatSpec, Matchers}
+
+import scala.collection.mutable.ListBuffer
 
 class CucumberTransformerTest extends FlatSpec with Matchers {
 
-  val rootDir = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
-  val values = JSONProcessor.loadFrom(new File(rootDir))
-  val features = CucumberTransformer.transform(values, DonutTestData.statusConfiguration)
+  val rootDir: String = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
+  val values: List[JValue] = JSONProcessor.loadFrom(new File(rootDir))
+  val features = CucumberTransformer.transform(values, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
 
-  val sample4RootDir = List("src", "test", "resources", "samples-4").mkString("", File.separator, File.separator)
-  val sample4Values = JSONProcessor.loadFrom(new File(sample4RootDir))
-  val sample4Features = CucumberTransformer.transform(sample4Values, DonutTestData.statusConfiguration)
 
   behavior of "CucumberAdaptor"
 
@@ -33,19 +33,10 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     features(8).name shouldBe "Tables"
   }
 
-  it should "group donut features by feature name while transforming the list of cucumber features" in {
-    sample4Features.size shouldBe 1
-    sample4Features.head.name shouldBe "Add numbers"
 
-    val scenarios = sample4Features.head.scenarios
-    scenarios.size shouldBe 3
-    scenarios.head.name shouldBe "Add two numbers: 1 and 2"
-    scenarios(1).name shouldBe "Add four numbers: 1,2,5,10"
-    scenarios(2).name shouldBe "Only 1 number is provided"
-  }
 
   it should "return empty list if there are no features" in {
-    CucumberTransformer.transform(List.empty, DonutTestData.statusConfiguration) shouldEqual List.empty
+    CucumberTransformer.transform(List.empty, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) shouldEqual List.empty
   }
 
   it should "enhance scenarios with extra values" in {
@@ -70,9 +61,19 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
 
   behavior of "CucumberAdaptor units"
 
+  it should "loadCukeFeatures" in {
+    val rootDir = List("src", "test", "resources", "samples-7").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
+    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
+
+    originalFeatures.size shouldEqual 1
+  }
+
+  // TODO: Add more tests for samples that aren't supposed to be loaded
+
   it should "mapToDonutFeatures" in {
     val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
-    val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, DonutTestData.statusConfiguration)
+    val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
     generatedFeatures.size shouldEqual originalFeatures.size
 
     for {
@@ -81,23 +82,6 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     } yield if (o.name == g.name) {
       o.elements.size shouldBe g.scenarios.size
       g.index.toInt shouldBe >=(10000)
-    }
-  }
-
-  it should "mapToDonutFeatures if a feature is split across multiple json files" in {
-
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(sample4Values)
-    val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, DonutTestData.statusConfiguration)
-    val scenarios = generatedFeatures.head.scenarios
-
-    originalFeatures.size shouldBe 3
-    generatedFeatures.size shouldBe 1
-    scenarios.size shouldBe 3
-    generatedFeatures.head.index.toInt shouldBe 10000
-
-
-    for (o <- originalFeatures) {
-      o.name == generatedFeatures.head.name
     }
   }
 
@@ -111,7 +95,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     feature.status.statusStr shouldEqual "failed"
     feature.htmlFeatureTags shouldEqual List("google", "performance")
     feature.scenarioMetrics shouldEqual Metrics(1, 0, 1)
-    feature.stepMetrics shouldEqual Metrics(0, 0, 0, 0, 0, 0, 0)
+    feature.stepMetrics shouldEqual Metrics(0, 0, 0, 0, 0, 0)
     feature.index shouldEqual "10000"
   }
 

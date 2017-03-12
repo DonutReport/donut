@@ -1,7 +1,5 @@
 package io.magentys.donut
 
-import java.io.File
-
 import io.magentys.donut.gherkin.Generator
 import io.magentys.donut.log.Log
 import org.joda.time.DateTime
@@ -10,7 +8,7 @@ import scopt.OptionParser
 
 object Boot extends App with Log {
 
-  case class DonutArguments(sourceDir: String = "",
+  case class DonutArguments(sourceDirs: String = "",
                             outputDir: String = "donut",
                             prefix: String = "",
                             datetime: String = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm").print(DateTime.now),
@@ -29,9 +27,9 @@ object Boot extends App with Log {
     head("\nDonut help")
     head("----------")
 
-    opt[String]('s', "sourcedir").required() action { (arg, config) =>
-      config.copy(sourceDir = arg)
-    } text "Required -> Use --sourcedir /my/path/cucumber-reports"
+    opt[String]('s', "sourcedirs").required() action { (arg, config) =>
+      config.copy(sourceDirs = arg)
+    } text "Required -> Use --sourcedirs specflow(or cucumber):/my/path/cucumber-reports,/my/path/nunit-reports"
 
     opt[String]('n', "projectName").required() action { (arg, config) =>
       config.copy(projectName = arg)
@@ -59,7 +57,7 @@ object Boot extends App with Log {
 
     opt[Map[String, String]]('c', "customAttributes") action { (arg, config) =>
       config.copy(customAttributes = arg)
-    } text ("Use --customAttributes k1=v1,k2=v2...")
+    } text "Use --customAttributes k1=v1,k2=v2..."
 
     opt[Boolean]("skippedFails") action { (arg, config) =>
       config.copy(countSkippedAsFailure = arg)
@@ -78,14 +76,13 @@ object Boot extends App with Log {
     } text "Use --missingFails true/false"
 
     checkConfig { c =>
-      if (c.sourceDir == "") failure("Missing source dir.") else success
-      if (!new File(c.sourceDir).exists()) failure("Source dir does not exist") else success
+      if (c.sourceDirs == "") failure("Missing source dir.") else success
     }
   }
 
   optionParser parse(args, DonutArguments()) match {
-    case Some(appargs) => {
-      Generator(appargs.sourceDir,
+    case Some(appargs) =>
+      Generator(appargs.sourceDirs,
         appargs.outputDir,
         appargs.prefix,
         appargs.datetime,
@@ -97,7 +94,6 @@ object Boot extends App with Log {
         appargs.projectName,
         appargs.projectVersion,
         collection.mutable.Map[String, String]() ++= appargs.customAttributes)
-    }
     case None =>
       // error message will have first been displayed
       System.exit(-1)
