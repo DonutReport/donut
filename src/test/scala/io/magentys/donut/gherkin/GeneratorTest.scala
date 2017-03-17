@@ -45,14 +45,6 @@ class GeneratorTest extends FlatSpec with Matchers {
     }
   }
 
-  it should "return report if valid cuke and non-cuke json files are found" in {
-    Generator.createReport("cucumber:/Users/amit/mac-backup/MagenTys/Donut/cucumber-and-unit/bdd,/Users/amit/mac-backup/MagenTys/Donut/cucumber-and-unit/unit", projectName = "", projectVersion = "") match {
-      case Left(e) => fail(e)
-      case Right(r) =>
-        r should not be null
-    }
-  }
-
   behavior of "Generator Units"
 
   it should "return correct cuke source path if the cucumber source paths format is correct" in {
