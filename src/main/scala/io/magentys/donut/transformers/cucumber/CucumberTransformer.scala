@@ -1,25 +1,24 @@
 package io.magentys.donut.transformers.cucumber
-
-import io.magentys.donut.gherkin.model
 import io.magentys.donut.gherkin.model._
+import io.magentys.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, Step => DonutStep}
 import io.magentys.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcessor}
 import io.magentys.donut.log.Log
 import org.json4s._
 
 import scala.collection.mutable.ListBuffer
-
+import scala.util.{Either, Try}
 object CucumberTransformer extends Log {
 
-  def transform(json: List[JValue], donutFeatures: ListBuffer[model.Feature], conf: StatusConfiguration): ListBuffer[model.Feature] = {
-    mapToDonutFeatures(loadCukeFeatures(json), donutFeatures, conf)
+  def transform(json: List[JValue],donutFeatures: ListBuffer[DonutFeature], conf: StatusConfiguration): Either[String, ListBuffer[DonutFeature]] = {
+    Try(mapToDonutFeatures(loadCukeFeatures(json),donutFeatures, conf)).toEither(_.getMessage)
   }
 
   private[cucumber] def loadCukeFeatures(json: List[JValue]) = {
     implicit val formats = DefaultFormats
-    json.flatMap(f => f.extractOpt[List[Feature]]).flatten
+    json.flatMap(f => f.extract[List[Feature]])
   }
 
-  private[cucumber] def mapToDonutFeatures(features: List[Feature], donutFeatures: ListBuffer[model.Feature], statusConfiguration: StatusConfiguration): ListBuffer[model.Feature] = {
+  private[cucumber] def mapToDonutFeatures(features: List[Feature], donutFeatures: ListBuffer[DonutFeature], statusConfiguration: StatusConfiguration): ListBuffer[DonutFeature] = {
     var i = 0
     for (feature <- features) {
 
@@ -37,11 +36,11 @@ object CucumberTransformer extends Log {
     donutFeatures
   }
 
-  private def isFeatureAlreadyAdded(name: String, donutFeatures: ListBuffer[model.Feature]): Boolean = {
+  private def isFeatureAlreadyAdded(name: String, donutFeatures: ListBuffer[DonutFeature]): Boolean = {
     donutFeatures.exists(df => df.name.equals(name))
   }
 
-  private[cucumber] def addScenariosToFeature(feature: Feature, donutFeature: model.Feature, statusConfiguration: StatusConfiguration): model.Feature = {
+  private[cucumber] def addScenariosToFeature(feature: Feature, donutFeature: DonutFeature, statusConfiguration: StatusConfiguration): DonutFeature = {
 
     val scenarios = mapToDonutScenarios(feature.elements, feature.name, donutFeature.index, statusConfiguration)
     val combinedScenarios = donutFeature.scenarios ++ scenarios
@@ -56,13 +55,13 @@ object CucumberTransformer extends Log {
     )
   }
 
-  private[cucumber] def mapToDonutFeature(feature: Feature, featureIndex: String, statusConfiguration: StatusConfiguration) = {
+  private[cucumber] def mapToDonutFeature(feature: Feature, featureIndex: String, statusConfiguration: StatusConfiguration) : DonutFeature = {
 
     val scenarios: List[Scenario] = mapToDonutScenarios(feature.elements, feature.name, featureIndex, statusConfiguration)
     val scenariosExcludeBackground = scenarios.filterNot(e => e.keyword == "Background")
     val tags = donutTags(feature.tags)
 
-    model.Feature(
+    DonutFeature(
       feature.keyword,
       feature.name,
       feature.description,
@@ -72,7 +71,7 @@ object CucumberTransformer extends Log {
       donutFeatureStatus(scenarios, statusConfiguration),
       donutFeatureDuration(scenarios),
       ScenarioMetrics(scenariosExcludeBackground), //TODO what if background fails?
-      Metrics(0, 0, 0, 0),
+      Metrics(0, 0, 0),
       tags,
       HTMLFeatureProcessor(scenariosExcludeBackground, featureIndex),
       "cucumber", featureIndex)
@@ -97,7 +96,7 @@ object CucumberTransformer extends Log {
 
   private[cucumber] def mapToDonutScenario(e: Element, backgroundElement: Option[Scenario], featureName: String, featureIndex: String, statusConfiguration: StatusConfiguration): Scenario = {
     val screenshots = donutScenarioScreenshots(e)
-    model.Scenario(
+    DonutScenario(
       e.description,
       e.name,
       e.keyword,
@@ -114,13 +113,13 @@ object CucumberTransformer extends Log {
   }
 
   private[cucumber] def mapToDonutStep(s: Step, statusConfiguration: StatusConfiguration) = {
-    model.Step(
+    DonutStep(
       s.name,
       s.keyword,
-      s.rows.map(r => model.Row(r.cells)),
+      s.rows.map(r => DonutRow(r.cells)),
       s.output,
       Status(statusConfiguration, s.result.status),
-      Duration(s.result.duration),
+      DonutDuration(s.result.duration),
       0L, 0L,
       s.result.error_message)
   }
@@ -134,23 +133,24 @@ object CucumberTransformer extends Log {
 
   private[cucumber] def donutFeatureDuration(scenarios: List[Scenario]) = {
     val elementsDuration = scenarios.map(e => e.duration.duration)
-    val duration = Duration.calculateTotalDuration(elementsDuration)
-    Duration(duration)
+    val duration = DonutDuration.calculateTotalDuration(elementsDuration)
+    DonutDuration(duration)
   }
 
   private[cucumber] def donutScenarioScreenshots(e: Element) = {
     val elementScreenshots: List[Embedding] = e.steps.flatMap(s => s.embeddings)
     val screenshotsSize = elementScreenshots.size
     val screenshotStyle = if (elementScreenshots.nonEmpty) "" else "display:none;"
-    val screenshots = elementScreenshots.map(e => model.Embedding(e.mime_type, e.data, e.id))
+    val screenshots = elementScreenshots.map(e => DonutEmbedding(e.mime_type, e.data, e.id))
     val screenshotIDs: String = ImageProcessor.getScreenshotIds(screenshots)
+
     Screenshots(screenshotIDs, screenshotsSize, screenshotStyle)
   }
 
   private[cucumber] def donutScenarioDuration(e: Element) = {
     val stepDuration = e.steps.map(s => s.result.duration)
     val totalDuration = Duration.calculateTotalDuration(stepDuration)
-    Duration(totalDuration)
+    DonutDuration(totalDuration)
   }
 
   private[cucumber] def donutScenarioStatus(e: Element, statusConfiguration: StatusConfiguration) = {

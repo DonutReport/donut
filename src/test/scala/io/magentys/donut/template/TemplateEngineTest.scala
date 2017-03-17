@@ -7,7 +7,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class TemplateEngineTest extends FlatSpec with Matchers {
 
-  val features = DonutTestData.features_sample_2;
+  val features = DonutTestData.features_sample_2.right.get;
   val report = Report(features, DateTime.now, ProjectMetadata("", "", Map()))
 
   behavior of "Template Engine"

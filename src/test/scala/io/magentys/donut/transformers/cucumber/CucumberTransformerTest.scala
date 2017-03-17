@@ -13,50 +13,60 @@ import scala.collection.mutable.ListBuffer
 
 class CucumberTransformerTest extends FlatSpec with Matchers {
 
-  val rootDir: String = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
-  val values: List[JValue] = JSONProcessor.loadFrom(new File(rootDir))
-  val features = CucumberTransformer.transform(values, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
-
+  private val rootDir = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
+  private val values = JSONProcessor.loadFrom(new File(rootDir))
+  private val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
 
   behavior of "CucumberAdaptor"
 
   it should "transform all files json values to list of Features" in {
-    features.size shouldBe 9
-    features.head.name shouldBe "Google Journey Performance"
-    features(1).name shouldBe "Google search"
-    features(2).name shouldBe "Offset Actions"
-    features(3).name shouldBe "Input Actions"
-    features(4).name shouldBe "Mouse actions"
-    features(5).name shouldBe "Performance"
-    features(6).name shouldBe "Select"
-    features(7).name shouldBe "Switch to window"
-    features(8).name shouldBe "Tables"
+    features.fold(
+      e => fail(e),
+      f => {
+        f.size shouldBe 9
+        f.head.name shouldBe "Google Journey Performance"
+        f(1).name shouldBe "Google search"
+        f(2).name shouldBe "Offset Actions"
+        f(3).name shouldBe "Input Actions"
+        f(4).name shouldBe "Mouse actions"
+        f(5).name shouldBe "Performance"
+        f(6).name shouldBe "Select"
+        f(7).name shouldBe "Switch to window"
+        f(8).name shouldBe "Tables"
+      }
+    )
   }
 
-
-
   it should "return empty list if there are no features" in {
-    CucumberTransformer.transform(List.empty, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) shouldEqual List.empty
+    CucumberTransformer.transform(List.empty, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) shouldEqual Right(List.empty)
   }
 
   it should "enhance scenarios with extra values" in {
-    val enhancedScenarios = features.flatMap(f => f.scenarios)
-    enhancedScenarios.head.status.status shouldEqual false
-    enhancedScenarios.head.status.statusStr shouldEqual "failed"
-    enhancedScenarios.head.featureName shouldEqual "Google Journey Performance"
-    enhancedScenarios.head.featureIndex shouldEqual "10000"
-    enhancedScenarios.head.duration.duration shouldEqual 7984105000L
-    enhancedScenarios.head.duration.durationStr shouldEqual "7 secs and 984 ms"
-    enhancedScenarios.head.screenshotsSize shouldEqual 1
-    enhancedScenarios.head.screenshotStyle shouldEqual ""
-    //    enhancedScenarios(0).screenshotIDs shouldEqual(embeddings(0).data.hashCode.toString)
-    enhancedScenarios.head.background shouldEqual None
+    features match {
+      case Left(e) => fail(e)
+      case Right(f) =>
+        val firstScenario = f.flatMap(_.scenarios).head
+        firstScenario.status.status shouldEqual false
+        firstScenario.status.statusStr shouldEqual "failed"
+        firstScenario.featureName shouldEqual "Google Journey Performance"
+        firstScenario.featureIndex shouldEqual "10000"
+        firstScenario.duration.duration shouldEqual 7984105000L
+        firstScenario.duration.durationStr shouldEqual "7 secs and 984 ms"
+        firstScenario.screenshotsSize shouldEqual 1
+        firstScenario.screenshotStyle shouldEqual ""
+        //firstScenario.screenshotIDs shouldEqual(embeddings(0).data.hashCode.toString)
+        firstScenario.background shouldEqual None
+    }
   }
 
   it should "enhance steps with user friendly duration" in {
-    val enhancedSteps = features.flatMap(f => f.scenarios).flatMap(e => e.steps)
-    enhancedSteps.head.duration.durationStr shouldEqual "7 secs and 977 ms"
-    enhancedSteps(1).duration.durationStr shouldEqual "6 ms"
+    features match {
+      case Left(e) => fail(e)
+      case Right(f) =>
+        val enhancedSteps = f.flatMap(_.scenarios).flatMap(_.steps)
+        enhancedSteps.head.duration.durationStr shouldEqual "7 secs and 977 ms"
+        enhancedSteps(1).duration.durationStr shouldEqual "6 ms"
+    }
   }
 
   behavior of "CucumberAdaptor units"
@@ -64,7 +74,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   it should "loadCukeFeatures" in {
     val rootDir = List("src", "test", "resources", "samples-7").mkString("", File.separator, File.separator)
     val values = JSONProcessor.loadFrom(new File(rootDir))
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
+    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
 
     originalFeatures.size shouldEqual 1
   }
@@ -72,7 +82,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   // TODO: Add more tests for samples that aren't supposed to be loaded
 
   it should "mapToDonutFeatures" in {
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
+    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
     val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
     generatedFeatures.size shouldEqual originalFeatures.size
 
@@ -86,7 +96,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "mapToDonutFeature" in {
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values)
+    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
     val feature: model.Feature = CucumberTransformer.mapToDonutFeature(originalFeatures.head, "10000", DonutTestData.statusConfiguration)
     feature.isInstanceOf[model.Feature] shouldBe true
     feature.duration.duration shouldEqual 7984105000L
@@ -95,13 +105,9 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     feature.status.statusStr shouldEqual "failed"
     feature.htmlFeatureTags shouldEqual List("google", "performance")
     feature.scenarioMetrics shouldEqual Metrics(1, 0, 1)
-    feature.stepMetrics shouldEqual Metrics(0, 0, 0, 0, 0, 0)
+    feature.stepMetrics shouldEqual Metrics(0, 0, 0)
     feature.index shouldEqual "10000"
   }
-
-
-
-
 
 
   //  it should "mapToDonutScenario" in {

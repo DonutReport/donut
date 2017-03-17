@@ -35,8 +35,8 @@ object Generator extends Log with PerformanceSupport {
 
     createReport(sourcePaths, outputPath, filePrefix, dateTime, template, countSkippedAsFailure, countPendingAsFailure,
       countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes.toMap) match {
-      case Some(report) => ReportConsole(report)
-      case None => throw DonutException("An error occurred while generating donut report.")
+      case Right(report) => ReportConsole(report)
+      case Left(error) => throw DonutException(s"An error occurred while generating donut report. $error")
     }
   }
 
@@ -51,63 +51,42 @@ object Generator extends Log with PerformanceSupport {
                                     countMissingAsFailure: Boolean = false,
                                     projectName: String,
                                     projectVersion: String,
-                                    customAttributes: Map[String, String] = Map()): Option[Report] = {
+                                    customAttributes: Map[String, String] = Map()): Either[String, Report] = {
 
     //Prepare objects
     val statusConf = StatusConfiguration(countSkippedAsFailure, countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure)
     val projectMetadata = ProjectMetadata(projectName, projectVersion, customAttributes)
     val reportStartedTimestamp = Try(formatter.parseDateTime(datetime)).getOrElse(DateTime.now)
-    val sourceDir = new File(getCukePath(sourcePaths))
+    val cukeSourceDir = new File(getCukePath(sourcePaths))
 
-    if (sourceDir.exists) {
-
-      //Step 1: Load BDD & non-BDD json files
-      val donutFeatures = loadDonutFeatures(sourceDir, getNonCukePaths(sourcePaths), statusConf)
-      if (donutFeatures.nonEmpty) {
-
-        //Step 2: Main Engine - do calculations and produce the report object to bind
-        val report: Report = timed("step3", "Produced report") {
-          Report(donutFeatures.toList, reportStartedTimestamp, projectMetadata)
-        }
-
-        //Step 3: Bind and render the final result
-        timed("step4", "Rendered report to html") {
-          TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix)
-        }
-
-        Some(report)
-
-      } else {
-        log.error(s"No feature reports found at: $sourceDir")
-        None
-      }
-    } else {
-      log.error(s"The source directory: $sourceDir does not exist")
-      None
-    }
+    for {
+      folder      <- if (cukeSourceDir.exists()) Right(cukeSourceDir).right else Left("Source directory doesn't exist").right
+      jsons       <- JSONProcessor.loadFrom(folder).right
+      _           <- if (jsons.isEmpty) Left("No files found of correct format").right else Right(jsons).right
+      features    <- timed("step1", "Loaded JSON files") {loadDonutFeatures(cukeSourceDir, getNonCukePaths(sourcePaths), statusConf).right}
+      report      <- timed("step3", "Produced report") {Right(Report(features.toList, reportStartedTimestamp, projectMetadata)).right}
+      _           <- TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix).right
+    } yield report
   }
 
-  def loadDonutFeatures(sourceDir: File, nonCukePaths: List[String], statusConf: StatusConfiguration): ListBuffer[model.Feature] = {
+  /**
+  Loads donut features for both cuke and non cuke json files.<br>
+  Currently, it works only for one non-cuke path and it's tested only for NUnit results(json converted from xml using our adapter).<br>
+  It would be enhanced soon to report other types of non-cuke reports and also to publish more than 1 type of non-cuke results in one report.
+  */
+  def loadDonutFeatures(cukeSourceDir: File, nonCukePaths: List[String], statusConf: StatusConfiguration): Either[String, ListBuffer[model.Feature]] = {
     var donutFeatures = new ListBuffer[model.Feature]
+    val cukeJsonValues = JSONProcessor.loadFrom(cukeSourceDir).right.get
 
-    //Step 1: load json files from BDD feature files(cucumber/specFlow) dir
-    donutFeatures = timed("step1", "Loaded JSON files") {
-      val jsonValues = JSONProcessor.loadFrom(sourceDir)
-      CucumberTransformer.transform(jsonValues, donutFeatures, statusConf)
-    }
-
-    //Step 2: load json files from non-BDD test sources(ex: Unit Tests) dir
-    if (nonCukePaths.size > 1) {
-      val nonCukeSourceDir = new File(nonCukePaths(1))
-
+    donutFeatures = CucumberTransformer.transform(cukeJsonValues, donutFeatures, statusConf).right.get
+    if (nonCukePaths.nonEmpty) {
+      val nonCukeSourceDir = new File(nonCukePaths.head)
       if (nonCukeSourceDir.exists()) {
-        donutFeatures = timed("step2", "Loaded non-BDD JSON files") {
-          val jsonValues = JSONProcessor.loadFrom(nonCukeSourceDir)
-          CucumberTransformer.transform(jsonValues, donutFeatures, statusConf)
-        }
+        val jsonValues = JSONProcessor.loadFrom(nonCukeSourceDir)
+        donutFeatures = CucumberTransformer.transform(jsonValues.right.get, donutFeatures, statusConf).right.get
       }
     }
-    donutFeatures
+    Try(donutFeatures).toEither(_.getMessage)
   }
 
   private[gherkin] def getCukePath(sourcePaths: String): String = {
@@ -119,6 +98,8 @@ object Generator extends Log with PerformanceSupport {
         if (parts.length > 1) {
           log.info("Cuke path: " + parts(1))
           return parts(1)
+        }else{
+          throw DonutException("Please provide the source directory path.")
         }
       }
     }
@@ -129,7 +110,7 @@ object Generator extends Log with PerformanceSupport {
     val nonCukePaths = new ListBuffer[String]
     val paths = sourcePaths.split(",")
     for (path <- paths) {
-      if (!(StringUtils.containsIgnoreCase(path, "cucumber") || StringUtils.containsIgnoreCase(path, "specflow"))) {
+      if (!(StringUtils.containsIgnoreCase(path, "cucumber:") || StringUtils.containsIgnoreCase(path, "specflow:"))) {
         nonCukePaths += path
       }
     }

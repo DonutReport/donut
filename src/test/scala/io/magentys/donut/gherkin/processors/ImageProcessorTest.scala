@@ -8,7 +8,7 @@ class ImageProcessorTest extends FlatSpec with Matchers {
 
   ImageProcessor.imageMap = scala.collection.mutable.Map[Int, Embedding]()
 
-  val features = DonutTestData.features_sample_2;
+  val features = DonutTestData.features_sample_2.right.get;
 
   behavior of "ImageProcessor"
 

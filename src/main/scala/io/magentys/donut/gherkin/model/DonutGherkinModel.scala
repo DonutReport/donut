@@ -20,7 +20,7 @@ case class Step(name: String,
                 end_time: Long,
                 error_message: String = "")
 
-case class Scenario(description: String,
+case class Scenario(description: Option[String],
                     name: String,
                     keyword: String,
                     tags: List[String],
@@ -38,7 +38,7 @@ case class Scenario(description: String,
 
 case class Feature(keyword: String,
                    name: String,
-                   description: String,
+                   description: Option[String],
                    uri: String,
                    scenarios: List[Scenario],
                    tags: List[String],
