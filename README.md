@@ -17,9 +17,9 @@ You can either use Donut directly or check out the available plugins:
 
 ### download
 ```
-wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.3/donut-0.0.3-one-jar.jar
+wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.5/donut-0.0.5-one-jar.jar
 ```
-or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/0.0.3/donut-0.0.3-one-jar.jar)
+or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/0.0.5/donut-0.0.5-one-jar.jar)
 
 ### run from command line
 
@@ -29,17 +29,17 @@ java -jar donut-<Version>.jar -s /source/dir
 
 ### options
 
-`-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.
-`-s` or `--sourcedir` is a mandatory parameter, and it should be the path to the directory that holds the generated JSON result files. 
+`-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.  
+`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files. 
 
-Other parameters can also be specified as bellow:
+Other parameters can also be specified as below:
 
 ```
 Donut help
 Usage: MagenTys Donut reports [options]
 
-  -s <value> | --sourcedir <value>
-        Use --sourcedir /my/path/cucumber-reports -> Required
+  -s <value> | --sourcedirs <value>
+        Use --sourcedirs cucumber:/my/path/cucumber-reports -> Required
   -o <value> | --outputdir <value>
         Use --outputdir /my/path/output/donut
   -p <value> | --prefix <value>
@@ -77,18 +77,18 @@ default values:
 <dependency>
   <groupId>io.magentys</groupId>
   <artifactId>donut</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
 </dependency>
 ```
 
 * SBT 
 ```
-libraryDependencies += "io.magentys" % "donut" % "0.0.4"
+libraryDependencies += "io.magentys" % "donut" % "0.0.5"
 ```
 
 * Gradle
 ```
-compile 'io.magentys:donut:0.0.4'
+compile 'io.magentys:donut:0.0.5'
 ```
 
 Example usage of the `Generator`
