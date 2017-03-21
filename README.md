@@ -7,13 +7,13 @@
 Donut is an open-source framework by the [MagenTys](https://magentys.io) team which is designed to produce clear and concise test execution reports over your unit, integration and acceptance tests.
 Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc).
 
-Live Demo => [here] (http://magentys.github.io/donut/demo.html)
+Live Demo => [here](http://magentys.github.io/donut/demo.html)
 
 ## Quickstart
 You can either use Donut directly or check out the available plugins: 
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
-* [Jenkins plugin] (https://github.com/MagenTys/donut-jenkins-plugin)
+* [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
 
 ### download
 ```
