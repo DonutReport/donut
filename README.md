@@ -14,6 +14,10 @@ You can either use Donut directly or check out the available plugins:
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
 * [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
+* [NUnit adaptor] (https://github.com/MagenTys/donut-nunit-adapter)
+
+## Release Notes
+See what's new [here](release-notes.md)
 
 ### download
 ```
@@ -24,7 +28,7 @@ or download the latest release from: [here](http://repo1.maven.org/maven2/io/mag
 ### run from command line
 
 ```
-java -jar donut-<Version>.jar -s /source/dir 
+java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProjectName
 ```
 
 ### options
@@ -39,7 +43,7 @@ Donut help
 Usage: MagenTys Donut reports [options]
 
   -s <value> | --sourcedirs <value>
-        Use --sourcedirs cucumber:/my/path/cucumber-reports -> Required
+        Use --sourcedirs cucumber:/my/path/cucumber-reports -> Required, or Use --sourcedirs specflow:/my/path/specflow-reports,/my/nunit-reports
   -o <value> | --outputdir <value>
         Use --outputdir /my/path/output/donut
   -p <value> | --prefix <value>
@@ -130,7 +134,7 @@ buildFailed: Boolean
 
 ### run from sbt
 
-`sbt "run-main io.magentys.donut.Boot -s /my/jsons/dir -n myProjectName" `
+`sbt "run-main io.magentys.donut.Boot -s cucumber:/my/path/cucumber-reports -n myProjectName" `
 
 ### credits
 
