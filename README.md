@@ -14,7 +14,7 @@ You can either use Donut directly or check out the available plugins:
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
 * [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
-* [NUnit adaptor] (https://github.com/MagenTys/donut-nunit-adapter)
+* [NUnit adaptor](https://github.com/MagenTys/donut-nunit-adapter)
 
 ## Release Notes
 See what's new [here](release-notes.md)
