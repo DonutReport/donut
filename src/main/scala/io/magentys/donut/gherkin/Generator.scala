@@ -94,10 +94,12 @@ object Generator extends Log with PerformanceSupport {
     val paths = sourcePaths.split(",")
     for (path <- paths) {
       if (StringUtils.containsIgnoreCase(path, "cucumber:") || StringUtils.containsIgnoreCase(path, "specflow:")) {
-        val parts = path.split(":")
-        if (parts.length > 1) {
-          log.info("Cuke path: " + parts(1))
-          return parts(1)
+        val pattern = "(cucumber:|specflow:)(.*)".r
+        val pattern(identifier,cukePath) = path
+
+        if(StringUtils.isNotBlank(cukePath)){
+          log.info("Cuke path: " + cukePath)
+          return cukePath
         }else{
           throw DonutException("Please provide the source directory path.")
         }
