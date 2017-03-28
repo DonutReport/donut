@@ -33,8 +33,10 @@ case class Scenario(description: Option[String],
                     screenshotsSize: Int = 0,
                     screenshotIDs: String = "",
                     screenshotStyle: String = "display:none",
+                    `type`: Option[String],
                     before: List[BeforeHook] = List.empty,
-                    after: List[AfterHook] = List.empty)
+                    after: List[AfterHook] = List.empty
+                    )
 
 case class Feature(keyword: String,
                    name: String,
@@ -51,7 +53,18 @@ case class Feature(keyword: String,
                    engine: String,
                    index:String = "0") {
 
-  val scenariosExcludeBackground = {
+  val unitTestType = "unit-test"
+  val dummyFeatureName = "Without feature"
+
+  val scenariosExcludeBackground: List[Scenario] = {
     scenarios.filterNot(e => e.keyword == "Background")
+  }
+
+  val scenariosExcludeBackgroundAndUnitTests: List[Scenario] = {
+    scenarios.filterNot(e => e.keyword == "Background").filterNot(e => e.`type`.getOrElse("") == unitTestType)
+  }
+
+  val unitTests: List[Scenario] = {
+    scenarios.filter(s => s.`type`.getOrElse("") == unitTestType)
   }
 }

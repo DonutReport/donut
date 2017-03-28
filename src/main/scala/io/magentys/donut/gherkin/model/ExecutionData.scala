@@ -12,20 +12,31 @@ case class ExecutionData(timestamp: DateTime,
                          allTagSize: Int,
                          allFeatureMetrics: Metrics,
                          allScenarioMetrics: Metrics, //Without background scenarios counted
+                         allUnitTestMetrics: Metrics,
                          allStepMetrics: Metrics)
 
 object ExecutionData {
 
+
   def apply(features: List[Feature], timestamp: DateTime) = {
     new ExecutionData(timestamp, allScenarios(features), allFailures(features), features.size, allTags(features).size,
-      FeatureMetrics(features), ScenarioMetrics(allScenarios(features)), StepMetrics(allSteps(features)))
+      FeatureMetrics(allFeatures(features)), ScenarioMetrics(allScenarios(features)),UnitTestMetrics(allUnitTests(features)), StepMetrics(scenarioSteps(features)))
   }
 
+  def allFeatures(features: List[Feature]): List[Feature] =
+    features.filterNot(f => f.name == f.dummyFeatureName)
+
   def allScenarios(features: List[Feature]): List[Scenario] =
+    features.flatMap(f => f.scenariosExcludeBackgroundAndUnitTests)
+
+  def allScenariosAndUnitTests(features: List[Feature]): List[Scenario] =
     features.flatMap(f => f.scenariosExcludeBackground)
 
-  def allSteps(features: List[Feature]): List[Step] = {
-    features.flatMap(f => f.scenarios.map(e => e.steps)).flatten
+  def allUnitTests(features: List[Feature]): List[Scenario] =
+    features.flatMap(f => f.unitTests)
+
+  def scenarioSteps(features: List[Feature]): List[Step] = {
+    features.flatMap(f => (f.scenarios diff f.unitTests).map(e => e.steps)).flatten
   }
 
   def allTags(features: List[Feature]): Seq[String] = {
@@ -35,7 +46,7 @@ object ExecutionData {
   }
 
   def allFailures(features: List[Feature]): List[Scenario] =
-    allScenarios(features).filterNot(a => a.status.status) //Failures are without backgrounds here
+    allScenariosAndUnitTests(features).filterNot(a => a.status.status) //Failures are without backgrounds here
 }
 
 

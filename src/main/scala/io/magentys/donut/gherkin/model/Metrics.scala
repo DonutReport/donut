@@ -6,7 +6,8 @@ case class Metrics(total: Int,
                    skipped: Int = 0,
                    pending: Int = 0,
                    undefined: Int = 0,
-                   missing: Int = 0)
+                   missing: Int = 0,
+                   orphaned: Int = 0)
 
 object FeatureMetrics {
   def apply(features: List[Feature]): Metrics = {
@@ -20,6 +21,14 @@ object ScenarioMetrics {
     val passed = scenarios.count(s => s.status.status)
     val failed = scenarios.size - passed
     new Metrics(scenarios.size, passed, failed)
+  }
+}
+
+object UnitTestMetrics {
+  def apply(scenarios: List[Scenario]): Metrics = {
+    val passed = scenarios.count(s => s.status.status)
+    val failed = scenarios.size - passed
+    Metrics(scenarios.size, passed, failed, 0, 0, 0, 0, scenarios.count(s => s.featureName == "Without feature"))
   }
 }
 

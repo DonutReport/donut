@@ -3,24 +3,28 @@ package io.magentys.donut.gherkin.model
 import io.magentys.donut.gherkin.processors.ReportTag
 
 case class ReportConsole(allFeatures: List[Feature],
-                        allTags: List[ReportTag],
-                        totalFeatures: Int,
-                        numberOfPassedFeatures: Int,
-                        numberOfFailedFeatures: Int,
-                        totalScenarios: Int,
-                        numberOfPassedScenarios: Int,
-                        numberOfFailedScenarios: Int,
-                        totalSteps: Int,
-                        numberOfPassedSteps: Int,
-                        numberOfFailedSteps: Int,
-                        numberOfSkippedSteps: Int,
-                        numberOfPendingSteps: Int,
-                        numberOfUndefinedSteps: Int,
-                        duration: String,
-                        buildFailed: Boolean)
+                         allTags: List[ReportTag],
+                         totalFeatures: Int,
+                         numberOfPassedFeatures: Int,
+                         numberOfFailedFeatures: Int,
+                         totalScenarios: Int,
+                         numberOfPassedScenarios: Int,
+                         numberOfFailedScenarios: Int,
+                         numberOfTotalUnitTests: Int,
+                         numberOfPassedUnitTests: Int,
+                         numberOfFailedUnitTests: Int,
+                         numberOfOrphanedUnitTests: Int,
+                         totalSteps: Int,
+                         numberOfPassedSteps: Int,
+                         numberOfFailedSteps: Int,
+                         numberOfSkippedSteps: Int,
+                         numberOfPendingSteps: Int,
+                         numberOfUndefinedSteps: Int,
+                         duration: String,
+                         buildFailed: Boolean)
 
 object ReportConsole {
-  def apply(report:Report): ReportConsole = {
+  def apply(report: Report): ReportConsole = {
     ReportConsole(
       report.featuresPage.features,
       report.tagPage.reportTag,
@@ -30,6 +34,10 @@ object ReportConsole {
       report.dashboardPage.reportDashboard.scenarioMetrics.total,
       report.dashboardPage.reportDashboard.scenarioMetrics.passed,
       report.dashboardPage.reportDashboard.scenarioMetrics.failed,
+      report.dashboardPage.reportDashboard.unitTestMetrics.total,
+      report.dashboardPage.reportDashboard.unitTestMetrics.passed,
+      report.dashboardPage.reportDashboard.unitTestMetrics.failed,
+      report.dashboardPage.reportDashboard.unitTestMetrics.orphaned,
       report.dashboardPage.reportDashboard.stepMetrics.total,
       report.dashboardPage.reportDashboard.stepMetrics.passed,
       report.dashboardPage.reportDashboard.stepMetrics.failed,
