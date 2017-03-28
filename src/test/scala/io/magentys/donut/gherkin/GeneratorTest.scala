@@ -47,10 +47,16 @@ class GeneratorTest extends FlatSpec with Matchers {
 
   behavior of "Generator Units"
 
-  it should "return correct cuke source path if the cucumber source paths format is correct" in {
+  it should "return correct cuke source path if the cucumber source paths format is correct and path is of *nix format" in {
     val sourcePaths = "cucumber:/my/path/cucumber-reports,/my/path/nunit-reports"
     val bddSourcePath = Generator.getCukePath(sourcePaths)
     bddSourcePath shouldBe "/my/path/cucumber-reports"
+  }
+
+  it should "return correct cuke source path if the cucumber source paths format is correct and path is of windows format" in {
+    val sourcePaths = "cucumber:C:\\my\\path\\cucumber-reports,C:\\my\\path\\nunit-reports"
+    val bddSourcePath = Generator.getCukePath(sourcePaths)
+    bddSourcePath shouldBe "C:\\my\\path\\cucumber-reports"
   }
 
   it should "return correct cuke source path if the specflow source paths format is correct" in {
@@ -83,11 +89,18 @@ class GeneratorTest extends FlatSpec with Matchers {
     assert(exception.mgs === "Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
   }
 
-  it should "get non cuke path if it doesn't have 'cucumber:'" in {
+  it should "get non cuke path if it doesn't have 'cucumber:' and the path format is *nix" in {
     val sourcePaths = "cucumber:/my/path/cucumber-reports,/cucumber-and-unit/path/nunit-reports"
     val nonCukePaths = Generator.getNonCukePaths(sourcePaths)
     nonCukePaths.size shouldBe 1
     nonCukePaths.head shouldBe "/cucumber-and-unit/path/nunit-reports"
+  }
+
+  it should "get non cuke path if it doesn't have 'cucumber:' and the path format is windows" in {
+    val sourcePaths = "cucumber:C:\\my\\path\\cucumber-reports,C:\\cucumber-and-unit\\path\\nunit-reports"
+    val nonCukePaths = Generator.getNonCukePaths(sourcePaths)
+    nonCukePaths.size shouldBe 1
+    nonCukePaths.head shouldBe "C:\\cucumber-and-unit\\path\\nunit-reports"
   }
 
   it should "get non cuke path if it doesn't have 'specflow:'" in {
