@@ -53,18 +53,21 @@ case class Feature(keyword: String,
                    engine: String,
                    index:String = "0") {
 
-  val unitTestType = "unit-test"
-  val dummyFeatureName = "Without feature"
-
   val scenariosExcludeBackground: List[Scenario] = {
-    scenarios.filterNot(e => e.keyword == "Background")
+    scenarios.filterNot(e => e.keyword == Feature.BackgroundKeyword)
   }
 
   val scenariosExcludeBackgroundAndUnitTests: List[Scenario] = {
-    scenarios.filterNot(e => e.keyword == "Background").filterNot(e => e.`type`.getOrElse("") == unitTestType)
+    scenarios.filterNot(e => e.keyword == Feature.BackgroundKeyword).filterNot(e => e.`type`.getOrElse("") == Feature.UnitTestType)
   }
 
   val unitTests: List[Scenario] = {
-    scenarios.filter(s => s.`type`.getOrElse("") == unitTestType)
+    scenarios.filter(s => s.`type`.getOrElse("") == Feature.UnitTestType)
   }
+}
+
+object Feature{
+  val UnitTestType = "unit-test" // Expected type for a unit test
+  val DummyFeatureName = "Without feature" // Used to decide if a unit test is orphaned
+  val BackgroundKeyword = "Background"
 }

@@ -24,7 +24,7 @@ object ExecutionData {
   }
 
   def allFeatures(features: List[Feature]): List[Feature] =
-    features.filterNot(f => f.name == f.dummyFeatureName)
+    features.filterNot(f => f.name == Feature.DummyFeatureName)
 
   def allScenarios(features: List[Feature]): List[Scenario] =
     features.flatMap(f => f.scenariosExcludeBackgroundAndUnitTests)

@@ -66,7 +66,7 @@
         .modal-lg{width:90%}
         .modal-title{padding-top: 5px;}
         .white{color:#fff}
-        .chart{min-width:300px;height:250px;max-width:600px;margin:0 auto}
+        .chart{min-width:250px;height:250px;max-width:600px;margin:0 auto}
         .dashboard-steps {border-bottom: 1px #454545 solid; padding:8px}
         .steps{font-size:18px}
         .steps-icon-total {color:darkgrey;}
@@ -165,7 +165,11 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
+            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                <div class="col-md-3 dashboard-panel">
+            {{else}}
                 <div class="col-md-4 dashboard-panel">
+            {{/if}}
                     <h2>Features</h2>
                     <div class="row">
                         <div class="col-md-3 stat-number">
@@ -183,8 +187,11 @@
                         <br>
                     </div>
                 </div>
+            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                <div class="col-md-3 dashboard-panel">
+            {{else}}
                 <div class="col-md-4 dashboard-panel">
-
+            {{/if}}
                     <h2>Scenarios</h2>
                     <div class="row">
                         <div class="col-md-3 stat-number">
@@ -202,8 +209,32 @@
                         <br>
                     </div>
                 </div>
+                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                <div class="col-md-3 dashboard-panel">
+                    <h2>Unit Tests</h2>
+                    <div class="row">
+                        <div class="col-md-3 stat-number">
+                            {{dashboardPage.reportDashboard.unitTestMetrics.total}}
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.unitTestsPassRate}}<span class="stat-percentage">%</span></span>
+                            <br>
+                            <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.unitTestsFailRate}}<span class="stat-percentage">%</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div id="unit-tests-donut-chart" class="chart"></div>
+                        <br>
+                    </div>
+                </div>
+                {{/if}}
 
-                <div class="col-md-3" >
+            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                <div class="col-md-2">
+            {{else}}
+                <div class="col-md-3">
+            {{/if}}
                     <div class="row dashboard-panel-top">
                         <div class="col-md-12">
                             <h2>Steps</h2>
@@ -229,9 +260,10 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
                     <h4>Started: <span class="white">{{dashboardPage.reportDashboard.executionDateTime}}</span></h4>
                     <h4>Duration: <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
                     <h4>
@@ -243,6 +275,14 @@
                             | {{@key}}: <span class="white">{{this}}</span>
                         {{/each}}
                     </h4>
+                </div>
+
+                <div class="col-md-3" >
+                    {{#if dashboardPage.reportDashboard.unitTestMetrics.hasOrphanedUnitTests}}
+                     <h4>Orphaned unit tests:- Total: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphaned}}</span></h4>
+                     <h4>Passed: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphanedPassed}}</span></h4>
+                     <h4>Failed: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphanedFailed}}</span></h4>
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -340,7 +380,7 @@
 
                                 <div class="row">
                                     {{#htmlFeatureTags}}
-                                     <span class="tagBadge">
+                                    <span class="tagBadge">
                                           <a data-dismiss="modal" data-toggle="modal" data-target="#tag-{{.}}" href="#tag-{{.}}" class="tagBadgeStyle">
                                               <span class="sub_icon glyphicon glyphicon-tag"></span>{{.}}
                                           </a>
@@ -408,8 +448,8 @@
             </table>
 
             {{#tagPage.reportTag}}
-                <!-- Modal tag -->
-                <div class="modal" id="tag-{{tag}}" tabindex="-1" role="dialog" aria-labelledby="tagLabel-{{tag}}">
+            <!-- Modal tag -->
+            <div class="modal" id="tag-{{tag}}" tabindex="-1" role="dialog" aria-labelledby="tagLabel-{{tag}}">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -481,7 +521,6 @@
 <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 
 <script>
-
    function getClass(status) { if (status == 'passed') { return "success" } else { return "danger" } }
 
     function tableRawColorStatus() {
@@ -684,6 +723,51 @@
                 colorByPoint: true,
                 data: [{name: "Passed: " + {{dashboardPage.reportDashboard.scenarioMetrics.passed}}, y: {{dashboardPage.reportDashboard.scenarioMetrics.passed}}, color: '#5cb85c'},
                        {name: "Failed: " + {{dashboardPage.reportDashboard.scenarioMetrics.failed}}, y: {{dashboardPage.reportDashboard.scenarioMetrics.failed}}, color: '#d9534f', sliced: true, selected: true, url: '#failuresPage'}]
+            }]
+        });
+
+        $('#unit-tests-donut-chart').highcharts({
+            chart: {
+                plotBackgroundColor: 'transparent',
+                plotBorderWidth: 0,
+                plotShadow: false,
+                type: 'pie',
+                margin: [0, 0, 0, 0],
+                backgroundColor: "#2b2b2b"
+            },
+            title: { text: '' },
+            tooltip: { pointFormat: '<b>{point.percentage:.1f}</b>' },
+            credits: { enabled: false },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        color: 'white',
+                        style: {
+                            fontFamily: '"Open Sans", sans-serif',
+                            fontSize: '15px',
+                            color: '#fff',
+                            textShadow: false
+                        }
+                    },
+                    showInLegend: false,
+                    point: {
+                        events:{
+                            click: function() {
+                                 if(this.options.name.startsWith('Failed')) {
+                                    $('html, body').stop().animate({ scrollTop: $(this.options.url).offset().top }, 1500, 'easeInOutExpo');
+                                    event.preventDefault();
+                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                innerSize: '60%',
+                colorByPoint: true,
+                data: [{name: "Passed: " + {{dashboardPage.reportDashboard.unitTestMetrics.passed}}, y: {{dashboardPage.reportDashboard.unitTestMetrics.passed}}, color: '#5cb85c'},
+                       {name: "Failed: " + {{dashboardPage.reportDashboard.unitTestMetrics.failed}}, y: {{dashboardPage.reportDashboard.unitTestMetrics.failed}}, color: '#d9534f', sliced: true, selected: true, url: '#failuresPage'}]
             }]
         });
 
