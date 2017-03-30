@@ -40,7 +40,7 @@ case class Scenario(description: Option[String],
 
 case class Feature(keyword: String,
                    name: String,
-                   description: Option[String],
+                   description: String,
                    uri: String,
                    scenarios: List[Scenario],
                    tags: List[String],

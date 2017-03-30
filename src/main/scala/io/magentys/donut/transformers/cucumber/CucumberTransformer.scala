@@ -66,7 +66,7 @@ object CucumberTransformer extends Log {
     DonutFeature(
       feature.keyword,
       feature.name,
-      feature.description,
+      feature.description.getOrElse(""),
       feature.uri,
       scenarios,
       tags,

@@ -122,6 +122,7 @@ private[processors] object HTMLProcessor {
        |          <span class="durationBadge pull-right">${element.duration.durationStr} </span>
        |        </p>
        |        <div $style id="ul-$parentType-$index">
+       |          ${elementDescription(element)}
        |          <ul class="list-group">
        |            ${stepList(element.steps)}
        |          </ul>
@@ -132,6 +133,15 @@ private[processors] object HTMLProcessor {
        |   </div>
        | </div>
      """.stripMargin
+
+  }
+
+  def elementDescription(element: Scenario) = {
+    val description = element.description.get
+
+    if(!description.isEmpty)
+      s"""<p>${description}</p>""".mkString
+    else """""".mkString
 
   }
 
