@@ -140,9 +140,8 @@ private[processors] object HTMLProcessor {
     val description = element.description.get
 
     if(!description.isEmpty)
-      s"""<p>${description}</p>""".mkString
+      s"""<p class="wrapped-text" style="white-space: pre-wrap;">${description}</p>""".mkString
     else """""".mkString
-
   }
 
   def backgroundForScenario(elementOpt: Option[Scenario], index: String, parentType: String) = {
