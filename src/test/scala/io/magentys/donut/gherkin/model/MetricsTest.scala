@@ -7,13 +7,13 @@ class MetricsTest extends FlatSpec with Matchers {
 
   behavior of "Metrics Calculator"
 
-  val features = DonutTestData.features_sample_3.right.get;
+  val features = DonutTestData.features_sample_3.right.get
 
-  it should "calculate feautres metrics" in {
+  it should "calculate features metrics" in {
     FeatureMetrics(features) shouldBe Metrics(2, 1, 1, 0, 0, 0, 0)
   }
 
-  it should "calculate feautres metrics if no Features" in {
+  it should "calculate features metrics if no Features" in {
     FeatureMetrics(List.empty) shouldBe Metrics(0, 0, 0, 0, 0, 0, 0)
   }
 
