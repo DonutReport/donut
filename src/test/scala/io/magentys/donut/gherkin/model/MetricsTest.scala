@@ -7,18 +7,18 @@ class MetricsTest extends FlatSpec with Matchers {
 
   behavior of "Metrics Calculator"
 
-  val features = DonutTestData.features_sample_3.right.get;
+  val features = DonutTestData.features_sample_3.right.get
 
-  it should "calculate feautres metrics" in {
+  it should "calculate features metrics" in {
     FeatureMetrics(features) shouldBe Metrics(2, 1, 1, 0, 0, 0, 0)
   }
 
-  it should "calculate feautres metrics if no Features" in {
+  it should "calculate features metrics if no Features" in {
     FeatureMetrics(List.empty) shouldBe Metrics(0, 0, 0, 0, 0, 0, 0)
   }
 
   it should "calculate scenario metrics" in {
-    ScenarioMetrics(features.flatMap(f => f.scenariosExcludeBackground)) shouldBe Metrics(2, 1, 1, 0, 0, 0, 0)
+    ScenarioMetrics(features.flatMap(f => f.scenariosExcludeBackgroundAndUnitTests)) shouldBe Metrics(2, 1, 1, 0, 0, 0, 0)
   }
 
   it should "calculate scenario metrics if no scenarios" in {
@@ -26,7 +26,7 @@ class MetricsTest extends FlatSpec with Matchers {
   }
 
   it should "calculate step metrics" in {
-    val steps = features.flatMap(f => f.scenariosExcludeBackground).flatMap(s => s.steps)
+    val steps = features.flatMap(f => f.scenariosExcludeBackgroundAndUnitTests).flatMap(s => s.steps)
     StepMetrics(steps) shouldBe Metrics(4, 3, 1, 0, 0, 0, 0)
   }
 

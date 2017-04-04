@@ -27,7 +27,7 @@ object TagProcessor {
   }
 
   private[processors] def createAllReportTags(features: List[Feature]): List[ReportTag] = {
-    val scenarios: List[Scenario] = features.flatMap(f => addFeatureTagsToScenarios(f.scenariosExcludeBackground, f.tags))
+    val scenarios: List[Scenario] = features.flatMap(f => addFeatureTagsToScenarios(f.scenariosExcludeBackgroundAndUnitTests, f.tags))
     groupElementsByTag(scenarios)
       .map { case (tag, scenarioList) => new ReportTag(tag, scenarioList, ScenarioMetrics(scenarioList), tagStatus(scenarioList)) }.toList
       .zipWithIndex.map { case (t, i) => t.copy(htmlElements = HTMLTagsProcessor(t.scenarios, i.toString.trim)) }

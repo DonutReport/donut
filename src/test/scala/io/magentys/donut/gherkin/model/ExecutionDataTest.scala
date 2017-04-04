@@ -8,7 +8,7 @@ class ExecutionDataTest  extends FlatSpec with Matchers {
 
   behavior of "ExecutionData"
 
-  val features = DonutTestData.features_sample_3.right.get;
+  val features = DonutTestData.features_sample_3.right.get
 
   val timestamp = DateTime.now
   val executionData = ExecutionData(features, timestamp)
@@ -27,7 +27,7 @@ class ExecutionDataTest  extends FlatSpec with Matchers {
       "I choose to click button \"b1\" with offset (110,0)",
       "I should see \"You clicked button: B2\"")
 
-    ExecutionData.allSteps(features).map(f => f.name) shouldBe expectedSteps
+    ExecutionData.scenarioSteps(features).map(f => f.name) shouldBe expectedSteps
   }
 
   it should "give the combined tags for an execution" in {

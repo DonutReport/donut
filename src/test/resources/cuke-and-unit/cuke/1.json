@@ -5,7 +5,7 @@
       {
         "line": 12,
         "name": "Add two numbers: 1 and 2",
-        "description": "",
+        "description": "Meets rule 3. Numbers should be added and result should be 3.",
         "id": "add-numbers;add-two-numbers:-1-and-2",
         "type": "scenario",
         "keyword": "Scenario",

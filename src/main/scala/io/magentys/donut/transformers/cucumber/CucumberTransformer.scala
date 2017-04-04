@@ -1,4 +1,5 @@
 package io.magentys.donut.transformers.cucumber
+
 import io.magentys.donut.gherkin.model._
 import io.magentys.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, Step => DonutStep}
 import io.magentys.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcessor}
@@ -7,10 +8,11 @@ import org.json4s._
 
 import scala.collection.mutable.ListBuffer
 import scala.util.{Either, Try}
+
 object CucumberTransformer extends Log {
 
-  def transform(json: List[JValue],donutFeatures: ListBuffer[DonutFeature], conf: StatusConfiguration): Either[String, ListBuffer[DonutFeature]] = {
-    Try(mapToDonutFeatures(loadCukeFeatures(json),donutFeatures, conf)).toEither(_.getMessage)
+  def transform(json: List[JValue], donutFeatures: ListBuffer[DonutFeature], conf: StatusConfiguration): Either[String, ListBuffer[DonutFeature]] = {
+    Try(mapToDonutFeatures(loadCukeFeatures(json), donutFeatures, conf)).toEither(_.getMessage)
   }
 
   private[cucumber] def loadCukeFeatures(json: List[JValue]) = {
@@ -28,7 +30,7 @@ object CucumberTransformer extends Log {
         donutFeatures(index) = addScenariosToFeature(feature, donutFeature, statusConfiguration)
 
       } else {
-        val index = if(donutFeatures.nonEmpty) donutFeatures.last.index.toInt + 1 else 10000 + i
+        val index = if (donutFeatures.nonEmpty) donutFeatures.last.index.toInt + 1 else 10000 + i
         donutFeatures += mapToDonutFeature(feature, index.toString.trim, statusConfiguration)
         i += 1
       }
@@ -55,7 +57,7 @@ object CucumberTransformer extends Log {
     )
   }
 
-  private[cucumber] def mapToDonutFeature(feature: Feature, featureIndex: String, statusConfiguration: StatusConfiguration) : DonutFeature = {
+  private[cucumber] def mapToDonutFeature(feature: Feature, featureIndex: String, statusConfiguration: StatusConfiguration): DonutFeature = {
 
     val scenarios: List[Scenario] = mapToDonutScenarios(feature.elements, feature.name, featureIndex, statusConfiguration)
     val scenariosExcludeBackground = scenarios.filterNot(e => e.keyword == "Background")
@@ -64,7 +66,7 @@ object CucumberTransformer extends Log {
     DonutFeature(
       feature.keyword,
       feature.name,
-      feature.description,
+      feature.description.getOrElse(""),
       feature.uri,
       scenarios,
       tags,
@@ -109,7 +111,8 @@ object CucumberTransformer extends Log {
       backgroundElement,
       screenshots.screenshotsSize,
       screenshots.screenshotsIds,
-      screenshots.screenshotsStyle)
+      screenshots.screenshotsStyle,
+      e.`type`)
   }
 
   private[cucumber] def mapToDonutStep(s: Step, statusConfiguration: StatusConfiguration) = {

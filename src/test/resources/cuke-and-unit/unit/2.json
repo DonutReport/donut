@@ -5,7 +5,7 @@
       {
         "line": 19,
         "name": "Add four numbers: 1,2,5,10",
-        "description": "",
+        "description": "Meets rule 4. \nNumbers should be added and result should be 18.",
         "id": "add-numbers;add-four-numbers:-1,2,5,10",
         "type": "unit-test",
         "keyword": "Unit Test",
