@@ -4,6 +4,7 @@ import org.joda.time.format.DateTimeFormat
 
 case class ExecutionDashboard(totalFeatures: Int,
                               featureMetrics: Metrics,
+                              allTestsMetrics: Metrics,
                               scenarioMetrics: Metrics,
                               unitTestMetrics: Metrics,
                               stepMetrics: Metrics,
@@ -22,12 +23,14 @@ object ExecutionDashboard {
   def apply(implicit features: List[Feature], executionData: ExecutionData): ExecutionDashboard = {
 
     val featuresMetrics = executionData.allFeatureMetrics
+    val allTestsMetrics = executionData.allTestsMetrics
     val scenarioMetrics = executionData.allScenarioMetrics
     val unitTestMetrics = executionData.allUnitTestMetrics
 
     ExecutionDashboard(
       featuresMetrics.total,
       featuresMetrics,
+      allTestsMetrics,
       scenarioMetrics,
       unitTestMetrics,
       executionData.allStepMetrics,
