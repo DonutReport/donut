@@ -28,6 +28,14 @@ object ScenarioMetrics {
   }
 }
 
+object AllTestsMetrics {
+  def apply(scenarios: List[Scenario]): Metrics = {
+    val passed = scenarios.count(s => s.status.status)
+    val failed = scenarios.size - passed
+    Metrics(scenarios.size, passed, failed)
+  }
+}
+
 object UnitTestMetrics {
   def apply(scenarios: List[Scenario]): Metrics = {
 
