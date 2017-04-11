@@ -7,7 +7,7 @@
 Donut is an open-source framework by the [MagenTys](https://magentys.io) team which is designed to produce clear and concise test execution reports over your unit, integration and acceptance tests.
 Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc).
 
-Live Demos => [ Only Scenarios ](http://magentys.github.io/donut/demo-only-scenarios.html) [ Scenarios and Unit Tests ](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html) [ Scenarios and Orphaned Unit Tests ](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)
+Live Demos => [Only Scenarios](http://magentys.github.io/donut/demo-only-scenarios.html) &nbsp [Scenarios and Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html) &nbsp [Scenarios and Orphaned Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)
 
 ## Quickstart
 You can either use Donut directly or check out the available plugins: 
