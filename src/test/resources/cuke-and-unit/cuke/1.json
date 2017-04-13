@@ -67,11 +67,11 @@
     "description": "\nIn order to calculate,\nAs a user I want to add two or more numbers\n\nRules:\n1. Addition of two or more numbers should result in the total\n2. If less than 2 numbers are provided, an error message should be displayed",
     "id": "add-numbers",
     "keyword": "Feature",
-    "uri": "/Users/Amit/git-repositories/allure-reporting-demo/src/test/resources/features/allure_reporting_demo.feature",
+    "uri": "/my/path/demo.feature",
     "tags": [
       {
         "line": 1,
-        "name": "@amit"
+        "name": "@demo"
       }
     ]
   }
