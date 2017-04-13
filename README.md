@@ -25,6 +25,8 @@ wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.5/donut-0.0.5-one-jar.j
 ```
 or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/0.0.5/donut-0.0.5-one-jar.jar)
 
+**The latest stable version 1.0 will be released soon on maven. In the meantime, you can download the source code, and build it with the command ```sbt one-jar```. This would generate the jar file in target folder.**
+
 ### run from command line
 
 ```
