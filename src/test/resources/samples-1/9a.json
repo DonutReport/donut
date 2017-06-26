@@ -1,0 +1,159 @@
+[
+  {
+    "uri": "JoinStrings.feature",
+    "keyword": "Feature",
+    "id": "JoinStrings.feature;outline",
+    "line": 1,
+    "name": "Examples Tables",
+    "description": "",
+    "elements": [
+      {
+        "keyword": "Scenario Outline",
+        "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1",
+        "line": 3,
+        "name": "Joining <string 1> and <string 2> should yield <result>",
+        "description": "Substituting..\nstring 1 = <string 1>\nstring 2 = <string 2>\nresult = <result>",
+        "type": "scenario_outline",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "string 1 is \"<string 1>\"",
+            "line": 10,
+            "result": {
+              "status": "passed",
+              "duration": 79377973
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "string 2 is \"<string 2>\"",
+            "line": 11,
+            "result": {
+              "status": "passed",
+              "duration": 3216889
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I join the two strings",
+            "line": 12,
+            "result": {
+              "status": "passed",
+              "duration": 85647057
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "the result should be \"<result>\"",
+            "line": 13,
+            "result": {
+              "status": "passed",
+              "duration": 10242073
+            }
+          }
+        ],
+        "examples": [
+           {
+             "keyword": "Examples",
+             "name": "Compound words",
+             "line": 15,
+             "description": "",
+             "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;compound-words;1",
+             "rows": [
+               {
+                 "cells": [
+                   "string 1",
+                   "string 2",
+                   "result"
+                 ],
+                 "line": 17,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;compound-words;1;1"
+               },
+               {
+                 "cells": [
+                   "basket",
+                   "ball",
+                   "basketball"
+                 ],
+                 "line": 18,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;compound-words;1;2"
+               },
+               {
+                 "cells": [
+                   "any",
+                   "thing",
+                   "anything"
+                 ],
+                 "line": 19,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;compound-words;1;3"
+               }
+             ]
+           },
+           {
+             "keyword": "Examples",
+             "name": "Nonsensical compound words",
+             "line": 21,
+             "description": "Words that don't make any sense at all\n(for testing multiple examples)",
+             "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;nonsensical-compound-words;2",
+             "rows": [
+               {
+                 "cells": [
+                   "string 1",
+                   "string 2",
+                   "result"
+                 ],
+                 "line": 26,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;nonsensical-compound-words;2;1"
+               },
+               {
+                 "cells": [
+                   "howdy",
+                   "doo",
+                   "howdydoo"
+                 ],
+                 "line": 27,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;nonsensical-compound-words;2;2"
+               },
+               {
+                 "cells": [
+                   "yep",
+                   "ok",
+                   "yepok"
+                 ],
+                 "line": 28,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;nonsensical-compound-words;2;3"
+               }
+             ]
+           },
+           {
+             "keyword": "Examples",
+             "name": "",
+             "line": 30,
+             "description": "",
+             "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;;3",
+             "rows": [
+               {
+                 "cells": [
+                   "string 1",
+                   "string 2",
+                   "result"
+                 ],
+                 "line": 32,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;;3;1"
+               },
+               {
+                 "cells": [
+                   "ding",
+                   "dong",
+                   "dingdong"
+                 ],
+                 "line": 33,
+                 "id": "scenario-outline;joining-<string-1>-and-<string-2>-should-yield-<result>;1;;3;2"
+               }
+             ]
+           }
+        ]
+      }
+    ]
+  }
+]

@@ -18,6 +18,13 @@ case class Row(comments: List[Comment], cells: List[String], line: Int)
 
 case class Embedding(mime_type: String = "", data: String = "", id: Int = 0)
 
+case class Examples(id: String,
+                    name: String,
+                    keyword: String,
+                    line: Int,
+                    description: Option[String],
+                    rows: List[Row])
+
 case class Step(name: String,
                 keyword: String,
                 line: Int,
@@ -37,7 +44,8 @@ case class Element(id: String = "",
                    before: List[BeforeHook],
                    after: List[AfterHook],
                    tags: List[Tag],
-                   steps: List[Step])
+                   steps: List[Step],
+                   examples: List[Examples])
 
 case class Feature(keyword: String,
                    name: String,

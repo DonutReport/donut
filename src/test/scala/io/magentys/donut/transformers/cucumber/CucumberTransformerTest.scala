@@ -23,7 +23,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     features.fold(
       e => fail(e),
       f => {
-        f.size shouldBe 9
+        f.size shouldBe 10
         f.head.name shouldBe "Google Journey Performance"
         f(1).name shouldBe "Google search"
         f(2).name shouldBe "Offset Actions"
@@ -33,6 +33,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
         f(6).name shouldBe "Select"
         f(7).name shouldBe "Switch to window"
         f(8).name shouldBe "Tables"
+        f(9).name shouldBe "Examples Tables"
       }
     )
   }

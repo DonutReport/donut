@@ -125,6 +125,7 @@ private[processors] object HTMLProcessor {
        |          ${elementDescription(element)}
        |          <ul class="list-group">
        |            ${stepList(element.steps)}
+       |            ${examplesList(element.examples)}
        |          </ul>
        |          $output
        |        </div>
@@ -137,8 +138,10 @@ private[processors] object HTMLProcessor {
   }
 
   def elementDescription(element: Scenario) = {
-    val description = element.description.get
+    description(element.description.get)
+  }
 
+  def description(description: String) = {
     if(!description.isEmpty)
       s"""<p class="wrapped-text" style="white-space: pre-wrap;">${description}</p>""".mkString
     else """""".mkString
@@ -201,13 +204,13 @@ private[processors] object HTMLProcessor {
          |  <span class="durationBadge pull-right"> ${step.duration.durationStr} </span>
          |  ${statusIcon(step.status.statusStr)} <b> ${step.keyword} </b>  <span class="wrapped-text" style="white-space: pre-wrap;">${step.name}</span>
          |  $error
-         |  ${stepTable(step.rows)}
+         |  ${dataTable(step.rows)}
          |</li>
      """.stripMargin
     }).mkString("")
   }
 
-  def stepTable(rows: List[Row]): String = {
+  def dataTable(rows: List[Row]): String = {
     if (rows.nonEmpty)
       "<table class=\"step-table\">" +
         rows.map(row => {
@@ -215,6 +218,26 @@ private[processors] object HTMLProcessor {
           "<tr>" + cell + "</tr>"
         }).mkString +
         "</table>"
+    else ""
+  }
+
+  def examplesList(examples: List[Examples]): String = {
+    if (examples.nonEmpty)
+      s"""
+      |<div class="panel-body">${examples.map(exs => { s"""
+      |  <div class="row">
+      |    <div class="panel panel-default">
+      |      <div class="panel-body">
+      |        <p class="examples">
+      |          <b>${exs.keyword}: </b>${exs.name}
+      |          <div margin-left:15px;">${description(exs.description.get)}</div>
+      |          ${dataTable(exs.rows)}
+      |        </p>
+      |      </div>
+      |    </div>
+      |  </div>""".stripMargin}).mkString}
+      |</div>
+    """.stripMargin
     else ""
   }
 
