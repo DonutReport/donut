@@ -14,7 +14,7 @@ object TemplateEngine {
     val inputStream = getClass.getResourceAsStream(templatePath)
     val template = scala.io.Source.fromInputStream(inputStream).mkString
     val hbs: Handlebars[Any] = Handlebars(template)
-    val rep = SpecialCharHandler(hbs(report))
+    val rep = hbs(report)
     Renderer(rep)
   }
 }
@@ -38,31 +38,11 @@ case class Renderer(boundTemplate: String) extends Log {
 
 object SpecialCharHandler {
 
-  def apply(htmlReport: String) = {
-    val report = unescapeReport(htmlReport)
-    escapeErrorMessages(report)
+  def escape(htmlReport: String) = {
+    htmlReport
+      .replace(">", "&gt;")
+      .replace("<", "&lt;")
   }
 
-  def unescapeReport(htmlReport: String) = {
-    htmlReport
-      .replace("&quot;", "\"")
-      .replace("&amp;", "&")
-      .replace("&gt;", ">")
-      .replace("&lt;", "<")
-  }
-
-  //We capture the error messages that might contain html code so we can escape it
-  def escapeErrorMessages(htmlReport: String) = {
-    htmlReport
-      .split("<code>")
-      .map(htmlSnip => {
-        if (!htmlSnip.contains("</code>")) htmlSnip
-        else {
-          val codeSnip = htmlSnip.split("</code>")
-          val escapedErrorMsg = codeSnip.head.replace(">", "&gt;").replace("<", "&lt;")
-          escapedErrorMsg + codeSnip.tail.head
-        }
-      }).mkString
-  }
 }
 

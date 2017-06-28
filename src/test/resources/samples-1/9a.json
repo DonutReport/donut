@@ -5,7 +5,7 @@
     "id": "JoinStrings.feature;outline",
     "line": 1,
     "name": "Examples Tables",
-    "description": "",
+    "description": "Non expanded scenario outline with multiple examples tables",
     "elements": [
       {
         "keyword": "Scenario Outline",

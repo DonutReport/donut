@@ -392,7 +392,7 @@
                                     <b>Description:</b>
                                     <p class="wrapped-text" style="white-space: pre-wrap;">{{description}}</p>
                                 </div>
-                                {{htmlElements}}
+                                {{{htmlElements}}}
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -460,7 +460,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
-                                {{htmlElements}}
+                                {{{htmlElements}}}
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -483,7 +483,7 @@
                 <a id="toggleFailuresButton" href="" onclick="toggleAllFailures(event)" class="btn btn-default btn-xs hide">toggle all <span class="glyphicon glyphicon-menu-down"></span></a>
             </h3>
             <br>
-            {{failuresPage.htmlElements}}
+            {{{failuresPage.htmlElements}}}
         </div>
     </div>
     <input type="text" value="{{failuresPage.totalFailures}}" id="failuresSize" hidden>
@@ -612,7 +612,7 @@
     /* CHARTING FUNCTIONS */
 
     // Data
-    var data = {{tagPage.chart}}
+    var data = {{{tagPage.chart}}}
 
     function getCategoriesStackChart()  {
         var i;
@@ -849,7 +849,7 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
-var allImages = {{allImages}}
+var allImages = {{{allImages}}}
 
 
 </script>

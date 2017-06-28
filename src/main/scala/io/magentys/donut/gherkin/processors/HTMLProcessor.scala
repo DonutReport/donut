@@ -1,6 +1,7 @@
 package io.magentys.donut.gherkin.processors
 
 import io.magentys.donut.gherkin.model._
+import io.magentys.donut.template.SpecialCharHandler.escape
 
 import scala.collection.mutable.ListBuffer
 
@@ -115,7 +116,7 @@ private[processors] object HTMLProcessor {
        |        <p>${elementTags(element.tags)}</p>
        |        $backgroundHtml
        |        <p class="scenario">
-       |          <b>$icon </b>${element.name}
+       |          <b>$icon </b>${escape(element.name)}
        |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick="toggleScenario('ul-$parentType-$index', event)">
        |            <span class="glyphicon glyphicon-menu-down"></span>
        |          </a>
@@ -143,7 +144,7 @@ private[processors] object HTMLProcessor {
 
   def description(description: String) = {
     if(!description.isEmpty)
-      s"""<p class="wrapped-text" style="white-space: pre-wrap;">${description}</p>""".mkString
+      s"""<p class="wrapped-text" style="white-space: pre-wrap;">${escape(description)}</p>""".mkString
     else """""".mkString
   }
 
@@ -157,7 +158,7 @@ private[processors] object HTMLProcessor {
         val screenshots = scenariosScreenshots(index, element.screenshotStyle, element.screenshotIDs, element.screenshotsSize, parentType)
         s"""
            |        <p class="scenario">
-           |          <b>$icon ${element.keyword} </b>${element.name}
+           |          <b>$icon ${element.keyword} </b>${escape(element.name)}
            |          <a href="#" class="btn btn-default btn-xs pull-right toggle-button" onclick="toggleScenario('ul-$parentType-$index', event)">
            |            <span class="glyphicon glyphicon-menu-down"></span>
            |          </a>
@@ -167,7 +168,7 @@ private[processors] object HTMLProcessor {
            |          <ul class="list-group">
            |            ${stepList(element.steps)}
            |          </ul>
-           |          $output
+           |          ${escape(output)}
            |        </div>
            |        $screenshots
      """.stripMargin
@@ -188,7 +189,7 @@ private[processors] object HTMLProcessor {
     if (step.error_message != "")
       s"""
          |<div style="white-space: pre-wrap;margin-left:15px;">
-         | <code> ${step.error_message} </code>
+         | ${escape(step.error_message)}
          |</div>
       """.stripMargin
     else
@@ -202,7 +203,7 @@ private[processors] object HTMLProcessor {
       s"""
          |<li class="list-group-item step ${step.status.statusStr}">
          |  <span class="durationBadge pull-right"> ${step.duration.durationStr} </span>
-         |  ${statusIcon(step.status.statusStr)} <b> ${step.keyword} </b>  <span class="wrapped-text" style="white-space: pre-wrap;">${step.name}</span>
+         |  ${statusIcon(step.status.statusStr)} <b> ${step.keyword} </b>  <span class="wrapped-text" style="white-space: pre-wrap;">${escape(step.name)}</span>
          |  $error
          |  ${dataTable(step.rows)}
          |</li>
@@ -214,7 +215,7 @@ private[processors] object HTMLProcessor {
     if (rows.nonEmpty)
       "<table class=\"step-table\">" +
         rows.map(row => {
-          val cell = if (row.cells.nonEmpty) row.cells.map(c => s"""<td class="step-table-cell">""" + c.mkString + """</td>""").mkString else ""
+          val cell = if (row.cells.nonEmpty) row.cells.map(c => s"""<td class="step-table-cell">""" + escape(c.mkString) + """</td>""").mkString else ""
           "<tr>" + cell + "</tr>"
         }).mkString +
         "</table>"
@@ -229,7 +230,7 @@ private[processors] object HTMLProcessor {
       |    <div class="panel panel-default">
       |      <div class="panel-body">
       |        <p class="examples">
-      |          <b>${exs.keyword}: </b>${exs.name}
+      |          <b>${exs.keyword}: </b>${escape(exs.name)}
       |          <div margin-left:15px;">${description(exs.description.get)}</div>
       |          ${dataTable(exs.rows)}
       |        </p>
@@ -245,7 +246,7 @@ private[processors] object HTMLProcessor {
     if (parentType != "feature")
       s"""
          |<b>Feature:</b>
-         |<a data-dismiss="modal" data-toggle="modal" data-target="#modal-$parentIndex" href="#modal-$parentIndex"> $featureId </a><br><br>
+         |<a data-dismiss="modal" data-toggle="modal" data-target="#modal-$parentIndex" href="#modal-$parentIndex"> ${escape(featureId)} </a><br><br>
       """.stripMargin
     else ""
   }

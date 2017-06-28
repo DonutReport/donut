@@ -19,17 +19,10 @@ class TemplateEngineTest extends FlatSpec with Matchers {
 
   behavior of "Template Engine - SpecialCharHandler"
 
-  it should "unescape html special chars" in {
-    val input = """ boo &lt;code&gt; bla &lt;/code&gt; boo &lt;code&gt; &lt;div>bla&lt;/div&gt; bla &lt;/code&gt; boo """
-    val expectedOutput = """ boo <code> bla </code> boo <code> <div>bla</div> bla </code> boo """
-    val output = SpecialCharHandler.unescapeReport(input)
-    output shouldBe expectedOutput
-  }
-
-  it should "escape error messages special chars if any" in {
-    val input = """ boo <code> bla </code> boo <code> <div>bla</div> bla </code> boo """
-    val expectedOutput = """ boo  bla  boo  &lt;div&gt;bla&lt;/div&gt; bla  boo """
-    val acutalOutput = SpecialCharHandler.escapeErrorMessages(input)
-    acutalOutput shouldEqual expectedOutput
+  it should "escape the < and > chars if any" in {
+    val input = """ boo  "<bla>" & 1>0"""
+    val expectedOutput = """ boo  "&lt;bla&gt;" & 1&gt;0"""
+    val actualOutput = SpecialCharHandler.escape(input)
+    actualOutput shouldEqual expectedOutput
   }
 }
