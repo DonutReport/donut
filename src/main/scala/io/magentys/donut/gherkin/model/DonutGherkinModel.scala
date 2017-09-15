@@ -34,8 +34,15 @@ case class Scenario(description: Option[String],
                     screenshotIDs: String = "",
                     screenshotStyle: String = "display:none",
                     `type`: Option[String],
+                    examples: List[Examples],
                     before: List[BeforeHook] = List.empty,
                     after: List[AfterHook] = List.empty
+                    )
+
+case class Examples(name: String,
+                    keyword: String,
+                    description: Option[String],
+                    rows: List[Row]
                     )
 
 case class Feature(keyword: String,

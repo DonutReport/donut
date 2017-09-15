@@ -1,7 +1,7 @@
 package io.magentys.donut.transformers.cucumber
 
 import io.magentys.donut.gherkin.model._
-import io.magentys.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, Step => DonutStep}
+import io.magentys.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, Step => DonutStep, Examples => DonutExamples}
 import io.magentys.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcessor}
 import io.magentys.donut.log.Log
 import org.json4s._
@@ -112,7 +112,8 @@ object CucumberTransformer extends Log {
       screenshots.screenshotsSize,
       screenshots.screenshotsIds,
       screenshots.screenshotsStyle,
-      e.`type`)
+      e.`type`,
+      e.examples.map(mapToDonutExamples))
   }
 
   private[cucumber] def mapToDonutStep(s: Step, statusConfiguration: StatusConfiguration) = {
@@ -125,6 +126,15 @@ object CucumberTransformer extends Log {
       DonutDuration(s.result.duration),
       0L, 0L,
       s.result.error_message)
+  }
+
+  private[cucumber] def mapToDonutExamples(e: Examples) = {
+    DonutExamples(
+      e.name,
+      e.keyword,
+      e.description,
+      e.rows.map(r => DonutRow(r.cells))
+      )
   }
 
   private[cucumber] def donutFeatureStatus(scenarios: List[Scenario], statusConfiguration: StatusConfiguration) = {
