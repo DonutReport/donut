@@ -37,8 +37,16 @@ class GeneratorTest extends FlatSpec with Matchers {
     Generator.createReport("cucumber:src/test/resources/samples-empty", projectName = "", projectVersion = "") shouldBe Left("No files found of correct format")
   }
 
-  it should "return report if valid json files are found" in {
+  it should "return report if valid cuke json files are found" in {
     Generator.createReport("cucumber:src/test/resources/samples-1", projectName = "", projectVersion = "") match {
+      case Left(e) => fail(e)
+      case Right(r) =>
+        r should not be null
+    }
+  }
+
+  it should "return report if valid cuke & unit json files are found" in {
+    Generator.createReport("cucumber:src/test/resources/cuke-and-unit/cuke,src/test/resources/cuke-and-unit/unit", projectName = "", projectVersion = "") match {
       case Left(e) => fail(e)
       case Right(r) =>
         r should not be null
