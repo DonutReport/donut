@@ -33,10 +33,11 @@ java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProject
 
 ### Run using Docker
 
-NOTE: see building docker container below.
+Donut is packaged as a [Docker container](https://hub.docker.com/r/donutreport/donut-report/)
 
+To run using Docker:
 ```
-docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donut-docker -n myProjectName [options]
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donutreport/donut-docker -n myProjectName [options]
 ```
 
 ### Options
@@ -146,9 +147,13 @@ buildFailed: Boolean
 
 ### Build Docker Container
 
+Set your Docker Hub credentials
 ```
 docker-compose run sbt
 docker build . -t donutreport/donut-report
+docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+docker tag donutreport/donut-report donutreport/donut-report
+docker push donutreport/donut-report
 ```
 
 ### Credits

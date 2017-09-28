@@ -1,20 +1,13 @@
 language: scala
 scala:
    - 2.11.7
-sudo: required
-services:
-  - docker
 
 after_success:
    - bash deploy-baked-donut.sh
-   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-     sbt clean one-jar
-     docker build -t donut/donut-report
-     docker login -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD"
-     docker push donutreport/donut-report
-     fi
 
-
+cache:
+  directories:
+    - /root/.ivy2/cache/
 env:
     global:
         - ENCRYPTION_LABEL: "e95fb731c984"
