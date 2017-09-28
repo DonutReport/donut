@@ -148,7 +148,7 @@ buildFailed: Boolean
 
 ```
 docker-compose run sbt
-docker build . -t donut-docker
+docker build . -t donutreport/donut-report
 ```
 
 ### Credits

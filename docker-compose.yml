@@ -4,6 +4,7 @@ services:
     image: hseeberger/scala-sbt
     entrypoint:
       - sbt
+      - clean
       - one-jar
     working_dir: /work
     volumes:
