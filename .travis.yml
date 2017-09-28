@@ -3,6 +3,7 @@ scala:
    - 2.11.7
 
 after_success:
+   - if [ "$TRAVIS_BRANCH" == "master" ]; then
    - bash deploy-baked-donut.sh
 
 cache:
