@@ -1,4 +1,4 @@
-![](http://magentys.github.io/donut/img/Donut-05.png) 
+![](http://magentys.github.io/donut/img/Donut-05.png)
 
 [![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
@@ -10,7 +10,7 @@ Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm e
 Live Demos => [Only Scenarios](http://magentys.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)
 
 ## Quickstart
-You can either use Donut directly or check out the available plugins: 
+You can either use Donut directly or check out the available plugins:
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
 * [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
@@ -19,22 +19,30 @@ You can either use Donut directly or check out the available plugins:
 ## Release Notes
 See what's new [here](release-notes.md)
 
-### download
+### Download
 ```
 wget http://repo1.maven.org/maven2/io/magentys/donut/1.0/donut-1.0-one-jar.jar
 ```
 or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/1.0/donut-1.0-one-jar.jar)
 
-### run from command line
+### Run from command line
 
 ```
 java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProjectName
 ```
 
-### options
+### Run using Docker
+
+NOTE: see building docker container below.
+
+```
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donut-docker -n myProjectName [options]
+```
+
+### Options
 
 `-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.  
-`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files. 
+`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files.
 
 Other parameters can also be specified as below:
 
@@ -85,7 +93,7 @@ default values:
 </dependency>
 ```
 
-* SBT 
+* SBT
 ```
 libraryDependencies += "io.magentys" % "donut" % "1.0"
 ```
@@ -98,12 +106,12 @@ compile 'io.magentys:donut:1.0'
 Example usage of the `Generator`
 
 ```
-ReportConsole report = 
+ReportConsole report =
        Generator.apply(sourceDirectory, outputDirectory, filePrefix, timestamp, template, countSkippedAsFailure,         
        countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes);
 ```
 
-This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object: 
+This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object:
 
 ```
 allFeatures: List[Feature]
@@ -126,17 +134,24 @@ buildFailed: Boolean
 
 ## Build from source
 
-### prerequisites
+### Prerequisites
 
 * install java 8+
 * install scala 2.11+
 * install SBT ([www.scala-sbt.org](http://www.scala-sbt.org))
 
-### run from sbt
+### Run from sbt
 
 `sbt "run-main io.magentys.donut.Boot -s cucumber:/my/path/cucumber-reports -n myProjectName" `
 
-### credits
+### Build Docker Container
+
+```
+docker-compose run sbt
+docker build . -t donut-docker
+```
+
+### Credits
 
 * JQuery
 * Bootstrap
