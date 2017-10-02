@@ -35,9 +35,9 @@ java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProject
 
 Donut is packaged as a [Docker container](https://hub.docker.com/r/donutreport/donut-report/)
 
-To run using Docker:
+To run using Docker (This would use 1.0 version of donut):
 ```
-docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donutreport/donut-docker -n myProjectName [options]
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donutreport/donut-report -n myProjectName [options]
 ```
 
 ### Options
