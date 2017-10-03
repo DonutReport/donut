@@ -57,55 +57,92 @@ object Generator extends Log with PerformanceSupport {
     val statusConf = StatusConfiguration(countSkippedAsFailure, countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure)
     val projectMetadata = ProjectMetadata(projectName, projectVersion, customAttributes)
     val reportStartedTimestamp = Try(formatter.parseDateTime(datetime)).getOrElse(DateTime.now)
-    val cukeSourceDir = new File(getCukePath(sourcePaths))
+    val cukePath = getCukePath(sourcePaths)
+    val cukeSourceDir = if (cukePath == null) null else new File(cukePath)
+
 
     for {
-      folder      <- if (cukeSourceDir.exists()) Right(cukeSourceDir).right else Left("Source directory doesn't exist").right
-      jsons       <- JSONProcessor.loadFrom(folder).right
-      _           <- if (jsons.isEmpty) Left("No files found of correct format").right else Right(jsons).right
-      features    <- timed("step1", "Loaded JSON files") {loadDonutFeatures(cukeSourceDir, getNonCukePaths(sourcePaths), statusConf).right}
-      report      <- timed("step3", "Produced report") {Right(Report(features.toList, reportStartedTimestamp, projectMetadata)).right}
+      features    <- timed("step1", "Loaded JSON files") {if (cukeSourceDir == null) loadDonutFeatures(getNonCukePaths(sourcePaths), statusConf).right else loadDonutFeatures(cukeSourceDir, getNonCukePaths(sourcePaths), statusConf).right}
+      report      <- timed("step2", "Produced report") {Right(Report(features.toList, reportStartedTimestamp, projectMetadata)).right}
       _           <- TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix).right
     } yield report
   }
 
   /**
-  Loads donut features for both cuke and non cuke json files.<br>
-  Currently, it works only for one non-cuke path and it's tested only for NUnit results(json converted from xml using our adapter).<br>
-  It would be enhanced soon to report other types of non-cuke reports and also to publish more than 1 type of non-cuke results in one report.
-  */
+    * Loads donut features for both cuke and non cuke json files.<br>
+    * Currently, it works only for one non-cuke path and it's tested only for NUnit results(json converted from xml using our adapter).<br>
+    * It would be enhanced soon to report other types of non-cuke reports and also to publish more than 1 type of non-cuke results in one report.
+    */
   def loadDonutFeatures(cukeSourceDir: File, nonCukePaths: List[String], statusConf: StatusConfiguration): Either[String, ListBuffer[model.Feature]] = {
     var donutFeatures = new ListBuffer[model.Feature]
-    val cukeJsonValues = JSONProcessor.loadFrom(cukeSourceDir).right.get
 
-    donutFeatures = CucumberTransformer.transform(cukeJsonValues, donutFeatures, statusConf).right.get
+    if (!cukeSourceDir.exists()) {
+      return Left("Cuke source directory doesn't exist")
+    }
+
+    val cukeJsonValues = JSONProcessor.loadFrom(cukeSourceDir) match {
+      case Left(errors) => return Left(errors)
+      case Right(r) => if (r.isEmpty) return Left("No files found of correct format") else Right(r)
+    }
+
+    donutFeatures = CucumberTransformer.transform(cukeJsonValues.right.get, donutFeatures, statusConf).right.get
+
     if (nonCukePaths.nonEmpty) {
+      loadDonutFeatures(nonCukePaths, statusConf, donutFeatures)
+    } else {
+      Try(donutFeatures).toEither(_.getMessage)
+    }
+  }
+
+  def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration): Either[String, ListBuffer[model.Feature]] = {
+    loadDonutFeatures(nonCukePaths, statusConf, new ListBuffer[model.Feature])
+  }
+
+  def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration, donutFeatures: ListBuffer[model.Feature]): Either[String, ListBuffer[model.Feature]] = {
+    var donutFeaturesCombined = new ListBuffer[model.Feature]
+
       val nonCukeSourceDir = new File(nonCukePaths.head)
       if (nonCukeSourceDir.exists()) {
-        val jsonValues = JSONProcessor.loadFrom(nonCukeSourceDir)
-        donutFeatures = CucumberTransformer.transform(jsonValues.right.get, donutFeatures, statusConf).right.get
+
+        val nonCukeJsonValues = JSONProcessor.loadFrom(nonCukeSourceDir) match {
+          case Left(errors) => return Left(errors)
+          case Right(r) => if (r.isEmpty) return Left("No files found of correct format") else Right(r)
+        }
+        donutFeaturesCombined = CucumberTransformer.transform(nonCukeJsonValues.right.get, donutFeatures, statusConf).right.get
+
+      } else {
+        return Left("Non cuke directory doesn't exist")
       }
-    }
-    Try(donutFeatures).toEither(_.getMessage)
+    Try(donutFeaturesCombined).toEither(_.getMessage)
   }
+
 
   private[gherkin] def getCukePath(sourcePaths: String): String = {
     log.info("source paths: " + sourcePaths)
+    if (StringUtils.isBlank(sourcePaths)) {
+      throw DonutException("Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
+    }
     val paths = sourcePaths.split(",")
-    for (path <- paths) {
-      if (StringUtils.containsIgnoreCase(path, "cucumber:") || StringUtils.containsIgnoreCase(path, "specflow:")) {
-        val pattern = "(cucumber:|specflow:)(.*)".r
-        val pattern(identifier,cukePath) = path
 
-        if(StringUtils.isNotBlank(cukePath)){
-          log.info("Cuke path: " + cukePath)
-          return cukePath
-        }else{
-          throw DonutException("Please provide the source directory path.")
+    for (path <- paths) {
+
+      if (StringUtils.containsIgnoreCase(path, "cucumber") || StringUtils.containsIgnoreCase(path, "specflow")) {
+        if (StringUtils.containsIgnoreCase(path, "cucumber:") || StringUtils.containsIgnoreCase(path, "specflow:")) {
+
+          val pattern = "(cucumber:|specflow:)(.*)".r
+          val pattern(identifier, cukePath) = path
+
+          if (StringUtils.isNotBlank(cukePath)) {
+            log.info("Cuke path: " + cukePath)
+            return cukePath
+          } else {
+            throw DonutException("Please provide the cucumber/specflow source directory path.")
+          }
         }
+        throw DonutException("Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
       }
     }
-    throw DonutException("Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
+    null
   }
 
   private[gherkin] def getNonCukePaths(sourcePaths: String) = {
