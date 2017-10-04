@@ -21,20 +21,20 @@ class GeneratorTest extends FlatSpec with Matchers {
     assert(exception.mgs === "Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
   }
 
-  it should "throw an exception if cucumber/specflow source path is not specified with correct identier 'cucumber:' or 'specflow'" in {
-    val sourcePaths = "src/test/resources/samples-1"
-    val exception = intercept[DonutException] {
-      Generator.createReport(sourcePaths, projectName = "", projectVersion = "")
-    }
-    assert(exception.mgs === "Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
-  }
-
   it should "return an error message if cucumber/specflow source directory does not exist" in {
-    Generator.createReport("cucumber:src/test/resources/non-existing-dir", projectName = "", projectVersion = "") shouldBe Left("Source directory doesn't exist")
+    Generator.createReport("cucumber:src/test/resources/non-existing-dir", projectName = "", projectVersion = "") shouldBe Left("Cuke source directory doesn't exist")
   }
 
-  it should "return an error message if json files not found" in {
+  it should "return an error message if non cuke source directory does not exist" in {
+    Generator.createReport("src/test/resources/non-existing-dir", projectName = "", projectVersion = "") shouldBe Left("Non cuke directory doesn't exist")
+  }
+
+  it should "return an error message if cuke json files not found" in {
     Generator.createReport("cucumber:src/test/resources/samples-empty", projectName = "", projectVersion = "") shouldBe Left("No files found of correct format")
+  }
+
+  it should "return an error message if non cuke json files not found" in {
+    Generator.createReport("src/test/resources/samples-empty", projectName = "", projectVersion = "") shouldBe Left("No files found of correct format")
   }
 
   it should "return report if valid cuke json files are found" in {
@@ -51,6 +51,14 @@ class GeneratorTest extends FlatSpec with Matchers {
       case Right(r) =>
         r should not be null
     }
+  }
+
+  it should "return report if only unit json files are provided" in {
+      Generator.createReport("src/test/resources/cuke-and-unit/unit", projectName = "", projectVersion = "") match {
+        case Left(e) => fail(e)
+        case Right(r) =>
+          r should not be null
+      }
   }
 
   behavior of "Generator Units"
@@ -73,12 +81,32 @@ class GeneratorTest extends FlatSpec with Matchers {
     bddSourcePath shouldBe "/my/path/cucumber-reports"
   }
 
+  it should "return correct cuke source path if only the cuke path is provided" in {
+    val sourcePaths = "cucumber:/my/path/cucumber-reports"
+    val bddSourcePath = Generator.getCukePath(sourcePaths)
+    bddSourcePath shouldBe "/my/path/cucumber-reports"
+  }
+
+  it should "return null cuke source path if only the non-cuke path is provided" in {
+    val sourcePaths = "/my/path/nunit-reports"
+    val bddSourcePath = Generator.getCukePath(sourcePaths)
+    bddSourcePath shouldBe null
+  }
+
+  it should "throw a donut exception if a blank source path is provided" in {
+    val sourcePaths = ""
+    val exception = intercept[DonutException] {
+      Generator.getCukePath(sourcePaths)
+    }
+    assert(exception.mgs === "Unable to extract the path to cucumber/specflow reports. Please use this format:- cucumber:/my/path/cucumber-reports,/my/path/nunit-reports")
+  }
+
   it should "throw a donut exception if the cucumber identifier is provided without the path" in {
     val sourcePaths = "cucumber:"
     val exception = intercept[DonutException] {
       Generator.getCukePath(sourcePaths)
     }
-    assert(exception.mgs === "Please provide the source directory path.")
+    assert(exception.mgs === "Please provide the cucumber/specflow source directory path.")
   }
 
   it should "throw a donut exception if the cucumber source path format is incorrect" in {

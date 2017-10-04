@@ -81,5 +81,10 @@ pomExtra := (
         <name>Dave Bassan</name>
         <url>http://www.magentys.io</url>
       </developer>
+      <developer>
+        <id>amitsha</id>
+        <name>Amit Sharma</name>
+        <url>http://www.mechanicalrock.io</url>
+      </developer>
     </developers>
   )
