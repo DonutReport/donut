@@ -35,9 +35,19 @@ java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProject
 
 Donut is packaged as a [Docker container](https://hub.docker.com/r/donutreport/donut-report/)
 
-To run using Docker (This would use 1.0 version of donut):
+To run using Docker:
 ```
-docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donutreport/donut-report -n myProjectName [options]
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donutreport/donut-report -n myProjectName -s cucumber:/source [options]
+```
+
+In the above command, using the docker `-v` parameter `/source` and `/output` volumes are mounted in the container, to pass data in, and out.
+Use `-s cucumber:/source` Donut option to retrieve the reports
+
+*Passing multiple source directories*:
+If you need to pass multiple source directories, e.g. for Cucumber reports and unit tests, and the directories are in different paths, you can use the following variant:
+
+```
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/your/unit-test-reports:/source_unit -v /path/to/output-report:/output donutreport/donut-report -n myProjectName -s cucumber:/source,/source_unit [options]
 ```
 
 ### Options
@@ -149,11 +159,12 @@ buildFailed: Boolean
 
 Set your Docker Hub credentials
 ```
+export VERSION=version_number
 docker-compose run sbt
+docker login
 docker build . -t donutreport/donut-report
-docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-docker tag donutreport/donut-report donutreport/donut-report
-docker push donutreport/donut-report
+docker tag donutreport/donut-report donutreport/donut-report:$VERSION
+docker push donutreport/donut-report:$VERSION
 ```
 
 ### Credits
