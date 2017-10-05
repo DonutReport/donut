@@ -70,7 +70,7 @@ object Generator extends Log with PerformanceSupport {
 
   /**
     * Loads donut features for both cuke and non cuke json files.<br>
-    * Currently, it works only for one non-cuke path and it's tested only for NUnit results(json converted from xml using our adapter).<br>
+    * Currently, it works only for one non-cuke path.<br>
     * It would be enhanced soon to report other types of non-cuke reports and also to publish more than 1 type of non-cuke results in one report.
     */
   def loadDonutFeatures(cukeSourceDir: File, nonCukePaths: List[String], statusConf: StatusConfiguration): Either[String, ListBuffer[model.Feature]] = {
@@ -94,11 +94,15 @@ object Generator extends Log with PerformanceSupport {
     }
   }
 
+  /**
+    * Loads donut features for non cuke json files only.<br>
+    * Currently, it works only for one non-cuke path.<br>
+    */
   def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration): Either[String, ListBuffer[model.Feature]] = {
     loadDonutFeatures(nonCukePaths, statusConf, new ListBuffer[model.Feature])
   }
 
-  def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration, donutFeatures: ListBuffer[model.Feature]): Either[String, ListBuffer[model.Feature]] = {
+  private def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration, donutFeatures: ListBuffer[model.Feature]): Either[String, ListBuffer[model.Feature]] = {
     var donutFeaturesCombined = new ListBuffer[model.Feature]
 
       val nonCukeSourceDir = new File(nonCukePaths.head)

@@ -11,7 +11,8 @@ case class Metrics(total: Int,
                    orphanedPassed: Int = 0,
                    orphanedFailed: Int = 0,
                    hasOrphanedUnitTests: Boolean = false,
-                   hasUnitTests: Boolean = false)
+                   hasUnitTests: Boolean = false,
+                   hasScenarios: Boolean = false)
 
 object FeatureMetrics {
   def apply(features: List[Feature]): Metrics = {
@@ -24,7 +25,7 @@ object ScenarioMetrics {
   def apply(scenarios: List[Scenario]): Metrics = {
     val passed = scenarios.count(s => s.status.status)
     val failed = scenarios.size - passed
-    Metrics(scenarios.size, passed, failed)
+    Metrics(scenarios.size, passed, failed, hasScenarios = scenarios.nonEmpty)
   }
 }
 

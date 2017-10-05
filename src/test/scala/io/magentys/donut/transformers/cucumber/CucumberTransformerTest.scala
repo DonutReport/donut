@@ -105,7 +105,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     feature.status.status shouldEqual false
     feature.status.statusStr shouldEqual "failed"
     feature.htmlFeatureTags shouldEqual List("google", "performance")
-    feature.scenarioMetrics shouldEqual Metrics(1, 0, 1)
+    feature.scenarioMetrics shouldEqual Metrics(1, 0, 1, hasScenarios = true)
     feature.stepMetrics shouldEqual Metrics(0, 0, 0)
     feature.index shouldEqual "10000"
   }

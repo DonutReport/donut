@@ -5,7 +5,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class UnitTestMetricsTest extends FlatSpec with Matchers {
 
-  val featureWithUnit: List[Feature] = DonutTestData.featureWithUnit.right.get
+  val featureWithUnit: List[Feature] = DonutTestData.featuresWithOnlyUnits.right.get
 
   it should "calculate unit test metrics if no orphaned tests" in {
     UnitTestMetrics(featureWithUnit.flatMap(f => f.unitTests)) shouldBe Metrics(1, 1, 0, hasUnitTests = true)
