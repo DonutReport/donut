@@ -165,8 +165,12 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
-            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+            {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
                 <div class="col-md-3 dashboard-panel">
+                {{else}}
+                <div class="col-md-4 dashboard-panel">
+                {{/if}}
             {{else}}
                 <div class="col-md-4 dashboard-panel">
             {{/if}}
@@ -187,11 +191,12 @@
                         <br>
                     </div>
                 </div>
-            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+            {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
                 <div class="col-md-3 dashboard-panel">
-            {{else}}
+                {{else}}
                 <div class="col-md-4 dashboard-panel">
-            {{/if}}
+                {{/if}}
                     <h2>Scenarios</h2>
                     <div class="row">
                         <div class="col-md-3 stat-number">
@@ -209,8 +214,14 @@
                         <br>
                     </div>
                 </div>
-                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
-                <div class="col-md-3 dashboard-panel">
+            {{/if}}
+
+            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                 {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                 <div class="col-md-3 dashboard-panel">
+                 {{else}}
+                 <div class="col-md-4 dashboard-panel">
+                 {{/if}}
                     <h2>Unit Tests</h2>
                     <div class="row">
                         <div class="col-md-3 stat-number">
@@ -228,13 +239,17 @@
                         <br>
                     </div>
                 </div>
-                {{/if}}
+            {{/if}}
 
+        {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
             {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
                 <div class="col-md-2">
             {{else}}
                 <div class="col-md-3">
             {{/if}}
+        {{else}}
+                <div class="col-md-3">
+        {{/if}}
                     <div class="row dashboard-panel-top">
                         <div class="col-md-12">
                             <h2>Steps</h2>
