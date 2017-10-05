@@ -4,14 +4,20 @@ import io.magentys.donut.DonutTestData
 import org.joda.time.DateTime
 import org.scalatest.{FlatSpec, Matchers}
 
-class ExecutionDataTest  extends FlatSpec with Matchers {
+class ExecutionDataTest extends FlatSpec with Matchers {
 
   behavior of "ExecutionData"
 
   val features = DonutTestData.features_sample_3.right.get
+  val featuresWithCukeAndOrphanedUnits = DonutTestData.featuresWithCukeAndOrphanedUnits.right.get
 
   val timestamp = DateTime.now
   val executionData = ExecutionData(features, timestamp)
+
+
+  it should "exclude 'Without Feature' features while calculating execution data" in {
+    ExecutionData.allFeatures(featuresWithCukeAndOrphanedUnits).size shouldBe 1
+  }
 
   it should "give the combined scenarios for an execution" in {
     val expectedScenarios = List("Google Journey Performance", "Click on element with offset")

@@ -153,7 +153,7 @@ class GeneratorTest extends FlatSpec with Matchers {
   }
 
   it should "loadDonutFeatures even if 1 non cuke path is provided" in {
-    Generator.loadDonutFeatures(new File("src/test/resources/cuke-and-unit/cuke"),List{"src/test/resources/cuke-and-unit/unit"},DonutTestData.statusConfiguration) match {
+    Generator.loadDonutFeatures(new File("src/test/resources/cuke-and-unit/cuke"),List("src/test/resources/cuke-and-unit/unit"),DonutTestData.statusConfiguration) match {
       case Left(e) => fail(e)
       case Right(f) =>
         f.size shouldBe 1

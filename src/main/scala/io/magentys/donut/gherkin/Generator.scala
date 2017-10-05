@@ -102,7 +102,7 @@ object Generator extends Log with PerformanceSupport {
     loadDonutFeatures(nonCukePaths, statusConf, new ListBuffer[model.Feature])
   }
 
-  def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration, donutFeatures: ListBuffer[model.Feature]): Either[String, ListBuffer[model.Feature]] = {
+  private def loadDonutFeatures(nonCukePaths: List[String], statusConf: StatusConfiguration, donutFeatures: ListBuffer[model.Feature]): Either[String, ListBuffer[model.Feature]] = {
     var donutFeaturesCombined = new ListBuffer[model.Feature]
 
       val nonCukeSourceDir = new File(nonCukePaths.head)
