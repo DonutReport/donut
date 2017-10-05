@@ -15,6 +15,7 @@ You can either use Donut directly or check out the available plugins:
 * [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
 * [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
 * [NUnit adapter](https://github.com/MagenTys/donut-nunit-adapter)
+* [JUnit adapter](https://github.com/MagenTys/donut-junit-adapter)
 
 ## Release Notes
 See what's new [here](release-notes.md)
@@ -29,6 +30,17 @@ or download the latest release from: [here](http://repo1.maven.org/maven2/io/mag
 
 ```
 java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProjectName
+```
+or
+```
+java -jar donut-<Version>.jar -s /my/unit-test-reports -n myProjectName
+
+```
+or
+
+```
+java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports,/my/unit-test-reports -n myProjectName
+
 ```
 
 ### options
@@ -146,9 +158,8 @@ buildFailed: Boolean
 ## Road map
 
 We currently have plans to support:
-* junit
 * jasmine
-* rspec
+* rspec (With the support available for JUnit, you can use this JUnit adapter for rspec - https://github.com/sj26/rspec_junit_formatter, to generate JUnit xmls, which can then be adapted to JSONs using the donut-junit-adapter
 * jbehave
 
 ## Contributing

@@ -4,6 +4,23 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
 
+## 1.1
+* Publishing only unit test results is now supported.
+* You don't necessarily have to provide the path to cucumber/specflow json files, which was the case earlier
+* The donut UI won't show the scenarios donut if only unit tests are being reported.
+* Following scenarios have been tested to be working fine:
+    * Only cucumber json files
+    * Cucumber & unit json files (Unit tests linked to features in cucumber json files)
+    * Cucumber & unit json files - orphaned unit tests(i.e. with feature name ‘Without Feature’)
+    * Cucumber & unit json files - unit tests linked to different feature(s)    
+    * Only unit json files - with feature name other than ‘Without Feature’
+    * Only unit json files - with feature name ‘Without Feature’
+       - Feature count is shown as 0, as there’s no feature other than ‘Without Feature’, so feature donut is collapsed
+       - Also, scenarios donut isn’t there as there are no scenarios
+       - And unit tests donut isn’t there as there are no linked unit tests i.e. unit tests tied to any feature other than ‘Without Feature’
+       - All the unit tests are treated as orphaned and reported on the report as ‘orphaned’ tests
+       - To see unit tests being reported properly, feature name must be specified for unit tests
+    
 ## 1.0
 * Unit test metrics separated from scenarios. A separate dashboard panel will be displayed with unit test pie-chart 
    * If there are 0 unit tests(that are part of a feature), unit tests panel won't be displayed

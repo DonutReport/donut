@@ -8,7 +8,7 @@ organization := "io.magentys"
 
 description := "Magentys Donut - Reporting Tool"
 
-version := "1.0"
+version := "1.1"
 
 scalaVersion := "2.11.7"
 
