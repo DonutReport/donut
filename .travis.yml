@@ -3,8 +3,12 @@ scala:
    - 2.11.7
 
 after_success:
-   - bash deploy-baked-donut.sh
+   - if [ "$TRAVIS_BRANCH" == "master" ]; then
+     bash deploy-baked-donut.sh
 
+cache:
+  directories:
+    - /root/.ivy2/cache/
 env:
     global:
         - ENCRYPTION_LABEL: "e95fb731c984"

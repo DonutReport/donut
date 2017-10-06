@@ -1,4 +1,4 @@
-![](http://magentys.github.io/donut/img/Donut-05.png) 
+![](http://magentys.github.io/donut/img/Donut-05.png)
 
 [![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
@@ -10,7 +10,7 @@ Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm e
 Live Demos => [Only Scenarios](http://magentys.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)&nbsp;&nbsp;&nbsp;[Only Unit Tests](http://magentys.github.io/donut/demo-only-unit-tests.html)
 
 ## Quickstart
-You can either use Donut directly or check out the available plugins: 
+You can either use Donut directly or check out the available plugins:
 * [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
 * [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
 * [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
@@ -20,13 +20,13 @@ You can either use Donut directly or check out the available plugins:
 ## Release Notes
 See what's new [here](release-notes.md)
 
-### download
+### Download
 ```
 wget http://repo1.maven.org/maven2/io/magentys/donut/1.1/donut-1.1-one-jar.jar
 ```
 or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/1.1/donut-1.1-one-jar.jar)
 
-### run from command line
+### Run from command line
 
 ```
 java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports -n myProjectName
@@ -43,10 +43,29 @@ java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports,/my/unit-tes
 
 ```
 
-### options
+### Run using Docker
+
+Donut is packaged as a [Docker container](https://hub.docker.com/r/donutreport/donut-report/)
+
+To run using Docker:
+```
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/output-report:/output donutreport/donut-report -n myProjectName -s cucumber:/source [options]
+```
+
+In the above command, using the docker `-v` parameter `/source` and `/output` volumes are mounted in the container, to pass data in, and out.
+Use `-s cucumber:/source` Donut option to retrieve the reports
+
+*Passing multiple source directories*:
+If you need to pass multiple source directories, e.g. for Cucumber reports and unit tests, and the directories are in different paths, you can use the following variant:
+
+```
+docker run -v /path/to/your/cucumber-reports:/source -v /path/to/your/unit-test-reports:/source_unit -v /path/to/output-report:/output donutreport/donut-report -n myProjectName -s cucumber:/source,/source_unit [options]
+```
+
+### Options
 
 `-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.  
-`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files. 
+`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files.
 
 Other parameters can also be specified as below:
 
@@ -97,7 +116,7 @@ default values:
 </dependency>
 ```
 
-* SBT 
+* SBT
 ```
 libraryDependencies += "io.magentys" % "donut" % "1.1"
 ```
@@ -110,12 +129,12 @@ compile 'io.magentys:donut:1.1'
 Example usage of the `Generator`
 
 ```
-ReportConsole report = 
+ReportConsole report =
        Generator.apply(sourceDirectory, outputDirectory, filePrefix, timestamp, template, countSkippedAsFailure,         
        countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes);
 ```
 
-This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object: 
+This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object:
 
 ```
 allFeatures: List[Feature]
@@ -138,17 +157,29 @@ buildFailed: Boolean
 
 ## Build from source
 
-### prerequisites
+### Prerequisites
 
 * install java 8+
 * install scala 2.11+
 * install SBT ([www.scala-sbt.org](http://www.scala-sbt.org))
 
-### run from sbt
+### Run from sbt
 
 `sbt "run-main io.magentys.donut.Boot -s cucumber:/my/path/cucumber-reports -n myProjectName" `
 
-### credits
+### Build Docker Container
+
+Set your Docker Hub credentials
+```
+export VERSION=version_number
+docker-compose run sbt
+docker login
+docker build . -t donutreport/donut-report
+docker tag donutreport/donut-report donutreport/donut-report:$VERSION
+docker push donutreport/donut-report:$VERSION
+```
+
+### Credits
 
 * JQuery
 * Bootstrap

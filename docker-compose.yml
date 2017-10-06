@@ -1,0 +1,13 @@
+version: '2'
+services:
+  sbt:
+    image: hseeberger/scala-sbt
+    entrypoint:
+      - sbt
+      - clean
+      - one-jar
+    working_dir: /work
+    volumes:
+      - .:/work
+      # Enable the use of Docker from within the container
+      - /var/run/docker.sock:/var/run/docker.sock
