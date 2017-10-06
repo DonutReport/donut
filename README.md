@@ -22,9 +22,9 @@ See what's new [here](release-notes.md)
 
 ### download
 ```
-wget http://repo1.maven.org/maven2/io/magentys/donut/1.0/donut-1.0-one-jar.jar
+wget http://repo1.maven.org/maven2/io/magentys/donut/1.1/donut-1.1-one-jar.jar
 ```
-or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/1.0/donut-1.0-one-jar.jar)
+or download the latest release from: [here](http://repo1.maven.org/maven2/io/magentys/donut/1.1/donut-1.1-one-jar.jar)
 
 ### run from command line
 
@@ -93,18 +93,18 @@ default values:
 <dependency>
   <groupId>io.magentys</groupId>
   <artifactId>donut</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
 </dependency>
 ```
 
 * SBT 
 ```
-libraryDependencies += "io.magentys" % "donut" % "1.0"
+libraryDependencies += "io.magentys" % "donut" % "1.1"
 ```
 
 * Gradle
 ```
-compile 'io.magentys:donut:1.0'
+compile 'io.magentys:donut:1.1'
 ```
 
 Example usage of the `Generator`
