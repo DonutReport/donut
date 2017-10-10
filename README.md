@@ -5,9 +5,9 @@
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
 
 Donut is an open-source framework by the [MagenTys](https://magentys.io) team which is designed to produce clear and concise test execution reports over your unit, integration and acceptance tests.
-Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc).
+Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc). For other frameworks like SpecFlow, JUnit, NUnit, you can use the adapters listed below to generate the gherkin jsons, which can then be processed by **donut**.
 
-Live Demos => [Only Scenarios](http://magentys.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)
+Live Demos => [Only Scenarios](http://magentys.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)&nbsp;&nbsp;&nbsp;[Only Unit Tests](http://magentys.github.io/donut/demo-only-unit-tests.html)
 
 ## Quickstart
 You can either use Donut directly or check out the available plugins: 
