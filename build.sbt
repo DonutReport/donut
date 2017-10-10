@@ -4,11 +4,11 @@ import scala.collection.JavaConverters._
 
 name := "donut"
 
-organization := "io.magentys"
+organization := "report.donut"
 
-description := "Magentys Donut - Reporting Tool"
+description := "Donut - Reporting Tool"
 
-version := "1.1"
+version := "1.1.1"
 
 scalaVersion := "2.11.7"
 
@@ -29,7 +29,7 @@ libraryDependencies ++= {
 
 oneJarSettings
 
-mainClass in oneJar := Some("io.magentys.donut.Boot")
+mainClass in oneJar := Some("report.donut.Boot")
 
 addArtifact(artifact in (Compile, oneJar), oneJar)
 
@@ -57,7 +57,7 @@ publishTo := {
 }
 
 pomExtra := (
-  <url>https://github.com/MagenTys/donut</url>
+  <url>https://github.com/donut-report/donut</url>
     <licenses>
       <license>
         <name>MIT License</name>
@@ -66,8 +66,8 @@ pomExtra := (
       </license>
     </licenses>
     <scm>
-      <developerConnection>scm:git:git@github.com:MagenTys/donut.git</developerConnection>
-      <url>https://github.com/MagenTys/donut</url>
+      <developerConnection>scm:git:git@github.com:donut-report/donut.git</developerConnection>
+      <url>https://github.com/donut-report/donut</url>
       <tag>HEAD</tag>
     </scm>
     <developers>
