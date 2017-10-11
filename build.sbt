@@ -8,7 +8,7 @@ organization := "report.donut"
 
 description := "Donut - Reporting Tool"
 
-version := "1.1.1"
+version := "1.1"
 
 scalaVersion := "2.11.7"
 

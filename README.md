@@ -1,30 +1,30 @@
-![](http://donut-report.github.io/donut/img/Donut-05.png) 
+![](http://donutreport.github.io/donut/img/Donut-05.png) 
 
-[![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
-[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
+[![Build Status](https://travis-ci.org/DonutReport/donut.svg?branch=master)](https://travis-ci.org/DonutReport/donut)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/report.donut/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/report.donut/donut)
+[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/report.donut/donut/badge.svg)](http://www.javadoc.io/doc/report.donut/donut)
 
 Donut is an open-source framework by [MagenTys](https://magentys.io) & [MechanicalRock](https://mechanicalrock.io) and is designed to produce clear and concise test execution reports of your unit, integration and acceptance tests.
 Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc.). For other frameworks like SpecFlow, JUnit, NUnit, RSpec you can use the adapters listed below to generate the gherkin jsons, which can then be processed by **donut**.
 
-Live Demos => [Only Scenarios](http://magentys.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://magentys.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)&nbsp;&nbsp;&nbsp;[Only Unit Tests](http://magentys.github.io/donut/demo-only-unit-tests.html)
+Live Demos => [Only Scenarios](http://donutreport.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://donutreport.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://donutreport.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)&nbsp;&nbsp;&nbsp;[Only Unit Tests](http://donutreport.github.io/donut/demo-only-unit-tests.html)
 
 ## Quickstart
 You can either use Donut directly or check out the available plugins: 
-* [Maven plugin](https://github.com/MagenTys/donut-maven-plugin)
-* [Specflow adaptor](https://github.com/MagenTys/SpecNuts)
-* [Jenkins plugin](https://github.com/MagenTys/donut-jenkins-plugin)
-* [NUnit adapter](https://github.com/MagenTys/donut-nunit-adapter)
-* [JUnit adapter](https://github.com/MagenTys/donut-junit-adapter)
+* [Maven plugin](https://github.com/DonutReport/donut-maven-plugin)
+* [Specflow adaptor](https://github.com/DonutReport/SpecNuts)
+* [Jenkins plugin](https://github.com/DonutReport/donut-jenkins-plugin)
+* [NUnit adapter](https://github.com/DonutReport/donut-nunit-adapter)
+* [JUnit adapter](https://github.com/DonutReport/donut-junit-adapter)
 
 ## Release Notes
 See what's new [here](release-notes.md)
 
 ### download
 ```
-wget http://repo1.maven.org/maven2/report/donut/1.1.1/donut-1.1.1-one-jar.jar
+wget http://repo1.maven.org/maven2/report/donut/1.1/donut-1.1-one-jar.jar
 ```
-or download the latest release from: [here](http://repo1.maven.org/maven2/report/donut/1.1.1/donut-1.1.1-one-jar.jar)
+or download the latest release from: [here](http://repo1.maven.org/maven2/report/donut/1.1/donut-1.1-one-jar.jar)
 
 ### run from command line
 
@@ -93,18 +93,18 @@ default values:
 <dependency>
   <groupId>report.donut</groupId>
   <artifactId>donut</artifactId>
-  <version>1.1.1</version>
+  <version>1.1</version>
 </dependency>
 ```
 
 * SBT 
 ```
-libraryDependencies += "report.donut" % "donut" % "1.1.1"
+libraryDependencies += "report.donut" % "donut" % "1.1"
 ```
 
 * Gradle
 ```
-compile 'report.donut:donut:1.1.1'
+compile 'report.donut:donut:1.1'
 ```
 
 Example usage of the `Generator`
