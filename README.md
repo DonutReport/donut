@@ -1,4 +1,4 @@
-![](http://donutreport.github.io/donut/img/Donut-01.png) 
+![](http://donutreport.github.io/donut/img/Donut-05a.png) 
 
 [![Build Status](https://travis-ci.org/DonutReport/donut.svg?branch=master)](https://travis-ci.org/DonutReport/donut)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/report.donut/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/report.donut/donut)
