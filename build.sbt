@@ -6,7 +6,7 @@ name := "donut"
 
 organization := "report.donut"
 
-description := "Donut - Reporting Tool"
+description := "Donut - Automated Testing Reporting Tool"
 
 version := "1.1"
 

@@ -4,7 +4,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/report.donut/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/report.donut/donut)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/report.donut/donut/badge.svg)](http://www.javadoc.io/doc/report.donut/donut)
 
-Donut is an open-source framework by [MagenTys](https://magentys.io) & [MechanicalRock](https://mechanicalrock.io) and is designed to produce clear and concise test execution reports of your unit, integration and acceptance tests.
+Donut is an open-source framework by the teams at [MagenTys](https://magentys.io) & [Mechanical Rock](https://mechanicalrock.io) and is designed to produce clear and concise test execution reports of your unit, integration and acceptance tests.
 Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc.). For other frameworks like SpecFlow, JUnit, NUnit, RSpec you can use the adapters listed below to generate the gherkin jsons, which can then be processed by **donut**.
 
 Live Demos => [Only Scenarios](http://donutreport.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://donutreport.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://donutreport.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)&nbsp;&nbsp;&nbsp;[Only Unit Tests](http://donutreport.github.io/donut/demo-only-unit-tests.html)
@@ -174,4 +174,4 @@ We currently have plans to support:
 
 This project is under an MIT license
 
-Powered by: [MagenTys](http://magentys.io) [MechanicalRock](https://www.mechanicalrock.io/#/)
+Powered by: [MagenTys](https://magentys.io) & [Mechanical Rock](https://www.mechanicalrock.io)
