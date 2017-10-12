@@ -57,7 +57,7 @@ publishTo := {
 }
 
 pomExtra := (
-  <url>https://github.com/donut-report/donut</url>
+  <url>https://github.com/DonutReport/donut</url>
     <licenses>
       <license>
         <name>MIT License</name>
@@ -66,25 +66,25 @@ pomExtra := (
       </license>
     </licenses>
     <scm>
-      <developerConnection>scm:git:git@github.com:donut-report/donut.git</developerConnection>
-      <url>https://github.com/donut-report/donut</url>
+      <developerConnection>scm:git:git@github.com:DonutReport/donut.git</developerConnection>
+      <url>https://github.com/DonutReport/donut</url>
       <tag>HEAD</tag>
     </scm>
     <developers>
       <developer>
         <id>chdask</id>
         <name>Christina Daskalaki</name>
-        <url>http://www.magentys.io</url>
+        <url>https://www.magentys.io</url>
       </developer>
       <developer>
         <id>davebassan</id>
         <name>Dave Bassan</name>
-        <url>http://www.magentys.io</url>
+        <url>https://www.magentys.io</url>
       </developer>
       <developer>
         <id>amitsha</id>
         <name>Amit Sharma</name>
-        <url>http://www.mechanicalrock.io</url>
+        <url>https://www.mechanicalrock.io</url>
       </developer>
     </developers>
   )
