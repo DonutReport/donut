@@ -96,15 +96,31 @@ default values:
   <version>1.1</version>
 </dependency>
 ```
+For older versions:
+```
+<dependency>
+  <groupId>io.magentys</groupId>
+  <artifactId>donut</artifactId>
+  <version>1.0</version>
+</dependency>
+```
 
 * SBT 
 ```
 libraryDependencies += "report.donut" % "donut" % "1.1"
 ```
+For older versions:
+```
+libraryDependencies += "io.magentys" % "donut" % "1.0"
+```
 
 * Gradle
 ```
 compile 'report.donut:donut:1.1'
+```
+For older versions:
+```
+compile 'io.magentys:donut:1.0'
 ```
 
 Example usage of the `Generator`
