@@ -73,6 +73,7 @@
         .steps-icon-passed {color:#7AB340;}
         .steps-icon-failed {color:#D44848;}
         .steps-icon-skipped {color:#7cb5ec;}
+        .steps-icon-undefined {color:lightyellow;}
         .steps-icon-pending {color:#f7a35c;}
         .step-table {border:1px black solid; margin-left:15px; margin-top:5px;}
         .step-table-cell {border:1px black solid;padding:5px;background-color:#ccc;}
@@ -214,6 +215,8 @@
                                     <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.failed}}</b></span></li>
                                 <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-skipped"> Skipped</span>
                                     <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.skipped}}</b></span></li>
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-undefined"> Undefined</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.undefined}}</b></span></li>
                                 <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-pending"> Pending</span>
                                     <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.pending}}</b></span></li>
                             </ul>
