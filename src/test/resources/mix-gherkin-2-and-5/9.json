@@ -1,0 +1,2942 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 3404868700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Find items dynamically",
+        "description": "",
+        "id": "tables;find-items-dynamically",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1220446800,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I look in \"table1\" for \"When\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"table1\"",
+                  "offset": 10
+                },
+                {
+                  "val": "\"When\"",
+                  "offset": 23
+                }
+              ],
+              "location": "TableStepDef.i_look_in_for(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 136700,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I should find \"WEN\" in the same row",
+            "match": {
+              "arguments": [
+                {
+                  "val": "should",
+                  "offset": 2
+                },
+                {
+                  "val": "\"WEN\"",
+                  "offset": 14
+                }
+              ],
+              "location": "TableStepDef.i_should_find_in_the_same_row(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 36400,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I should not find \"bobbins\" in the same row",
+            "match": {
+              "arguments": [
+                {
+                  "val": "should not",
+                  "offset": 2
+                },
+                {
+                  "val": "\"bobbins\"",
+                  "offset": 18
+                }
+              ],
+              "location": "TableStepDef.i_should_find_in_the_same_row(String,String)"
+            },
+            "keyword": "But "
+          },
+          {
+            "result": {
+              "duration": 29400,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should not find \"Given\" in the same row",
+            "match": {
+              "arguments": [
+                {
+                  "val": "should not",
+                  "offset": 2
+                },
+                {
+                  "val": "\"Given\"",
+                  "offset": 18
+                }
+              ],
+              "location": "TableStepDef.i_should_find_in_the_same_row(String,String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 450095000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 18,
+        "name": "Click on a row",
+        "description": "",
+        "id": "tables;click-on-a-row",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1139183900,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I click on the button in table \"table3\" for row \"Text5\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"table3\"",
+                  "offset": 31
+                },
+                {
+                  "val": "\"Text5\"",
+                  "offset": 48
+                }
+              ],
+              "location": "TableStepDef.i_click_on_the_button_in_table_for_row(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 83021800,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the result \"Text5\" should be displayed",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Text5\"",
+                  "offset": 11
+                }
+              ],
+              "location": "TableStepDef.the_result_should_be_displayed(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 316981000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 23,
+        "name": "Compare a table",
+        "description": "",
+        "id": "tables;compare-a-table",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 654075200,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "table2 should contain:",
+            "match": {
+              "location": "TableStepDef.table_should_contain(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "english",
+                  "pirate",
+                  "lol"
+                ]
+              },
+              {
+                "cells": [
+                  "Given",
+                  "yarrrrr!",
+                  "bobbins"
+                ]
+              },
+              {
+                "cells": [
+                  "When",
+                  "avast!",
+                  "bobbins"
+                ]
+              },
+              {
+                "cells": [
+                  "Then",
+                  "walk the plank!",
+                  "bobbins"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 763597100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 31,
+        "name": "Compare a table, found from a collection",
+        "description": "",
+        "id": "tables;compare-a-table--found-from-a-collection",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1446526600,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "table \"table2\" should contain:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"table2\"",
+                  "offset": 6
+                }
+              ],
+              "location": "TableStepDef.table_should_contain(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "english",
+                  "pirate",
+                  "lol"
+                ]
+              },
+              {
+                "cells": [
+                  "Given",
+                  "yarrrrr!",
+                  "bobbins"
+                ]
+              },
+              {
+                "cells": [
+                  "When",
+                  "avast!",
+                  "bobbins"
+                ]
+              },
+              {
+                "cells": [
+                  "Then",
+                  "walk the plank!",
+                  "bobbins"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 367970400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 39,
+        "name": "Compare a table, found from a collection",
+        "description": "",
+        "id": "tables;compare-a-table--found-from-a-collection",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1587530700,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "table \"table1\" should contain:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"table1\"",
+                  "offset": 6
+                }
+              ],
+              "location": "TableStepDef.table_should_contain(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "english",
+                  "pirate",
+                  "lol"
+                ]
+              },
+              {
+                "cells": [
+                  "Given",
+                  "Gangway!",
+                  "I CAN HAZ"
+                ]
+              },
+              {
+                "cells": [
+                  "When",
+                  "Blimey!",
+                  "WEN"
+                ]
+              },
+              {
+                "cells": [
+                  "Then",
+                  "Let go and haul!",
+                  "DEN"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 338472100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 59,
+        "name": "Compare a pivot table, found from a collection",
+        "description": "",
+        "id": "tables;compare-a-pivot-table--found-from-a-collection;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 910950600,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "pivot table \"pivot\" should contain:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 12
+                }
+              ],
+              "location": "TableStepDef.pivot_table_should_contain(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "colour",
+                  "year",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2008",
+                  "1"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2008",
+                  "4"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2009",
+                  "5"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2010",
+                  "6"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 330356900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 60,
+        "name": "Compare a pivot table, found from a collection",
+        "description": "",
+        "id": "tables;compare-a-pivot-table--found-from-a-collection;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 735313800,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "pivot table \"pivotWithThRowHeaders\" should contain:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotWithThRowHeaders\"",
+                  "offset": 12
+                }
+              ],
+              "location": "TableStepDef.pivot_table_should_contain(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "colour",
+                  "year",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2008",
+                  "1"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2008",
+                  "4"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2009",
+                  "5"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2010",
+                  "6"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 363521600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 61,
+        "name": "Compare a pivot table, found from a collection",
+        "description": "",
+        "id": "tables;compare-a-pivot-table--found-from-a-collection;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 557993400,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "pivot table \"pivotWithNestedCells\" should contain:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotWithNestedCells\"",
+                  "offset": 12
+                }
+              ],
+              "location": "TableStepDef.pivot_table_should_contain(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "colour",
+                  "year",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2008",
+                  "1"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2008",
+                  "4"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2009",
+                  "5"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2010",
+                  "6"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 236388500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 64,
+        "name": "Compare a multicell pivot table, found from a collection",
+        "description": "",
+        "id": "tables;compare-a-multicell-pivot-table--found-from-a-collection",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 496305300,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "multicell pivot table \"pivotColspanMulticell\" with colspan of 2 should contain:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotColspanMulticell\"",
+                  "offset": 22
+                },
+                {
+                  "val": "2",
+                  "offset": 62
+                }
+              ],
+              "location": "TableStepDef.multicell_pivot_table_with_colspan_of_should_contain(String,int,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "colour",
+                  "year",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2008",
+                  "1"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2008",
+                  "4"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2009",
+                  "5"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2010",
+                  "6"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 245190900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 85,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 294541800,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 31750100,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2008",
+                  "1"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 395440500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 86,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 405744500,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "2009",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 29270200,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 380250900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 87,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 471986500,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "",
+                  "5"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 29480200,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "2009",
+                  "5"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 282021300,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 88,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;5",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 373023100,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 19005700,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 304012400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 89,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;6",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 426485300,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotWithThRowHeaders\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotWithThRowHeaders\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 19258300,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 288305500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 90,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;7",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 393118900,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotWithNestedCells\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotWithNestedCells\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 18051800,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 278272500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 91,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;8",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 393882900,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 40681000,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "year",
+                  "1"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 373481700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 92,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;9",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 375792200,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "2009",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 29562900,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 330756500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 95,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;10",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 396593500,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 19590900,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 248696500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 96,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;11",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 256992200,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader2\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader2\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 28896400,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "a",
+                  "1"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 292893400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 97,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;12",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 393691600,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader2\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader2\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "2009",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 24864900,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2009",
+                  "2"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 548502900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 98,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;13",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 426047800,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader2\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader2\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "",
+                  "5"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 27352900,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Blue",
+                  "b",
+                  "5"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 231673100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 99,
+        "name": "Find a matching cell",
+        "description": "",
+        "id": "tables;find-a-matching-cell;;14",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 428799800,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I search for the first cell in \"pivotMulticellColumnHeader2\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivotMulticellColumnHeader2\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 24637700,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "the found cell should be:",
+            "match": {
+              "location": "TableStepDef.the_found_cell_should_be(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "3"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 223663800,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 110,
+        "name": "Fail to find matching cell",
+        "description": "",
+        "id": "tables;fail-to-find-matching-cell;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 320323800,
+              "status": "passed"
+            },
+            "line": 103,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Green",
+                  "",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 550300,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "no matching cell shall be found",
+            "match": {
+              "location": "TableStepDef.no_matching_cell_shall_be_found()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 292984000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 111,
+        "name": "Fail to find matching cell",
+        "description": "",
+        "id": "tables;fail-to-find-matching-cell;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 437183100,
+              "status": "passed"
+            },
+            "line": 103,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "2011",
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 52500,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "no matching cell shall be found",
+            "match": {
+              "location": "TableStepDef.no_matching_cell_shall_be_found()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 244863100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 112,
+        "name": "Fail to find matching cell",
+        "description": "",
+        "id": "tables;fail-to-find-matching-cell;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 408612100,
+              "status": "passed"
+            },
+            "line": 103,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "",
+                  "",
+                  "7"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 50200,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "no matching cell shall be found",
+            "match": {
+              "location": "TableStepDef.no_matching_cell_shall_be_found()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 295535800,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 113,
+        "name": "Fail to find matching cell",
+        "description": "",
+        "id": "tables;fail-to-find-matching-cell;;5",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 539453100,
+              "status": "passed"
+            },
+            "line": 103,
+            "name": "I search for the first cell in \"pivot\" that matches:",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"pivot\"",
+                  "offset": 31
+                }
+              ],
+              "location": "TableStepDef.i_search_for_the_first_cell_in_that_matches(String,String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "row",
+                  "column",
+                  "value"
+                ]
+              },
+              {
+                "cells": [
+                  "Red",
+                  "2010",
+                  "5"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 53000,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "no matching cell shall be found",
+            "match": {
+              "location": "TableStepDef.no_matching_cell_shall_be_found()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "On table page",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 210915500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/table.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/table.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 116,
+        "name": "Adapt rows of a table",
+        "description": "",
+        "id": "tables;adapt-rows-of-a-table",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 260995500,
+              "status": "passed"
+            },
+            "line": 117,
+            "name": "I choose to adapt \"table2\" using a row adapter",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"table2\"",
+                  "offset": 18
+                }
+              ],
+              "location": "TableStepDef.i_choose_to_adapt_using_a_row_adapter(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3918800,
+              "status": "passed"
+            },
+            "line": 118,
+            "name": "the row adapter shall be called 3 times",
+            "match": {
+              "arguments": [
+                {
+                  "val": "3",
+                  "offset": 32
+                }
+              ],
+              "location": "TableStepDef.the_row_adapter_shall_be_called_times(int)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 24021700,
+              "status": "passed"
+            },
+            "line": 119,
+            "name": "the adapter shall be passed 3 \"th\" column headers each time",
+            "match": {
+              "arguments": [
+                {
+                  "val": "3",
+                  "offset": 28
+                },
+                {
+                  "val": "\"th\"",
+                  "offset": 30
+                }
+              ],
+              "location": "TableStepDef.the_adapter_shall_be_passed_column_headers_each_time(int,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 26227700,
+              "status": "passed"
+            },
+            "line": 120,
+            "name": "the adapter shall be passed 3 \"td\" cells each time",
+            "match": {
+              "arguments": [
+                {
+                  "val": "3",
+                  "offset": 28
+                },
+                {
+                  "val": "\"td\"",
+                  "offset": 30
+                }
+              ],
+              "location": "TableStepDef.the_adapter_shall_be_passed_cells_each_time(int,String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@table"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Tables",
+    "description": "  In order to test applications\n  As a tester\n  I want to find things in a table",
+    "id": "tables",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/dummy/features/samples/local/table.feature",
+    "tags": [
+      {
+        "name": "@local",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@table",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    ]
+  }
+]

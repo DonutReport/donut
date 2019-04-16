@@ -2,15 +2,16 @@ package report.donut.gherkin
 
 import java.io.File
 
-import report.donut.DonutTestData
 import org.scalatest.{FlatSpec, Matchers}
+import report.donut.DonutTestData
 
 class GeneratorTest extends FlatSpec with Matchers {
 
   behavior of "Generator"
 
-  it should "should return error if it tries to parse an invalid file" in {
-    Generator.createReport("cucumber:src/test/resources/samples-weirdos", projectName = "", projectVersion = "") shouldBe Left("Json could not be parsed for src/test/resources/samples-weirdos/invalid_format.json,")
+  it should "return error if it tries to parse an invalid file" in {
+    val path = List("src", "test", "resources", "samples-weirdos", "invalid_format.json").mkString("", File.separator, "")
+    Generator.createReport("cucumber:src/test/resources/samples-weirdos", projectName = "", projectVersion = "") shouldBe Left("Json could not be parsed for " + path + ",")
   }
 
   it should "throw an exception if cucumber/specflow source directory is not provided" in {
@@ -38,7 +39,7 @@ class GeneratorTest extends FlatSpec with Matchers {
   }
 
   it should "return report if valid cuke json files are found" in {
-    Generator.createReport("cucumber:src/test/resources/samples-1", projectName = "", projectVersion = "") match {
+    Generator.createReport("cucumber:src/test/resources/mix-gherkin-2-and-5", projectName = "", projectVersion = "") match {
       case Left(e) => fail(e)
       case Right(r) =>
         r should not be null
@@ -54,11 +55,11 @@ class GeneratorTest extends FlatSpec with Matchers {
   }
 
   it should "return report if only unit json files are provided" in {
-      Generator.createReport("src/test/resources/cuke-and-unit/unit", projectName = "", projectVersion = "") match {
-        case Left(e) => fail(e)
-        case Right(r) =>
-          r should not be null
-      }
+    Generator.createReport("src/test/resources/cuke-and-unit/unit", projectName = "", projectVersion = "") match {
+      case Left(e) => fail(e)
+      case Right(r) =>
+        r should not be null
+    }
   }
 
   behavior of "Generator Units"
@@ -153,7 +154,7 @@ class GeneratorTest extends FlatSpec with Matchers {
   }
 
   it should "loadDonutFeatures even if 1 non cuke path is provided" in {
-    Generator.loadDonutFeatures(new File("src/test/resources/cuke-and-unit/cuke"),List("src/test/resources/cuke-and-unit/unit"),DonutTestData.statusConfiguration) match {
+    Generator.loadDonutFeatures(new File("src/test/resources/cuke-and-unit/cuke"), List("src/test/resources/cuke-and-unit/unit"), DonutTestData.statusConfiguration) match {
       case Left(e) => fail(e)
       case Right(f) =>
         f.size shouldBe 1
@@ -163,14 +164,9 @@ class GeneratorTest extends FlatSpec with Matchers {
         scenarios.head.name shouldBe "Add two numbers: 1 and 2"
         scenarios(1).name shouldBe "Only 1 number is provided"
 
-        val unitTest =scenarios(2)
+        val unitTest = scenarios(2)
         unitTest.name shouldBe "Add four numbers: 1,2,5,10"
         unitTest.keyword shouldBe "Unit Test"
     }
-
-
-
   }
-
-
 }

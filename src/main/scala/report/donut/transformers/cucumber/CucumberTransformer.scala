@@ -173,7 +173,6 @@ object CucumberTransformer extends Log {
   }
 
   private[cucumber] def donutTags(tags: List[Tag]): List[String] = tags.map(t => t.name.substring(1))
-
 }
 
 

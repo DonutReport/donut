@@ -1,0 +1,958 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 3173640200,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Div element",
+        "description": "",
+        "id": "inspect-text;div-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 88492600,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "inspecting text of the \"div\" element should return \"text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "div",
+                  "offset": 24
+                },
+                {
+                  "val": "text",
+                  "offset": 52
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 282779100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 15,
+        "name": "Hidden by CSS div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-div-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 107459000,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "inspecting text of the \"hidden by CSS div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 66
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 377571500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 19,
+        "name": "Hidden by attribute div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-div-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 139993800,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "inspecting text of the \"hidden by CSS div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 66
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 185791500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 23,
+        "name": "Span within div element",
+        "description": "",
+        "id": "inspect-text;span-within-div-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 87255100,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "inspecting text of the \"span within div\" element should return \"text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "span within div",
+                  "offset": 24
+                },
+                {
+                  "val": "text",
+                  "offset": 64
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 244827600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 27,
+        "name": "Hidden by CSS span within div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-span-within-div-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 110953900,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "inspecting text of the \"hidden by CSS span within div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS span within div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 78
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 174406900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 31,
+        "name": "Hidden by attribute span within div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-span-within-div-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 80172000,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "inspecting text of the \"hidden by attribute span within div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by attribute span within div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 84
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 209494700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 35,
+        "name": "Input element",
+        "description": "",
+        "id": "inspect-text;input-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 67955000,
+              "status": "passed"
+            },
+            "line": 36,
+            "name": "inspecting text of the \"input\" element should return \"default\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "input",
+                  "offset": 24
+                },
+                {
+                  "val": "default",
+                  "offset": 54
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 212219300,
+              "status": "passed"
+            },
+            "line": 37,
+            "name": "I enter text \"xyz\" into \"input\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "xyz",
+                  "offset": 14
+                },
+                {
+                  "val": "input",
+                  "offset": 25
+                }
+              ],
+              "location": "TextStepDef.i_enter_text_into(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 59934800,
+              "status": "passed"
+            },
+            "line": 38,
+            "name": "inspecting text of the \"input\" element should return \"xyz\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "input",
+                  "offset": 24
+                },
+                {
+                  "val": "xyz",
+                  "offset": 54
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 187723700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 41,
+        "name": "Hidden by CSS input element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-input-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 62893100,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "inspecting text of the \"hidden by CSS input\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS input",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 68
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 195036000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 45,
+        "name": "Hidden by attribute input element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-input-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 56871400,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "inspecting text of the \"hidden by attribute input\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by attribute input",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 74
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 169235000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 49,
+        "name": "Textarea element",
+        "description": "",
+        "id": "inspect-text;textarea-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 59558700,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "inspecting text of the \"textarea\" element should return \"text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "text",
+                  "offset": 57
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 136983800,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "I enter text \"abcdefg\" into \"textarea\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "abcdefg",
+                  "offset": 14
+                },
+                {
+                  "val": "textarea",
+                  "offset": 29
+                }
+              ],
+              "location": "TextStepDef.i_enter_text_into(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 54936900,
+              "status": "passed"
+            },
+            "line": 52,
+            "name": "inspecting text of the \"textarea\" element should return \"abcdefg\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "abcdefg",
+                  "offset": 57
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 188596600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 55,
+        "name": "Hidden by CSS textarea element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-textarea-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 58719800,
+              "status": "passed"
+            },
+            "line": 56,
+            "name": "inspecting text of the \"hidden by CSS textarea\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 71
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 220667900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 59,
+        "name": "Hidden by attribute textarea element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-textarea-element",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 61566800,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "inspecting text of the \"hidden by attribute textarea\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by attribute textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 77
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Inspect Text",
+    "description": "  In order to inspect text\n  As a tester\n  I want to retrieve text from a page element",
+    "id": "inspect-text",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/local/text.feature",
+    "tags": [
+      {
+        "name": "@local",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@text",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    ]
+  }
+]

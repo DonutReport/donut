@@ -18,7 +18,6 @@ case class ExecutionData(timestamp: DateTime,
 
 object ExecutionData {
 
-
   def apply(features: List[Feature], timestamp: DateTime) = {
     new ExecutionData(timestamp, allScenarios(features), allFailures(features), features.size, allTags(features).size,
       FeatureMetrics(allFeatures(features)), AllTestsMetrics(allScenariosAndUnitTests(features)), ScenarioMetrics(allScenarios(features)), UnitTestMetrics(allUnitTests(features)), StepMetrics(scenarioSteps(features)))
@@ -40,6 +39,8 @@ object ExecutionData {
     features.flatMap(f => (f.scenarios diff f.unitTests).map(e => e.steps)).flatten
   }
 
+  // gherkin 2 - combine feature and scenario tags
+  // gherkin 5 - scenarios inherit feature tags
   def allTags(features: List[Feature]): Seq[String] = {
     val allFeatureTags = features.flatMap(f => f.tags)
     val allScenarioTags = features.flatMap(f => f.scenarios.flatMap(e => e.tags))
@@ -49,5 +50,3 @@ object ExecutionData {
   def allFailures(features: List[Feature]): List[Scenario] =
     allScenariosAndUnitTests(features).filterNot(a => a.status.status) //Failures are without backgrounds here
 }
-
-

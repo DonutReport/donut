@@ -1,8 +1,8 @@
 package report.donut.gherkin.processors
 
-import report.donut.gherkin.model._
 import org.json4s.jackson.Serialization
 import org.json4s.{Formats, NoTypeHints, jackson}
+import report.donut.gherkin.model._
 
 case class ReportTag(tag: String,
                      scenarios: List[Scenario],
@@ -21,8 +21,9 @@ object TagProcessor {
     (allReportTags, createChart(allReportTags))
   }
 
- private[processors] def createChart(reportTags: List[ReportTag]): String = {
+  private[processors] def createChart(reportTags: List[ReportTag]): String = {
     implicit def json4sJacksonFormats: Formats = jackson.Serialization.formats(NoTypeHints)
+
     Serialization.writePretty(reportTags.map(t => new TagMetricsForChart(t.tag, t.scenariosMetrics)))
   }
 
@@ -38,7 +39,7 @@ object TagProcessor {
   private[processors] def groupElementsByTag(scenarios: List[Scenario]): Map[String, List[Scenario]] =
     scenarios.flatMap(s => s.tags.map(tag => (tag, s))).groupBy(_._1).mapValues(value => value.map(_._2))
 
-  // Adds the parent (feature) tag to all children (scenarios)
+  // gherkin 2 backwards compatibility - adds the parent (feature) tag to all children (scenarios)
   private[processors] def addFeatureTagsToScenarios(scenarios: List[Scenario], featureTags: List[String]): List[Scenario] =
     scenarios.map(e => e.copy(tags = (e.tags ::: featureTags).distinct))
 

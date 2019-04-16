@@ -15,7 +15,7 @@ class TagProcessorTest extends FlatSpec with Matchers {
 
   it should "add feature tags to scenarios, so that it can reorganise the scenarios" in {
     val result: List[Scenario] = TagProcessor.addFeatureTagsToScenarios(scenarios, featureTags)
-    result.flatMap(s => s.tags) shouldBe List("complete", "google", "performance")
+    result.flatMap(s => s.tags) shouldBe List("google", "performance", "complete")
   }
 
   it should "rearrange all execution scenarios grouping by tag " in {

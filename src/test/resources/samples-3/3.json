@@ -4,7 +4,11 @@
     "tags": [
       {
         "name": "@local",
-        "line": 1
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ],
     "description": "In order to test applications\nAs a tester\nI want to perform operations on an action using an offset",
@@ -43,8 +47,10 @@
         "id": "offset-actions;click-on-element-with-offset",
         "tags": [
           {
-            "name": "@complete",
-            "line": 10
+            "name": "@local"
+          },
+          {
+            "name": "@complete"
           }
         ],
         "description": "",

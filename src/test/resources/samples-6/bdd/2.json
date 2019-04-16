@@ -24,8 +24,7 @@
               {
                 "cells": [
                   "1"
-                ],
-                "line": 30
+                ]
               }
             ],
             "keyword": "When "
@@ -51,7 +50,9 @@
         ],
         "tags": [
           {
-            "line": 27,
+            "name": "@group_by_feature"
+          },
+          {
             "name": "@complete"
           }
         ]
@@ -64,8 +65,12 @@
     "uri": "/Users/demo.feature",
     "tags": [
       {
-        "line": 1,
-        "name": "@group_by_feature"
+        "name": "@group_by_feature",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ]
   }

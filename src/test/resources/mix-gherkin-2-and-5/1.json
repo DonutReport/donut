@@ -4,11 +4,19 @@
     "tags": [
       {
         "name": "@google",
-        "line": 2
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       },
       {
         "name": "@performance",
-        "line": 2
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 9
+        }
       }
     ],
     "description": "",
@@ -31,8 +39,13 @@
         "id": "google-journey-performance;google-journey-performance",
         "tags": [
           {
-            "name": "@complete",
-            "line": 5
+            "name": "@google"
+          },
+          {
+            "name": "@performance"
+          },
+          {
+            "name": "@complete"
           }
         ],
         "description": "Description",
@@ -87,12 +100,6 @@
         "type": "scenario"
       }
     ],
-    "uri": "features/samples/google/google_performance.feature",
-    "comments": [
-      {
-        "value": "# encoding: ISO-8859-1",
-        "line": 1
-      }
-    ]
+    "uri": "features/samples/google/google_performance.feature"
   }
 ]

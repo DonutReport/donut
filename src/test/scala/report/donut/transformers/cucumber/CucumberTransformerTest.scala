@@ -13,27 +13,26 @@ import scala.collection.mutable.ListBuffer
 
 class CucumberTransformerTest extends FlatSpec with Matchers {
 
-  private val rootDir = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
-  private val values = JSONProcessor.loadFrom(new File(rootDir))
-  private val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
-
   behavior of "CucumberAdaptor"
 
   it should "transform all files json values to list of Features" in {
+    val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
+    val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
     features.fold(
       e => fail(e),
       f => {
         f.size shouldBe 10
         f.head.name shouldBe "Google Journey Performance"
-        f(1).name shouldBe "Google search"
-        f(2).name shouldBe "Offset Actions"
-        f(3).name shouldBe "Input Actions"
-        f(4).name shouldBe "Mouse actions"
-        f(5).name shouldBe "Performance"
-        f(6).name shouldBe "Select"
-        f(7).name shouldBe "Switch to window"
-        f(8).name shouldBe "Tables"
-        f(9).name shouldBe "Examples Tables"
+        f(1).name shouldBe "Examples Tables"
+        f(2).name shouldBe "Google search"
+        f(3).name shouldBe "Offset Actions"
+        f(4).name shouldBe "Input Actions"
+        f(5).name shouldBe "Mouse actions"
+        f(6).name shouldBe "Performance"
+        f(7).name shouldBe "Select"
+        f(8).name shouldBe "Switch to window"
+        f(9).name shouldBe "Tables"
       }
     )
   }
@@ -43,6 +42,9 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "enhance scenarios with extra values" in {
+    val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
+    val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
     features match {
       case Left(e) => fail(e)
       case Right(f) =>
@@ -61,6 +63,9 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "enhance steps with user friendly duration" in {
+    val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
+    val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
     features match {
       case Left(e) => fail(e)
       case Right(f) =>
@@ -83,6 +88,8 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   // TODO: Add more tests for samples that aren't supposed to be loaded
 
   it should "mapToDonutFeatures" in {
+    val rootDir = List("src", "test", "resources", "all-pass").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
     val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
     val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
     generatedFeatures.size shouldEqual originalFeatures.size
@@ -97,15 +104,17 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "mapToDonutFeature" in {
+    val rootDir = List("src", "test", "resources", "all-pass").mkString("", File.separator, File.separator)
+    val values = JSONProcessor.loadFrom(new File(rootDir))
     val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
     val feature: model.Feature = CucumberTransformer.mapToDonutFeature(originalFeatures.head, "10000", DonutTestData.statusConfiguration)
     feature.isInstanceOf[model.Feature] shouldBe true
-    feature.duration.duration shouldEqual 7984105000L
-    feature.duration.durationStr shouldEqual "7 secs and 984 ms"
-    feature.status.status shouldEqual false
-    feature.status.statusStr shouldEqual "failed"
-    feature.htmlFeatureTags shouldEqual List("google", "performance")
-    feature.scenarioMetrics shouldEqual Metrics(1, 0, 1, hasScenarios = true)
+    feature.duration.duration shouldEqual 6748547500L
+    feature.duration.durationStr shouldEqual "6 secs and 748 ms"
+    feature.status.status shouldEqual true
+    feature.status.statusStr shouldEqual "passed"
+    feature.htmlFeatureTags shouldEqual List("local")
+    feature.scenarioMetrics shouldEqual Metrics(1, 1, 0, hasScenarios = true)
     feature.stepMetrics shouldEqual Metrics(0, 0, 0)
     feature.index shouldEqual "10000"
   }
