@@ -34,11 +34,10 @@ class GroupByFeatureNameTest extends FlatSpec with Matchers{
     sample4Features.size shouldBe 1
     sample4Features.head.name shouldBe "Add numbers"
 
+    val expectedScenarioNames = List("Add two numbers: 1 and 2", "Only 1 number is provided", "Add four numbers: 1,2,5,10")
     val scenarios = sample4Features.head.scenarios
     scenarios.size shouldBe 3
-    scenarios.head.name shouldBe "Add two numbers: 1 and 2"
-    scenarios(1).name shouldBe "Add four numbers: 1,2,5,10"
-    scenarios(2).name shouldBe "Only 1 number is provided"
+    scenarios.map(s => s.name).sorted shouldBe expectedScenarioNames.sorted
   }
 
   it should "mapToDonutFeatures if a feature is split across multiple BDD json files" in {

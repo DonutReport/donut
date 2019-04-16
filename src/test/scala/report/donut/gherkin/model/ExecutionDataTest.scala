@@ -21,7 +21,7 @@ class ExecutionDataTest extends FlatSpec with Matchers {
 
   it should "give the combined scenarios for an execution" in {
     val expectedScenarios = List("Google Journey Performance", "Click on element with offset")
-    executionData.allScenarios.map(s => s.name) shouldBe expectedScenarios
+    executionData.allScenarios.map(s => s.name).sorted shouldBe expectedScenarios.sorted
     ExecutionData.allScenarios(features).map(s => s.name).sorted shouldBe expectedScenarios.sorted
   }
 

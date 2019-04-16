@@ -154,13 +154,13 @@ class GeneratorTest extends FlatSpec with Matchers {
   }
 
   it should "loadDonutFeatures even if 1 non cuke path is provided" in {
-    val expectedScenarios = List("Add two numbers: 1 and 2", "Only 1 number is provided", "Add four numbers: 1,2,5,10")
+    val expectedScenarioNames = List("Add two numbers: 1 and 2", "Only 1 number is provided", "Add four numbers: 1,2,5,10")
     Generator.loadDonutFeatures(new File("src/test/resources/cuke-and-unit/cuke"), List("src/test/resources/cuke-and-unit/unit"), DonutTestData.statusConfiguration) match {
       case Left(e) => fail(e)
       case Right(f) =>
         f.size shouldBe 1
         f.head.name shouldBe "Add numbers"
-        f.head.scenarios.map(s => s.name).sorted shouldBe expectedScenarios.sorted
+        f.head.scenarios.map(s => s.name).sorted shouldBe expectedScenarioNames.sorted
     }
   }
 }
