@@ -22,7 +22,7 @@ class ExecutionDataTest extends FlatSpec with Matchers {
   it should "give the combined scenarios for an execution" in {
     val expectedScenarios = List("Google Journey Performance", "Click on element with offset")
     executionData.allScenarios.map(s => s.name) shouldBe expectedScenarios
-    ExecutionData.allScenarios(features).map(s => s.name) shouldBe expectedScenarios
+    ExecutionData.allScenarios(features).map(s => s.name).sorted shouldBe expectedScenarios.sorted
   }
 
   it should "give the combined steps for an execution" in {
@@ -33,12 +33,12 @@ class ExecutionDataTest extends FlatSpec with Matchers {
       "I choose to click button \"b1\" with offset (110,0)",
       "I should see \"You clicked button: B2\"")
 
-    ExecutionData.scenarioSteps(features).map(f => f.name) shouldBe expectedSteps
+    ExecutionData.scenarioSteps(features).map(f => f.name).sorted shouldBe expectedSteps.sorted
   }
 
   it should "give the combined tags for an execution" in {
     val expectedTags = List("google", "performance", "local", "complete")
-    ExecutionData.allTags(features) shouldBe expectedTags
+    ExecutionData.allTags(features).sorted shouldBe expectedTags.sorted
   }
 
   it should "give the failures for an execution" in {
