@@ -54,10 +54,10 @@ Other parameters can also be specified as below:
 Donut help
 Usage: Donut reports [options]
 
-  -s <value> | --sourcedirs <value>
-        Use --sourcedirs gherkin:/my/path/cucumber-reports -> Required, or Use --sourcedirs gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports
-  -o <value> | --outputdir <value>
-        Use --outputdir /my/path/output/donut
+  -s <value> | --sourcePaths <value>
+        Use --sourcePaths gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports
+  -o <value> | --outputPath <value>
+        Use --outputPath /my/path/output/donut
   -p <value> | --prefix <value>
         Use --prefix fileNamePrefix
   -d <value> | --datetime <value>
