@@ -22,9 +22,9 @@ See what's new [here](release-notes.md)
 
 ### download
 ```
-wget http://repo1.maven.org/maven2/report/donut/1.2/donut-1.2-one-jar.jar
+wget http://repo1.maven.org/maven2/report/donut/1.1/donut-1.1-one-jar.jar
 ```
-or download the latest release from: [here](http://repo1.maven.org/maven2/report/donut/1.2/donut-1.2-one-jar.jar)
+or download the latest release from: [here](http://repo1.maven.org/maven2/report/donut/1.1/donut-1.1-one-jar.jar)
 
 ### run from command line
 
@@ -93,18 +93,18 @@ default values:
 <dependency>
   <groupId>report.donut</groupId>
   <artifactId>donut</artifactId>
-  <version>1.2</version>
+  <version>1.1</version>
 </dependency>
 ```
 
 * SBT 
 ```
-libraryDependencies += "report.donut" % "donut" % "1.2"
+libraryDependencies += "report.donut" % "donut" % "1.1"
 ```
 
 * Gradle
 ```
-compile 'report.donut:donut:1.2'
+compile 'report.donut:donut:1.1'
 ```
 
 Example usage of the `Generator`

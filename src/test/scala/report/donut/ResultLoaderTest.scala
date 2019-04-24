@@ -5,9 +5,7 @@ import java.io.File
 import org.json4s.DefaultFormats
 import org.scalatest.{FlatSpec, Matchers}
 import report.donut.ResultLoader.GherkinResultLoader
-import report.donut.gherkin.model
 import report.donut.gherkin.processors.JSONProcessor
-import report.donut.transformers.cucumber.{CucumberTransformer, Feature}
 
 class ResultLoaderTest extends FlatSpec with Matchers {
 
@@ -78,8 +76,8 @@ class ResultLoaderTest extends FlatSpec with Matchers {
 
   it should "loadCukeFeatures" in {
     val rootDir = List("src", "test", "resources", "samples-7").mkString("", File.separator, "")
-    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
-    val donutFeatures: List[model.Feature] = CucumberTransformer.transform(features, DonutTestData.statusConfiguration).right.get.toList
-    donutFeatures.size shouldEqual 1
+    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get
+    val loader = new GherkinResultLoader(new File(rootDir))
+    loader.loadCukeFeatures(features).size shouldEqual 1
   }
 }
