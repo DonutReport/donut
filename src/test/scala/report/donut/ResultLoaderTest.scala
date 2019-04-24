@@ -20,7 +20,7 @@ class ResultLoaderTest extends FlatSpec with Matchers {
   }
 
   it should "return a GherkinResultLoader if source path does not specify a format" in {
-    val sourcePath = List("gherkin:src", "test", "resources", "all-pass").mkString("", File.separator, "")
+    val sourcePath = List("src", "test", "resources", "all-pass").mkString("", File.separator, "")
     val loader = ResultLoader(sourcePath)
     loader.isInstanceOf[GherkinResultLoader] shouldBe true
   }
