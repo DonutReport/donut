@@ -30,5 +30,4 @@ class UnitTestMetricsTest extends FlatSpec with Matchers {
 
     UnitTestMetrics(unitTestsWithOrphaned.dropRight(1)) shouldBe Metrics(0, 0, 0, orphaned = 1, orphanedPassed = 1, hasOrphanedUnitTests = true)
   }
-
 }

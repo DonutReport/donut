@@ -2,18 +2,19 @@ package report.donut.transformers.cucumber
 
 import java.io.File
 
-import report.donut.DonutTestData
-import report.donut.gherkin.model
-import report.donut.gherkin.model.Metrics
-import report.donut.gherkin.processors.JSONProcessor
-import org.json4s.JValue
+import org.json4s.DefaultFormats
 import org.scalatest.{FlatSpec, Matchers}
+import report.donut.DonutTestData
+import report.donut.gherkin.model.{Metrics, Feature => DonutFeature}
+import report.donut.gherkin.processors.JSONProcessor
 
 import scala.collection.mutable.ListBuffer
 
 class CucumberTransformerTest extends FlatSpec with Matchers {
 
-  behavior of "CucumberAdaptor"
+  implicit val formats = DefaultFormats
+
+  behavior of "CucumberTransformer"
 
   it should "transform all files json values to list of Features" in {
     val expectedFeatureNames = List("Google Journey Performance",
@@ -28,9 +29,9 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
       "Tables"
     )
     val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
-    val values = JSONProcessor.loadFrom(new File(rootDir))
-    val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
-    features.fold(
+    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
+    val donutFeatures = CucumberTransformer.transform(features, DonutTestData.statusConfiguration)
+    donutFeatures.fold(
       e => fail(e),
       f => {
         f.size shouldBe 10
@@ -40,14 +41,14 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "return empty list if there are no features" in {
-    CucumberTransformer.transform(List.empty, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) shouldEqual Right(List.empty)
+    CucumberTransformer.transform(List.empty, DonutTestData.statusConfiguration) shouldEqual Right(List.empty)
   }
 
   it should "enhance scenarios with extra values" in {
     val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
-    val values = JSONProcessor.loadFrom(new File(rootDir))
-    val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
-    features match {
+    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
+    val donutFeatures = CucumberTransformer.transform(features, DonutTestData.statusConfiguration)
+    donutFeatures match {
       case Left(e) => fail(e)
       case Right(f) =>
         val performanceScenario = f.flatMap(_.scenarios).filter(s => s.featureName == "Google Journey Performance").head
@@ -64,9 +65,9 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
 
   it should "enhance steps with user friendly duration" in {
     val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
-    val values = JSONProcessor.loadFrom(new File(rootDir))
-    val features = values.right.flatMap { e => CucumberTransformer.transform(e, new ListBuffer[model.Feature], DonutTestData.statusConfiguration) }
-    features match {
+    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
+    val donutFeatures = CucumberTransformer.transform(features, DonutTestData.statusConfiguration)
+    donutFeatures match {
       case Left(e) => fail(e)
       case Right(f) =>
         val enhancedSteps = f.flatMap(_.scenarios).filter(s => s.featureName == "Google Journey Performance").flatMap(_.steps)
@@ -75,27 +76,18 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
     }
   }
 
-  behavior of "CucumberAdaptor units"
-
-  it should "loadCukeFeatures" in {
-    val rootDir = List("src", "test", "resources", "samples-7").mkString("", File.separator, File.separator)
-    val values = JSONProcessor.loadFrom(new File(rootDir))
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
-
-    originalFeatures.size shouldEqual 1
-  }
+  behavior of "CucumberTransformer units"
 
   // TODO: Add more tests for samples that aren't supposed to be loaded
 
   it should "mapToDonutFeatures" in {
     val rootDir = List("src", "test", "resources", "all-pass").mkString("", File.separator, File.separator)
-    val values = JSONProcessor.loadFrom(new File(rootDir))
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
-    val generatedFeatures = CucumberTransformer.mapToDonutFeatures(originalFeatures, new ListBuffer[model.Feature], DonutTestData.statusConfiguration)
-    generatedFeatures.size shouldEqual originalFeatures.size
+    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
+    val generatedFeatures = CucumberTransformer.mapToDonutFeatures(features, new ListBuffer[DonutFeature], DonutTestData.statusConfiguration)
+    generatedFeatures.size shouldEqual features.size
 
     for {
-      o <- originalFeatures
+      o <- features
       g <- generatedFeatures
     } yield if (o.name == g.name) {
       o.elements.size shouldBe g.scenarios.size
@@ -106,9 +98,9 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   it should "mapToDonutFeature" in {
     val rootDir = List("src", "test", "resources", "samples-2").mkString("", File.separator, File.separator)
     val values = JSONProcessor.loadFrom(new File(rootDir))
-    val originalFeatures: List[Feature] = CucumberTransformer.loadCukeFeatures(values.right.get)
-    val feature: model.Feature = CucumberTransformer.mapToDonutFeature(originalFeatures.head, "10000", DonutTestData.statusConfiguration)
-    feature.isInstanceOf[model.Feature] shouldBe true
+    val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
+    val feature: DonutFeature = CucumberTransformer.mapToDonutFeature(features.head, "10000", DonutTestData.statusConfiguration)
+    feature.isInstanceOf[DonutFeature] shouldBe true
     feature.duration.duration shouldEqual 7984105000L
     feature.duration.durationStr shouldEqual "7 secs and 984 ms"
     feature.status.status shouldEqual false

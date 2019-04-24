@@ -55,7 +55,7 @@ Donut help
 Usage: Donut reports [options]
 
   -s <value> | --sourcedirs <value>
-        Use --sourcedirs cucumber:/my/path/cucumber-reports -> Required, or Use --sourcedirs specflow:/my/path/specflow-reports,/my/nunit-reports
+        Use --sourcedirs gherkin:/my/path/cucumber-reports -> Required, or Use --sourcedirs gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports
   -o <value> | --outputdir <value>
         Use --outputdir /my/path/output/donut
   -p <value> | --prefix <value>
@@ -96,42 +96,26 @@ default values:
   <version>1.1</version>
 </dependency>
 ```
-For older versions:
-```
-<dependency>
-  <groupId>io.magentys</groupId>
-  <artifactId>donut</artifactId>
-  <version>1.0</version>
-</dependency>
-```
 
 * SBT 
 ```
 libraryDependencies += "report.donut" % "donut" % "1.1"
-```
-For older versions:
-```
-libraryDependencies += "io.magentys" % "donut" % "1.0"
 ```
 
 * Gradle
 ```
 compile 'report.donut:donut:1.1'
 ```
-For older versions:
-```
-compile 'io.magentys:donut:1.0'
-```
 
 Example usage of the `Generator`
 
 ```
 ReportConsole report = 
-       Generator.apply(sourceDirectory, outputDirectory, filePrefix, timestamp, template, countSkippedAsFailure,         
+       Generator.apply(sourcePaths, outputPath, filePrefix, timestamp, template, countSkippedAsFailure,         
        countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes);
 ```
 
-This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object: 
+This will create an `html` report at the outputPath and will return a `ReportConsole` output object: 
 
 ```
 allFeatures: List[Feature]
@@ -162,7 +146,7 @@ buildFailed: Boolean
 
 ### run from sbt
 
-`sbt "run-main report.donut.Boot -s cucumber:/my/path/cucumber-reports -n myProjectName" `
+`sbt "run-main report.donut.Boot -s gherkin:/my/path/cucumber-reports -n myProjectName" `
 
 ### credits
 

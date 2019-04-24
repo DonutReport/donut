@@ -14,7 +14,6 @@ class ExecutionDataTest extends FlatSpec with Matchers {
   val timestamp = DateTime.now
   val executionData = ExecutionData(features, timestamp)
 
-
   it should "exclude 'Without Feature' features while calculating execution data" in {
     ExecutionData.allFeatures(featuresWithCukeAndOrphanedUnits).size shouldBe 1
   }

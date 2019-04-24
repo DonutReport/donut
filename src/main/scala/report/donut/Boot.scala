@@ -1,9 +1,8 @@
 package report.donut
 
-import report.donut.gherkin.Generator
-import report.donut.log.Log
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+import report.donut.log.Log
 import scopt.OptionParser
 
 object Boot extends App with Log {
