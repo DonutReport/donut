@@ -81,7 +81,7 @@ Usage: Donut reports [options]
 ```
 
 default values:
-* **outputDir** : by default a `donut` folder will be generated
+* **outputPath** : by default a `donut` folder will be generated
 * **prefix** : the generated file is `donut-report.html`, however you can specify prefix i.e. `myproject-`
 * **datetime** : refers to the start time of your execution. If not specified by the user reports will use `now`
 * **template** : donut supports 2 themes, `default` and `light`. `default` is the default value
