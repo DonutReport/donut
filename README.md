@@ -10,7 +10,7 @@ Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm e
 Live Demos => [Only Scenarios](http://donutreport.github.io/donut/demo.html)&nbsp;&nbsp;&nbsp;[Scenarios and Unit Tests](http://donutreport.github.io/donut/demo-scenarios-and-unitTests.html)&nbsp;&nbsp;&nbsp;[Scenarios and Orphaned Unit Tests](http://donutreport.github.io/donut/demo-scenarios-and-orphanedUnitTests.html)&nbsp;&nbsp;&nbsp;[Only Unit Tests](http://donutreport.github.io/donut/demo-only-unit-tests.html)
 
 ## Quickstart
-You can either use Donut directly or check out the available plugins: 
+You can either use Donut directly or check out the available plugins:
 * [Maven plugin](https://github.com/DonutReport/donut-maven-plugin)
 * [Specflow adaptor](https://github.com/DonutReport/SpecNuts)
 * [Jenkins plugin](https://github.com/DonutReport/donut-jenkins-plugin)
@@ -45,8 +45,8 @@ java -jar donut-<Version>.jar -s cucumber:/my/path/cucumber-reports,/my/unit-tes
 
 ### options
 
-`-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.  
-`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files. 
+`-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.
+`-s` or `--sourcedirs` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the generated result files.
 
 Other parameters can also be specified as below:
 
@@ -54,10 +54,10 @@ Other parameters can also be specified as below:
 Donut help
 Usage: Donut reports [options]
 
-  -s <value> | --sourcePaths <value>
-        Use --sourcePaths gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports
-  -o <value> | --outputPath <value>
-        Use --outputPath /my/path/output/donut
+  -s <value> | --sourcedirs <value>
+        Use --sourcedirs cucumber:/my/path/cucumber-reports -> Required, or Use --sourcedirs specflow:/my/path/specflow-reports,/my/nunit-reports
+  -o <value> | --outputdir <value>
+        Use --outputdir /my/path/output/donut
   -p <value> | --prefix <value>
         Use --prefix fileNamePrefix
   -d <value> | --datetime <value>
@@ -81,7 +81,7 @@ Usage: Donut reports [options]
 ```
 
 default values:
-* **outputPath** : by default a `donut` folder will be generated
+* **outputDir** : by default a `donut` folder will be generated
 * **prefix** : the generated file is `donut-report.html`, however you can specify prefix i.e. `myproject-`
 * **datetime** : refers to the start time of your execution. If not specified by the user reports will use `now`
 * **template** : donut supports 2 themes, `default` and `light`. `default` is the default value
@@ -96,26 +96,42 @@ default values:
   <version>1.1</version>
 </dependency>
 ```
+For older versions:
+```
+<dependency>
+  <groupId>io.magentys</groupId>
+  <artifactId>donut</artifactId>
+  <version>1.0</version>
+</dependency>
+```
 
-* SBT 
+* SBT
 ```
 libraryDependencies += "report.donut" % "donut" % "1.1"
+```
+For older versions:
+```
+libraryDependencies += "io.magentys" % "donut" % "1.0"
 ```
 
 * Gradle
 ```
 compile 'report.donut:donut:1.1'
 ```
+For older versions:
+```
+compile 'io.magentys:donut:1.0'
+```
 
 Example usage of the `Generator`
 
 ```
-ReportConsole report = 
-       Generator.apply(sourcePaths, outputPath, filePrefix, timestamp, template, countSkippedAsFailure,         
+ReportConsole report =
+       Generator.apply(sourceDirectory, outputDirectory, filePrefix, timestamp, template, countSkippedAsFailure,
        countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure, projectName, projectVersion, customAttributes);
 ```
 
-This will create an `html` report at the outputPath and will return a `ReportConsole` output object: 
+This will create an `html` report at the outputDirectory and will return a `ReportConsole` output object:
 
 ```
 allFeatures: List[Feature]
@@ -146,7 +162,7 @@ buildFailed: Boolean
 
 ### run from sbt
 
-`sbt "run-main report.donut.Boot -s gherkin:/my/path/cucumber-reports -n myProjectName" `
+`sbt "run-main report.donut.Boot -s cucumber:/my/path/cucumber-reports -n myProjectName" `
 
 ### credits
 
