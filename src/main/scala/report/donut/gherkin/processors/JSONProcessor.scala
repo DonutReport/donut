@@ -2,19 +2,22 @@ package report.donut.gherkin.processors
 
 import java.io.File
 
-import report.donut.log.Log
-import org.json4s.{DefaultFormats, JValue}
 import org.json4s.jackson.JsonMethods._
-import scala.util.Try
+import org.json4s.{DefaultFormats, JValue}
 import report.donut._
+import report.donut.log.Log
+
+import scala.util.Try
+
 object JSONProcessor extends Log {
 
   /**
     * Gets all file names that represent a report.
     * Excludes empty files based on size.
+    *
     * @param directory The root directory for the reports
     */
-  def loadFrom(directory: File):  Either[String, List[JValue]] = {
+  def loadFrom(directory: File): Either[String, List[JValue]] = {
     log.debug("Loading files from directory: " + directory)
     sequenceEither(getValidFiles(directory).map(parseJsonFile)) match {
       case Left(errors) => Left(errors.foldLeft("")(_ + _ + ","))
@@ -24,6 +27,7 @@ object JSONProcessor extends Log {
 
   /**
     * Parses a json file and produces a list of Feature.
+    *
     * @param jsonPath the file canonical path
     * @return list of Feature per file
     */
@@ -36,6 +40,7 @@ object JSONProcessor extends Log {
 
   /**
     * finds only valid files
+    *
     * @param directory
     * @return
     */

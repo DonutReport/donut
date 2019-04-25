@@ -1,15 +1,14 @@
 package report.donut
 
-import report.donut.gherkin.Generator
-import report.donut.log.Log
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
+import report.donut.log.Log
 import scopt.OptionParser
 
 object Boot extends App with Log {
 
-  case class DonutArguments(sourceDirs: String = "",
-                            outputDir: String = "donut",
+  case class DonutArguments(sourcePaths: String = "",
+                            outputPath: String = "donut",
                             prefix: String = "",
                             datetime: String = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm").print(DateTime.now),
                             template: String = "default",
@@ -27,17 +26,17 @@ object Boot extends App with Log {
     head("\nDonut help")
     head("----------")
 
-    opt[String]('s', "sourcedirs").required() action { (arg, config) =>
-      config.copy(sourceDirs = arg)
-    } text "Required -> Use --sourcedirs specflow(or cucumber):/my/path/cucumber-reports,/my/path/nunit-reports"
+    opt[String]('s', "sourcePaths").required() action { (arg, config) =>
+      config.copy(sourcePaths = arg)
+    } text "Required -> Use --sourcePaths gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports"
 
     opt[String]('n', "projectName").required() action { (arg, config) =>
       config.copy(projectName = arg)
     } text "Required -> Use --projectName myProject"
 
-    opt[String]('o', "outputdir") action { (arg, config) =>
-      config.copy(outputDir = arg)
-    } text "Use --outputdir /my/path/output/donut"
+    opt[String]('o', "outputPath") action { (arg, config) =>
+      config.copy(outputPath = arg)
+    } text "Use --outputPath /my/path/output/donut"
 
     opt[String]('p', "prefix") action { (arg, config) =>
       config.copy(prefix = arg)
@@ -76,14 +75,14 @@ object Boot extends App with Log {
     } text "Use --missingFails true/false"
 
     checkConfig { c =>
-      if (c.sourceDirs == "") failure("Missing source dir.") else success
+      if (c.sourcePaths == "") failure("Missing source paths.") else success
     }
   }
 
   optionParser parse(args, DonutArguments()) match {
     case Some(appargs) =>
-      Generator(appargs.sourceDirs,
-        appargs.outputDir,
+      Generator(appargs.sourcePaths,
+        appargs.outputPath,
         appargs.prefix,
         appargs.datetime,
         appargs.template,

@@ -24,14 +24,12 @@
               {
                 "cells": [
                   "1"
-                ],
-                "line": 14
+                ]
               },
               {
                 "cells": [
                   "2"
-                ],
-                "line": 15
+                ]
               }
             ],
             "keyword": "When "
@@ -57,7 +55,9 @@
         ],
         "tags": [
           {
-            "line": 11,
+            "name": "@group_by_feature"
+          },
+          {
             "name": "@complete"
           }
         ]
@@ -70,8 +70,12 @@
     "uri": "/Users/demo.feature",
     "tags": [
       {
-        "line": 1,
-        "name": "@group_by_feature"
+        "name": "@group_by_feature",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ]
   }

@@ -24,8 +24,7 @@
               {
                 "cells": [
                   "1"
-                ],
-                "line": 30
+                ]
               }
             ],
             "keyword": "When "
@@ -51,7 +50,9 @@
         ],
         "tags": [
           {
-            "line": 27,
+            "name": "@demo"
+          },
+          {
             "name": "@complete"
           }
         ]
@@ -64,8 +65,12 @@
     "uri": "/my/path/demo.feature",
     "tags": [
       {
-        "line": 1,
-        "name": "@demo"
+        "name": "@demo",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ]
   }

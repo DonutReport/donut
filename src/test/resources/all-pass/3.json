@@ -1,0 +1,410 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "line": 8,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 233177500,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I should see the home page",
+            "match": {
+              "location": "HomeStepDef.I_should_see_the_home_page()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 8026347600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.open_google()"
+            }
+          }
+        ],
+        "line": 12,
+        "name": "Users can perform a search",
+        "description": "",
+        "id": "google-search;users-can-perform-a-search",
+        "after": [
+          {
+            "result": {
+              "duration": 102699500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.reset_search_filter()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2429172900,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I search for \"magentys\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"magentys\"",
+                  "offset": 13
+                }
+              ],
+              "location": "HomeStepDef.I_search_for_term(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 208644200,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I should see the results page",
+            "match": {
+              "location": "ResultsStepDef.I_should_see_the_results_page()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 774787600,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I should see only relevant results",
+            "match": {
+              "location": "ResultsStepDef.I_should_see_only_relevant_results()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@google"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 325546000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I should see the home page",
+            "match": {
+              "location": "HomeStepDef.I_should_see_the_home_page()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 644065000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.open_google()"
+            }
+          }
+        ],
+        "line": 18,
+        "name": "Perform search without filter",
+        "description": "",
+        "id": "google-search;perform-search-without-filter",
+        "after": [
+          {
+            "result": {
+              "duration": 65780400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.reset_search_filter()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 882931500,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I search for \"\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"\"",
+                  "offset": 13
+                }
+              ],
+              "location": "HomeStepDef.I_search_for_term(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8606859300,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I should not see the results page",
+            "match": {
+              "location": "ResultsStepDef.I_should_not_see_the_results_page()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@google"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 179731400,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I should see the home page",
+            "match": {
+              "location": "HomeStepDef.I_should_see_the_home_page()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 489419500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.open_google()"
+            }
+          }
+        ],
+        "line": 23,
+        "name": "Perform search without filter (inline table)",
+        "description": "",
+        "id": "google-search;perform-search-without-filter-(inline-table)",
+        "after": [
+          {
+            "result": {
+              "duration": 146293400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.reset_search_filter()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1183257900,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "I search for:",
+            "match": {
+              "location": "HomeStepDef.I_search_for(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "term"
+                ]
+              },
+              {
+                "cells": [
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8615316900,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "I should not see the results page",
+            "match": {
+              "location": "ResultsStepDef.I_should_not_see_the_results_page()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@google"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 216633100,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I should see the home page",
+            "match": {
+              "location": "HomeStepDef.I_should_see_the_home_page()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 676190000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.open_google()"
+            }
+          }
+        ],
+        "line": 38,
+        "name": "Perform search without filter (inline + examples table)",
+        "description": "",
+        "id": "google-search;perform-search-without-filter-(inline-+-examples-table);;2",
+        "after": [
+          {
+            "result": {
+              "duration": 74094600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "HomeStepDef.reset_search_filter()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 833968800,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "I search for:",
+            "match": {
+              "location": "HomeStepDef.I_search_for(String,String\u003e\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "term"
+                ]
+              },
+              {
+                "cells": [
+                  ""
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8362868700,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "I should not see the results page",
+            "match": {
+              "location": "ResultsStepDef.I_should_not_see_the_results_page()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@google"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Google search",
+    "description": "\tIn order to retrieve search results that are relevant\n\tAs a user\n\tI want to be able to enter a filter",
+    "id": "google-search",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/google/google_search.feature",
+    "tags": [
+      {
+        "name": "@google",
+        "type": "Tag",
+        "location": {
+          "line": 2,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

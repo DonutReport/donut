@@ -32,8 +32,12 @@
     "uri": "Test URI",
     "tags": [
       {
-        "line": 1,
-        "name": "@complete"
+        "name": "@complete",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ]
   }

@@ -24,26 +24,22 @@
               {
                 "cells": [
                   "1"
-                ],
-                "line": 21
+                ]
               },
               {
                 "cells": [
                   "2"
-                ],
-                "line": 22
+                ]
               },
               {
                 "cells": [
                   "5"
-                ],
-                "line": 23
+                ]
               },
               {
                 "cells": [
                   "10"
-                ],
-                "line": 24
+                ]
               }
             ],
             "keyword": "When "
@@ -69,7 +65,9 @@
         ],
         "tags": [
           {
-            "line": 18,
+            "name": "@group_by_feature"
+          },
+          {
             "name": "@complete"
           }
         ]
@@ -82,8 +80,12 @@
     "uri": "/Users/demo.feature",
     "tags": [
       {
-        "line": 1,
-        "name": "@group_by_feature"
+        "name": "@group_by_feature",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ]
   }

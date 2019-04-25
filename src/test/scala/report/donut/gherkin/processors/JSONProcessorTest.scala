@@ -6,15 +6,14 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class JSONProcessorTest extends FlatSpec with Matchers {
 
-  val rootDir = List("src", "test", "resources", "samples-1").mkString("", File.separator, File.separator)
+  val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
   val statusConfiguration = StatusConfiguration(false, false, false, false)
-
 
   behavior of "JSONProcessor"
 
   it should "identify valid files in a directory" in {
     val jsonFiles = JSONProcessor.getValidFiles(new File(rootDir))
-    jsonFiles.size shouldBe 10
+    jsonFiles.size shouldBe 11
     jsonFiles.contains(rootDir + "1.json") shouldBe true
     jsonFiles.contains(rootDir + "2.json") shouldBe true
     jsonFiles.contains(rootDir + "3.json") shouldBe true
@@ -24,7 +23,8 @@ class JSONProcessorTest extends FlatSpec with Matchers {
     jsonFiles.contains(rootDir + "7.json") shouldBe true
     jsonFiles.contains(rootDir + "8.json") shouldBe true
     jsonFiles.contains(rootDir + "9.json") shouldBe true
-    jsonFiles.contains(rootDir + "9a.json") shouldBe true
+    jsonFiles.contains(rootDir + "10.json") shouldBe true
+    jsonFiles.contains(rootDir + "11.json") shouldBe true
     jsonFiles.contains(rootDir + "empty_json.json") shouldBe false
     jsonFiles.contains(rootDir + "sample.xml") shouldBe false
   }

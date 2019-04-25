@@ -1,0 +1,226 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 13,
+        "name": "Joining basket and ball should yield basketball",
+        "description": "",
+        "id": "examples-tables;joining-\u003cstring-1\u003e-and-\u003cstring-2\u003e-should-yield-\u003cresult\u003e;compound-words;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "string 1 is \"basket\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "string 2 is \"ball\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "I join the two strings",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "the result should be \"basketball\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          }
+        ]
+      },
+      {
+        "line": 14,
+        "name": "Joining any and thing should yield anything",
+        "description": "",
+        "id": "examples-tables;joining-\u003cstring-1\u003e-and-\u003cstring-2\u003e-should-yield-\u003cresult\u003e;compound-words;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "string 1 is \"any\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "string 2 is \"thing\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "I join the two strings",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "the result should be \"anything\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          }
+        ]
+      },
+      {
+        "line": 18,
+        "name": "Joining howdy and doo should yield howdydoo",
+        "description": "",
+        "id": "examples-tables;joining-\u003cstring-1\u003e-and-\u003cstring-2\u003e-should-yield-\u003cresult\u003e;nonsensical-compound-words;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "string 1 is \"howdy\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "string 2 is \"doo\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "I join the two strings",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "the result should be \"howdydoo\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          }
+        ]
+      },
+      {
+        "line": 19,
+        "name": "Joining yep and ok should yield yepok",
+        "description": "",
+        "id": "examples-tables;joining-\u003cstring-1\u003e-and-\u003cstring-2\u003e-should-yield-\u003cresult\u003e;nonsensical-compound-words;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "string 1 is \"yep\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "string 2 is \"ok\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "I join the two strings",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "the result should be \"yepok\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          }
+        ]
+      }
+    ],
+    "name": "Examples Tables",
+    "description": "  Non expanded scenario outline with multiple examples tables",
+    "id": "examples-tables",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/local/joining_strings.feature",
+    "tags": [
+      {
+        "name": "@local",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

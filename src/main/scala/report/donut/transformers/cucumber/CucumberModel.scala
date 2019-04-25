@@ -1,8 +1,6 @@
 package report.donut.transformers.cucumber
 
-case class Comment(value: String, line: Int)
-
-case class Tag(name: String, line: Int)
+case class Tag(name: String)
 
 case class Result(duration: Long = 0L, status: String = "", error_message: String = "")
 
@@ -14,10 +12,11 @@ case class BeforeHook(result: Result, `match`: Match)
 
 case class AfterHook(result: Result, `match`: Match)
 
-case class Row(comments: List[Comment], cells: List[String], line: Int)
+case class Row(cells: List[String])
 
 case class Embedding(mime_type: String = "", data: String = "", id: Int = 0)
 
+// gherkin 2 backwards compatibility
 case class Examples(id: String,
                     name: String,
                     keyword: String,
@@ -54,7 +53,6 @@ case class Feature(keyword: String,
                    id: String,
                    uri: String,
                    elements: List[Element],
-                   comments: List[Comment],
                    tags: List[Tag]) {
 
   val scenariosExcludeBackground = {

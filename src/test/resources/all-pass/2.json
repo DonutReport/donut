@@ -1,0 +1,186 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 6416514400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/ajax.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/ajax.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Ajax finishes within timeout",
+        "description": "",
+        "id": "ajax-finished-condition;ajax-finishes-within-timeout",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 147160100,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I have triggered a high latency ajax call",
+            "match": {
+              "location": "AjaxStepDef.i_have_triggered_a_high_latency_ajax_call()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6050859300,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I should see response text if the timeout for ajax to finish is set to 10 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "10",
+                  "offset": 71
+                }
+              ],
+              "location": "AjaxStepDef.i_should_see_response_text(long)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@ajax"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 238908000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/ajax.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/ajax.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 16,
+        "name": "Ajax does not finish within timeout",
+        "description": "",
+        "id": "ajax-finished-condition;ajax-does-not-finish-within-timeout",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 154121500,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I have triggered a high latency ajax call",
+            "match": {
+              "location": "AjaxStepDef.i_have_triggered_a_high_latency_ajax_call()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2144422700,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I should not see response text if the timeout for ajax to finish is set to 2 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 75
+                }
+              ],
+              "location": "AjaxStepDef.i_should_not_see_response_text(long)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@ajax"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Ajax Finished Condition",
+    "description": "  In order to test the AjaxFinishedCondition\n  As a tester\n  I want to trigger a high latency ajax call",
+    "id": "ajax-finished-condition",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/local/ajax.feature",
+    "tags": [
+      {
+        "name": "@local",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@ajax",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    ]
+  }
+]

@@ -2,41 +2,48 @@ package report.donut
 
 import java.io.File
 
-import report.donut.gherkin.{Generator, model}
 import report.donut.gherkin.model.{Embedding, Feature, StatusConfiguration}
-import report.donut.gherkin.processors.JSONProcessor
-import report.donut.transformers.cucumber.CucumberTransformer
+import report.donut.transformers.cucumber.{CucumberTransformer, Feature => CucumberFeature}
 
 import scala.collection.mutable.ListBuffer
+import scala.util.Try
 
 object DonutTestData {
 
   val statusConfiguration = StatusConfiguration()
 
   val features_sample_2: Either[String, List[Feature]] = {
-    for {
-      jsonValues <- JSONProcessor.loadFrom(new File("src/test/resources/samples-2")).right
-      transformed <- CucumberTransformer.transform(jsonValues, new ListBuffer[model.Feature], DonutTestData.statusConfiguration).right
-    } yield transformed.toList
+    val sourcePath = List("gherkin:src", "test", "resources", "samples-2").mkString("", File.separator, File.separator)
+    val loader = ResultLoader(sourcePath)
+    val donutFeatures = CucumberTransformer.transform(loader.load().right.get, DonutTestData.statusConfiguration).right.get
+    Try(donutFeatures.toList).toEither(_.getMessage)
+
   }
 
   val features_sample_3: Either[String, List[Feature]] = {
-    for {
-      jsonValues <- JSONProcessor.loadFrom(new File("src/test/resources/samples-3")).right
-      transformed <- CucumberTransformer.transform(jsonValues, new ListBuffer[model.Feature], DonutTestData.statusConfiguration).right
-    } yield transformed.toList
+    val sourcePath = List("gherkin:src", "test", "resources", "samples-3").mkString("", File.separator, File.separator)
+    val loader = ResultLoader(sourcePath)
+    val donutFeatures = CucumberTransformer.transform(loader.load().right.get, DonutTestData.statusConfiguration).right.get
+    Try(donutFeatures.toList).toEither(_.getMessage)
   }
 
   val featuresWithOnlyUnits: Either[String, List[Feature]] = {
-    for {
-      transformed <- Generator.loadDonutFeatures(List("src/test/resources/cuke-and-unit/unit"), DonutTestData.statusConfiguration).right
-    } yield transformed.toList
+    val sourcePath = List("gherkin:src", "test", "resources", "cuke-and-unit", "unit").mkString("", File.separator, File.separator)
+    val loader = ResultLoader(sourcePath)
+    val donutFeatures = CucumberTransformer.transform(loader.load().right.get, DonutTestData.statusConfiguration).right.get
+    Try(donutFeatures.toList).toEither(_.getMessage)
   }
 
   val featuresWithCukeAndOrphanedUnits: Either[String, List[Feature]] = {
-    for {
-      transformed <- Generator.loadDonutFeatures(new File("src/test/resources/samples-6/bdd"), List("src/test/resources/samples-6/unit"), DonutTestData.statusConfiguration).right
-    } yield transformed.toList
+    val sourcePaths = List(List("gherkin:src", "test", "resources", "samples-6", "bdd").mkString("", File.separator, File.separator),
+      List("gherkin:src", "test", "resources", "samples-6", "unit").mkString("", File.separator, File.separator))
+    val features = new ListBuffer[CucumberFeature]
+    for (sourcePath <- sourcePaths) {
+      val loader = ResultLoader(sourcePath)
+      features ++= loader.load().right.get
+    }
+    val donutFeatures = CucumberTransformer.transform(features.toList, DonutTestData.statusConfiguration).right.get
+    Try(donutFeatures.toList).toEither(_.getMessage)
   }
 
   val embedding = Embedding("image/png",

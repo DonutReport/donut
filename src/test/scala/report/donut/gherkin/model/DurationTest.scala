@@ -13,5 +13,4 @@ class DurationTest extends FlatSpec with Matchers {
     Duration.formatDuration(duration_1) should be ("1 ms")
     Duration.formatDuration(duration_2) should be ("0 ms")
   }
-
 }

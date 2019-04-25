@@ -25,7 +25,9 @@
         ],
         "tags": [
           {
-            "line": 18,
+            "name": "@demo"
+          },
+          {
             "name": "@complete"
           }
         ]
@@ -38,8 +40,12 @@
     "uri": "/my/path/demo.feature",
     "tags": [
       {
-        "line": 1,
-        "name": "@demo"
+        "name": "@demo",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ]
   }

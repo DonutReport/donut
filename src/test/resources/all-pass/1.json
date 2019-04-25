@@ -1,0 +1,111 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 7,
+        "name": "On page with elements with absolute position",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 6362460100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/absolute.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/absolute.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Click on element with positive offset",
+        "description": "",
+        "id": "offset-actions;click-on-element-with-positive-offset",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 206827600,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I choose to click button \"b1\" with offset (110,0)",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"b1\"",
+                  "offset": 25
+                },
+                {
+                  "val": "110",
+                  "offset": 43
+                },
+                {
+                  "val": "0",
+                  "offset": 47
+                }
+              ],
+              "location": "AbsoluteStepDef.i_choose_to_click_button_with_offset(String,int,int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 179259800,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I should see \"You clicked button: B2\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"You clicked button: B2\"",
+                  "offset": 13
+                }
+              ],
+              "location": "SelectStepDef.i_should_see(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Offset Actions",
+    "description": "  In order to test applications\n  As a tester\n  I want to perform operations on an action using an offset",
+    "id": "offset-actions",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/local/absolute.feature",
+    "tags": [
+      {
+        "name": "@local",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

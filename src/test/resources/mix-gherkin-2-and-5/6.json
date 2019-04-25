@@ -4,10 +4,14 @@
     "tags": [
       {
         "name": "@local",
-        "line": 1
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
       }
     ],
-    "description": "In order to minimise test execution times\nAs a tester\nI want JmCore to be performant",
+    "description": "In order to minimise test execution times\nAs a tester\nI want cinnamon to be performant",
     "name": "Performance",
     "keyword": "Feature",
     "line": 2,
@@ -55,8 +59,10 @@
         "id": "performance;find-the-first-match",
         "tags": [
           {
-            "name": "@complete",
-            "line": 11
+            "name": "@local"
+          },
+          {
+            "name": "@complete"
           }
         ],
         "description": "",
@@ -146,8 +152,10 @@
         "id": "performance;find-the-first-match---accessors",
         "tags": [
           {
-            "name": "@complete",
-            "line": 16
+            "name": "@local"
+          },
+          {
+            "name": "@complete"
           }
         ],
         "description": "",
@@ -237,8 +245,10 @@
         "id": "performance;wait-until-match---synchroniser",
         "tags": [
           {
-            "name": "@complete",
-            "line": 21
+            "name": "@local"
+          },
+          {
+            "name": "@complete"
           }
         ],
         "description": "",

@@ -68,11 +68,12 @@
         .white{color:#fff}
         .chart{min-width:250px;height:250px;max-width:600px;margin:0 auto}
         .dashboard-steps {border-bottom: 1px #454545 solid; padding:8px}
-        .steps{font-size:18px}
+        .steps{font-size:16px}
         .steps-icon-total {color:darkgrey;}
         .steps-icon-passed {color:#7AB340;}
         .steps-icon-failed {color:#D44848;}
         .steps-icon-skipped {color:#7cb5ec;}
+        .steps-icon-undefined {color:#FFFF99;}
         .steps-icon-pending {color:#f7a35c;}
         .step-table {border:1px black solid; margin-left:15px; margin-top:5px;}
         .step-table-cell {border:1px black solid;padding:5px;background-color:#ccc;}
@@ -99,12 +100,12 @@
         .durationBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #333;background-color: #fff;border-color: #ccc}
         .tagBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;background-color: #777;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #fff;border-color: #ccc}
         .tagBadgeStyle {text-decoration:none; color:#fff;}
-        .logo{background: url('http://magentys.github.io/donut/img/Donut-01.png') 0 0px no-repeat;position: absolute;width: 95px; height:70px;top: 0;z-index: 100;display: block;background-size: 95px 60px!important;background-color: transparent!important; background-position: 5% 5%;margin-top:7px;}
+        .logo{background: url('http://donutreport.github.io/donut/img/Donut-01.png') 0 0px no-repeat;position: absolute;width: 95px; height:70px;top: 0;z-index: 100;display: block;background-size: 95px 60px!important;background-color: transparent!important; background-position: 5% 5%;margin-top:7px;}
         .toggle-button {margin-left:10px;}
 
         .dashboard-panel {background-color:#2b2b2b;margin-top:15px;margin-right:15px;padding:15px;}
-        .dashboard-panel-top {background-color:#2b2b2b;margin-top:15px;margin-bottom:15px;padding-top:15px}
-        .dashboard-panel2 {background-color:#2b2b2b;margin-top:15px;padding-top:15px }
+        .dashboard-panel-top {background-color:#2b2b2b;margin-top:15px;margin-bottom:12px;padding-top:15px}
+        .dashboard-panel2 {background-color:#2b2b2b;margin-top:12px;padding-top:12px }
 
         .bs-callout {display: none;}
         .bs-callout-passed{padding:20px;margin-bottom:15px;border:1px solid #eee;border-left-width:5px;border-radius:3px;border-left-color:#7AB340}
@@ -262,6 +263,8 @@
                                     <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.failed}}</b></span></li>
                                 <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-skipped"> Skipped</span>
                                     <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.skipped}}</b></span></li>
+                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-undefined"> Undefined</span>
+                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.undefined}}</b></span></li>
                                 <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-pending"> Pending</span>
                                     <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.pending}}</b></span></li>
                             </ul>
@@ -271,7 +274,7 @@
                     <div class="row dashboard-panel2">
                         <div class="col-md-12">
                             <h2><span class="stat-number">{{dashboardPage.reportDashboard.totalTags}}</span>Tags</h2>
-                            <br><br>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -510,10 +513,10 @@
     <br>
     <div class="container text-center">
         <h3>About</h3>
-        <img src="http://magentys.github.io/donut/img/Donut-02.png" width="150px"> <br>
-        <a class="github-button" href="https://github.com/magentys/donut/fork" data-icon="octicon-repo-forked" data-count-href="/magentys/donut/network" data-count-api="/repos/magentys/donut#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork magentys/donut on GitHub">Fork</a>
-        <a class="github-button" href="https://github.com/magentys/donut/issues" data-icon="octicon-issue-opened" data-count-api="/repos/magentys/donut#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue magentys/donut on GitHub">Issue</a>
-        <a class="github-button" href="https://github.com/magentys/donut" data-icon="octicon-star" data-count-href="/magentys/donut/stargazers" data-count-api="/repos/magentys/donut#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star magentys/donut on GitHub">Star</a>
+        <img src="http://donutreport.github.io/donut/img/Donut-02.png" width="150px"> <br>
+        <a class="github-button" href="https://github.com/DonutReport/donut/fork" data-icon="octicon-repo-forked" data-count-href="/DonutReport/donut/network" data-count-api="/repos/DonutReport/donut#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork DonutReport/donut on GitHub">Fork</a>
+        <a class="github-button" href="https://github.com/DonutReport/donut/issues" data-icon="octicon-issue-opened" data-count-api="/repos/DonutReport/donut#open_issues_count" data-count-aria-label="# issues on GitHub" aria-label="Issue DonutReport/donut on GitHub">Issue</a>
+        <a class="github-button" href="https://github.com/DonutReport/donut" data-icon="octicon-star" data-count-href="/DonutReport/donut/stargazers" data-count-api="/repos/DonutReport/donut#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star DonutReport/donut on GitHub">Star</a>
     </div>
     <br>
 </section>

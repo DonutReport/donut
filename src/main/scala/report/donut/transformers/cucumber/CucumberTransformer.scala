@@ -4,31 +4,23 @@ import report.donut.gherkin.model._
 import report.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, Step => DonutStep, Examples => DonutExamples}
 import report.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcessor}
 import report.donut.log.Log
-import org.json4s._
 
 import scala.collection.mutable.ListBuffer
 import scala.util.{Either, Try}
 
 object CucumberTransformer extends Log {
 
-  def transform(json: List[JValue], donutFeatures: ListBuffer[DonutFeature], conf: StatusConfiguration): Either[String, ListBuffer[DonutFeature]] = {
-    Try(mapToDonutFeatures(loadCukeFeatures(json), donutFeatures, conf)).toEither(_.getMessage)
-  }
-
-  private[cucumber] def loadCukeFeatures(json: List[JValue]) = {
-    implicit val formats = DefaultFormats
-    json.flatMap(f => f.extract[List[Feature]])
+  def transform(features: List[Feature], conf: StatusConfiguration): Either[String, ListBuffer[DonutFeature]] = {
+    Try(mapToDonutFeatures(features, new ListBuffer[DonutFeature], conf)).toEither(_.getMessage)
   }
 
   private[cucumber] def mapToDonutFeatures(features: List[Feature], donutFeatures: ListBuffer[DonutFeature], statusConfiguration: StatusConfiguration): ListBuffer[DonutFeature] = {
     var i = 0
     for (feature <- features) {
-
       if (isFeatureAlreadyAdded(feature.name, donutFeatures)) {
         val donutFeature = donutFeatures.find(df => df.name.equals(feature.name)).get
         val index = donutFeatures.indexOf(donutFeature)
         donutFeatures(index) = addScenariosToFeature(feature, donutFeature, statusConfiguration)
-
       } else {
         val index = if (donutFeatures.nonEmpty) donutFeatures.last.index.toInt + 1 else 10000 + i
         donutFeatures += mapToDonutFeature(feature, index.toString.trim, statusConfiguration)
@@ -173,7 +165,6 @@ object CucumberTransformer extends Log {
   }
 
   private[cucumber] def donutTags(tags: List[Tag]): List[String] = tags.map(t => t.name.substring(1))
-
 }
 
 
