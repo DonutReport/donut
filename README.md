@@ -22,9 +22,9 @@ See what's new [here](RELEASE.md)
 
 ### download
 ```
-wget http://repo1.maven.org/maven2/report/donut/1.2.0/donut-1.2.0-one-jar.jar
+wget http://repo1.maven.org/maven2/report/donut/donut/1.2.0/donut-1.2.0-one-jar.jar
 ```
-or download the latest release from: [here](http://repo1.maven.org/maven2/report/donut/1.2.0/donut-1.2.0-one-jar.jar)
+or download the latest release from: [here](http://repo1.maven.org/maven2/report/donut/donut/1.2.0/donut-1.2.0-one-jar.jar)
 
 ### run from command line
 
@@ -36,7 +36,6 @@ or
 
 ```
 java -jar donut-<Version>.jar -s /my/path/cucumber-reports,/my/unit-test-reports -n myProjectName
-
 ```
 
 ### options
