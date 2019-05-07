@@ -1,4 +1,4 @@
-## pull request workflow
+## Pull request workflow
 
 - Fork `donut`
 - Check out the `master` branch
@@ -14,7 +14,7 @@
 Additional help can be found on github documentation:
 https://help.github.com/articles/using-pull-requests/
 
-## style 
+## Style 
 Pull Requests should come with a description. We adhere a specific format:
 ```
 Problem: 
