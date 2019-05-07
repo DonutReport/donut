@@ -1,8 +1,6 @@
-![](http://magentys.github.io/donut/img/Donut-05.png) 
-
-[![Build Status](https://travis-ci.org/MagenTys/donut.svg?branch=master)](https://travis-ci.org/MagenTys/donut)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.magentys/donut)
-[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/io.magentys/donut/badge.svg)](http://www.javadoc.io/doc/io.magentys/donut)
+## 1.2.0
+* Supports changes to JSON results output relating to gherkin 5
+* Maintains backwards compatibility with JSON results output relating to earlier gherkin versions with the exception of comments
 
 ## 1.1
 * Publishing only unit test results is now supported.
