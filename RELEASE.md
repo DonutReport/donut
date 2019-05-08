@@ -1,3 +1,7 @@
+## 1.2.1
+* Fix regular expression in ResultLoader to handle absolute Windows path
+* Report exception details to the console
+
 ## 1.2.0
 * Supports changes to JSON results output relating to gherkin 5
 * Maintains backwards compatibility with JSON results output relating to earlier gherkin versions with the exception of comments
