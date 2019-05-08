@@ -13,7 +13,7 @@ object DonutTestData {
   val statusConfiguration = StatusConfiguration()
 
   val features_sample_2: Either[String, List[Feature]] = {
-    val sourcePath = List("gherkin:src", "test", "resources", "samples-2").mkString("", File.separator, File.separator)
+    val sourcePath = List("cucumber:src", "test", "resources", "samples-2").mkString("", File.separator, File.separator)
     val loader = ResultLoader(sourcePath)
     val donutFeatures = CucumberTransformer.transform(loader.load().right.get, DonutTestData.statusConfiguration).right.get
     Try(donutFeatures.toList).toEither(_.getMessage)
@@ -21,22 +21,22 @@ object DonutTestData {
   }
 
   val features_sample_3: Either[String, List[Feature]] = {
-    val sourcePath = List("gherkin:src", "test", "resources", "samples-3").mkString("", File.separator, File.separator)
+    val sourcePath = List("cucumber:src", "test", "resources", "samples-3").mkString("", File.separator, File.separator)
     val loader = ResultLoader(sourcePath)
     val donutFeatures = CucumberTransformer.transform(loader.load().right.get, DonutTestData.statusConfiguration).right.get
     Try(donutFeatures.toList).toEither(_.getMessage)
   }
 
   val featuresWithOnlyUnits: Either[String, List[Feature]] = {
-    val sourcePath = List("gherkin:src", "test", "resources", "cuke-and-unit", "unit").mkString("", File.separator, File.separator)
+    val sourcePath = List("cucumber:src", "test", "resources", "cuke-and-unit", "unit").mkString("", File.separator, File.separator)
     val loader = ResultLoader(sourcePath)
     val donutFeatures = CucumberTransformer.transform(loader.load().right.get, DonutTestData.statusConfiguration).right.get
     Try(donutFeatures.toList).toEither(_.getMessage)
   }
 
   val featuresWithCukeAndOrphanedUnits: Either[String, List[Feature]] = {
-    val sourcePaths = List(List("gherkin:src", "test", "resources", "samples-6", "bdd").mkString("", File.separator, File.separator),
-      List("gherkin:src", "test", "resources", "samples-6", "unit").mkString("", File.separator, File.separator))
+    val sourcePaths = List(List("cucumber:src", "test", "resources", "samples-6", "bdd").mkString("", File.separator, File.separator),
+      List("cucumber:src", "test", "resources", "samples-6", "unit").mkString("", File.separator, File.separator))
     val features = new ListBuffer[CucumberFeature]
     for (sourcePath <- sourcePaths) {
       val loader = ResultLoader(sourcePath)

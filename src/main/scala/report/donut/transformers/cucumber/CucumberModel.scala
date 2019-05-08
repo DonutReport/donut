@@ -16,7 +16,7 @@ case class Row(cells: List[String])
 
 case class Embedding(mime_type: String = "", data: String = "", id: Int = 0)
 
-// gherkin 2 backwards compatibility
+// cucumber 1 backwards compatibility
 case class Examples(id: String,
                     name: String,
                     keyword: String,

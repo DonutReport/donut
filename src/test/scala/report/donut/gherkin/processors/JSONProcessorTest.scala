@@ -6,7 +6,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class JSONProcessorTest extends FlatSpec with Matchers {
 
-  val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+  val rootDir = List("src", "test", "resources", "mix-cucumber-1-and-4").mkString("", File.separator, File.separator)
   val statusConfiguration = StatusConfiguration(false, false, false, false)
 
   behavior of "JSONProcessor"

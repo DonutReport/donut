@@ -4,11 +4,10 @@ import org.apache.commons.lang3.StringUtils
 import org.joda.time.DateTime
 import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 import report.donut.gherkin.model._
-import report.donut.transformers.cucumber.{Feature => CucumberFeature}
 import report.donut.log.Log
 import report.donut.performance.PerformanceSupport
 import report.donut.template.TemplateEngine
-import report.donut.transformers.cucumber.CucumberTransformer
+import report.donut.transformers.cucumber.{CucumberTransformer, Feature => CucumberFeature}
 
 import scala.collection.mutable.ListBuffer
 import scala.util.Try
@@ -39,17 +38,17 @@ object Generator extends Log with PerformanceSupport {
   }
 
   private[donut] def createReport(sourcePaths: String,
-                                    outputPath: String = "donut",
-                                    filePrefix: String = "",
-                                    datetime: String = formatter.print(DateTime.now),
-                                    template: String = "default",
-                                    countSkippedAsFailure: Boolean = false,
-                                    countPendingAsFailure: Boolean = false,
-                                    countUndefinedAsFailure: Boolean = false,
-                                    countMissingAsFailure: Boolean = false,
-                                    projectName: String,
-                                    projectVersion: String,
-                                    customAttributes: Map[String, String] = Map()): Either[String, Report] = {
+                                  outputPath: String = "donut",
+                                  filePrefix: String = "",
+                                  datetime: String = formatter.print(DateTime.now),
+                                  template: String = "default",
+                                  countSkippedAsFailure: Boolean = false,
+                                  countPendingAsFailure: Boolean = false,
+                                  countUndefinedAsFailure: Boolean = false,
+                                  countMissingAsFailure: Boolean = false,
+                                  projectName: String,
+                                  projectVersion: String,
+                                  customAttributes: Map[String, String] = Map()): Either[String, Report] = {
 
     //Prepare objects
     val statusConf = StatusConfiguration(countSkippedAsFailure, countPendingAsFailure, countUndefinedAsFailure, countMissingAsFailure)
@@ -57,30 +56,38 @@ object Generator extends Log with PerformanceSupport {
     val reportStartedTimestamp = Try(formatter.parseDateTime(datetime)).getOrElse(DateTime.now)
 
     for {
-      features <- timed("step1", "Loaded JSON files") { loadResultSources(sourcePaths, statusConf).right }
-      report <- timed("step2", "Produced report") { Right(Report(features, reportStartedTimestamp, projectMetadata)).right }
+      features <- timed("step1", "Loaded JSON files") {
+        val result = loadResultSources(sourcePaths, statusConf)
+        if (result.isLeft) return Left(result.left.get)
+        result.right
+      }
+      report <- timed("step2", "Produced report") {
+        Right(Report(features, reportStartedTimestamp, projectMetadata)).right
+      }
       _ <- TemplateEngine(report, s"/templates/$template/index.html").renderToHTML(outputPath, filePrefix).right
     } yield report
   }
 
   /**
-    * Currently loads the result sources for gherkin result JSON files only.<br>
-    * This can include result sources that have been adapted to a gherkin result format from either JUnit or NUnit formats.
-    * Any number of result source paths can be specified using a comma delimiter.
+    * Currently loads result sources for cucumber result JSON files only.<br>
+    * This can include result sources that have been adapted to a cucumber result format from either JUnit or NUnit formats.
+    * Any number of result sources can be specified using a comma delimiter. The result sources include a format and path delimited by a colon,
+    * e.g. cucumber:/path/to/results
     *
-    * @param sourcePaths the paths to the result sources
-    * @param statusConf  the status configuration to consider as a failure
+    * @param resultSources the result sources
+    * @param statusConf    the status configuration to consider as a failure
     * @return either an error message or a list of Features
     */
-  def loadResultSources(sourcePaths: String, statusConf: StatusConfiguration): Either[String, List[Feature]] = {
-    log.info("source paths: " + sourcePaths)
-    if (StringUtils.isBlank(sourcePaths)) {
-      throw DonutException("Unable to extract the paths to the result sources. Please use this format:- gherkin:/my/path/cucumber-reports,/my/other/path/cucumber-reports")
+  def loadResultSources(resultSources: String, statusConf: StatusConfiguration): Either[String, List[Feature]] = {
+    log.info("Result sources: " + resultSources)
+    if (StringUtils.isBlank(resultSources)) {
+      throw DonutException("Unable to extract the paths to the result sources. Please use this format:- cucumber:/my/path/cucumber-reports,cucumber:/my/other/path/adapted-reports")
     }
     var features = new ListBuffer[CucumberFeature]
-    for (path <- sourcePaths.split(",")) {
-      val loader = ResultLoader(path)
-      features ++= loader.load.right.get
+    for (resultSource <- resultSources.split(",")) {
+      val result = ResultLoader(resultSource).load
+      if (result.isLeft) return Left(result.left.get)
+      features ++= result.right.get
     }
     val donutFeatures = CucumberTransformer.transform(features.toList, statusConf).right.get
     Try(donutFeatures.toList).toEither(_.getMessage)

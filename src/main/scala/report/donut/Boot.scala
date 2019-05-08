@@ -7,7 +7,7 @@ import scopt.OptionParser
 
 object Boot extends App with Log {
 
-  case class DonutArguments(sourcePaths: String = "",
+  case class DonutArguments(resultSources: String = "",
                             outputPath: String = "donut",
                             prefix: String = "",
                             datetime: String = DateTimeFormat.forPattern("yyyy-MM-dd-HHmm").print(DateTime.now),
@@ -21,14 +21,14 @@ object Boot extends App with Log {
                             projectVersion: String = null,
                             customAttributes: Map[String, String] = Map())
 
-  val optionParser = new OptionParser[DonutArguments]("MagenTys Donut reports") {
+  val optionParser = new OptionParser[DonutArguments]("Donut reports") {
 
     head("\nDonut help")
     head("----------")
 
-    opt[String]('s', "sourcePaths").required() action { (arg, config) =>
-      config.copy(sourcePaths = arg)
-    } text "Required -> Use --sourcePaths gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports"
+    opt[String]('s', "resultSources").required() action { (arg, config) =>
+      config.copy(resultSources = arg)
+    } text "Required -> Use --resultSources cucumber:/my/path/cucumber-reports,cucumber:/my/adapted/nunit-reports"
 
     opt[String]('n', "projectName").required() action { (arg, config) =>
       config.copy(projectName = arg)
@@ -75,24 +75,31 @@ object Boot extends App with Log {
     } text "Use --missingFails true/false"
 
     checkConfig { c =>
-      if (c.sourcePaths == "") failure("Missing source paths.") else success
+      if (c.resultSources == "") failure("Missing result sources.") else success
     }
   }
 
   optionParser parse(args, DonutArguments()) match {
     case Some(appargs) =>
-      Generator(appargs.sourcePaths,
-        appargs.outputPath,
-        appargs.prefix,
-        appargs.datetime,
-        appargs.template,
-        appargs.countSkippedAsFailure,
-        appargs.countPendingAsFailure,
-        appargs.countUndefinedAsFailure,
-        appargs.countMissingAsFailure,
-        appargs.projectName,
-        appargs.projectVersion,
-        collection.mutable.Map[String, String]() ++= appargs.customAttributes)
+      try {
+        Generator(appargs.resultSources,
+          appargs.outputPath,
+          appargs.prefix,
+          appargs.datetime,
+          appargs.template,
+          appargs.countSkippedAsFailure,
+          appargs.countPendingAsFailure,
+          appargs.countUndefinedAsFailure,
+          appargs.countMissingAsFailure,
+          appargs.projectName,
+          appargs.projectVersion,
+          collection.mutable.Map[String, String]() ++= appargs.customAttributes)
+      } catch {
+        case e: DonutException => {
+          println(e.mgs)
+          System.exit(-1)
+        }
+      }
     case None =>
       // error message will have first been displayed
       System.exit(-1)
