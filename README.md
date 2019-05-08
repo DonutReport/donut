@@ -29,19 +29,19 @@ or download the latest release from: [here](http://repo1.maven.org/maven2/report
 ### run from command line
 
 ```
-java -jar donut-<Version>.jar -s /my/path/cucumber-reports -n myProjectName
+java -jar donut-<Version>.jar -s gherkin:/my/path/cucumber-reports -n myProjectName
 ```
 
 or
 
 ```
-java -jar donut-<Version>.jar -s /my/path/cucumber-reports,/my/unit-test-reports -n myProjectName
+java -jar donut-<Version>.jar -s gherkin:/my/path/cucumber-reports,gherkin:/my/unit-test-reports -n myProjectName
 ```
 
 ### options
 
 `-n` or `--projectName` is a mandatory parameter, and it should be the name of the project.  
-`-s` or `--sourcePaths` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the result files. 
+`-s` or `--sourcePaths` is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the result files each prefixed with a format.
 
 Other parameters can also be specified as below:
 
@@ -50,7 +50,7 @@ Donut help
 Usage: Donut reports [options]
 
   -s <value> | --sourcePaths <value>
-        Use --sourcePaths /my/path/cucumber-reports,/my/adapted/nunit-reports
+        Use --sourcePaths gherkin:/my/path/cucumber-reports,gherkin:/my/adapted/nunit-reports
   -o <value> | --outputPath <value>
         Use --outputPath /my/path/output/donut
   -p <value> | --prefix <value>
