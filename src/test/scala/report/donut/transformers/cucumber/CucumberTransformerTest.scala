@@ -28,7 +28,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
       "Switch to window",
       "Tables"
     )
-    val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+    val rootDir = List("src", "test", "resources", "mix-cucumber-1-and-4").mkString("", File.separator, File.separator)
     val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
     val donutFeatures = CucumberTransformer.transform(features, DonutTestData.statusConfiguration)
     donutFeatures.fold(
@@ -45,7 +45,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "enhance scenarios with extra values" in {
-    val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+    val rootDir = List("src", "test", "resources", "mix-cucumber-1-and-4").mkString("", File.separator, File.separator)
     val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
     val donutFeatures = CucumberTransformer.transform(features, DonutTestData.statusConfiguration)
     donutFeatures match {
@@ -64,7 +64,7 @@ class CucumberTransformerTest extends FlatSpec with Matchers {
   }
 
   it should "enhance steps with user friendly duration" in {
-    val rootDir = List("src", "test", "resources", "mix-gherkin-2-and-5").mkString("", File.separator, File.separator)
+    val rootDir = List("src", "test", "resources", "mix-cucumber-1-and-4").mkString("", File.separator, File.separator)
     val features = JSONProcessor.loadFrom(new File(rootDir)).right.get.flatMap(f => f.extract[List[Feature]])
     val donutFeatures = CucumberTransformer.transform(features, DonutTestData.statusConfiguration)
     donutFeatures match {

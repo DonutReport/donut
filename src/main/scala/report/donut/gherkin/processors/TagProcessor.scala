@@ -39,7 +39,7 @@ object TagProcessor {
   private[processors] def groupElementsByTag(scenarios: List[Scenario]): Map[String, List[Scenario]] =
     scenarios.flatMap(s => s.tags.map(tag => (tag, s))).groupBy(_._1).mapValues(value => value.map(_._2))
 
-  // gherkin 2 backwards compatibility - adds the parent (feature) tag to all children (scenarios)
+  // cucumber 1 backwards compatibility - adds the parent (feature) tag to all children (scenarios)
   private[processors] def addFeatureTagsToScenarios(scenarios: List[Scenario], featureTags: List[String]): List[Scenario] =
     scenarios.map(e => e.copy(tags = (e.tags ::: featureTags).distinct))
 

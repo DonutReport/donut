@@ -39,8 +39,8 @@ object ExecutionData {
     features.flatMap(f => (f.scenarios diff f.unitTests).map(e => e.steps)).flatten
   }
 
-  // gherkin 2 - combine feature and scenario tags
-  // gherkin 5 - scenarios inherit feature tags
+  // cucumber 1 - combine feature and scenario tags
+  // cucumber 4 - scenarios inherit feature tags
   def allTags(features: List[Feature]): Seq[String] = {
     val allFeatureTags = features.flatMap(f => f.tags)
     val allScenarioTags = features.flatMap(f => f.scenarios.flatMap(e => e.tags))
