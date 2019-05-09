@@ -24,32 +24,37 @@
         <a id="donut-github-pages" class="anchor" href="#donut-github-pages" aria-hidden="true">
           <span aria-hidden="true" class="octicon octicon-link"></span></a>Donut</h3>
 
-          <p>Donut is an open-source framework by the <a href="http://magentys.io">MagenTys</a> team which is designed to produce clear and concise test execution reports over your unit, integration and acceptance tests.
-          Donut currently supports any tool that produces gherkin json (ie. cucumber-jvm etc).</p>
-          <p>Live Demo =&gt; <a href="http://magentys.github.io/donut/demo.html">here</a></p>
+          <p>Donut is an open-source framework by the teams at <a href="http://magentys.io">MagenTys</a> & <a href="https://mechanicalrock.io/">Mechanical Rock</a> and is designed 
+            to produce clear and concise test execution reports of your unit, integration and acceptance tests. Donut currently supports any tool that produces cucumber JSON (i.e. cucumber-jvm etc.). 
+            For other frameworks like SpecFlow, JUnit, NUnit, RSpec you can use the adapters listed below to generate cucumber JSON, which can then be processed by donut.</p>
+          <p>Live Demos =&gt; <a href="http://donutreport.github.io/donut/demo.html">Only Scenarios</a> <a href="http://donutreport.github.io/donut/demo-scenarios-and-unitTests.html">Scenarios and Unit Tests</a> <a href="http://donutreport.github.io/donut/demo-scenarios-and-orphanedUnitTests.html">Scenarios and Orphaned Unit Tests</a> <a href="http://donutreport.github.io/donut/demo-only-unit-tests.html">Only Unit Tests</a></p>
           <h2><a id="quickstart_5"></a>quickstart</h2>
           <p>You can either use Donut directly or check out the available plugins:</p>
           <ul>
           <li><a href="https://github.com/MagenTys/donut-maven-plugin">Maven plugin</a></li>
           <li><a href="https://github.com/MagenTys/donut-jenkins-plugin">Jenkins plugin</a></li>
+          <li><a href="https://github.com/DonutReport/SpecNuts">Specflow adaptor</a></li>
+          <li><a href="https://github.com/DonutReport/donut-nunit-adapter">NUnit adapter</a></li>
+          <li><a href="https://github.com/DonutReport/donut-junit-adapter">JUnit adapter</a></li>
           </ul>
           <h3><a id="download_10"></a>download</h3>
           <pre><code>wget http://repo1.maven.org/maven2/io/magentys/donut/0.0.1/donut-0.0.1-one-jar.jar
           </code></pre>
-          <p>or download the latest release from: <a href="http://repo1.maven.org/maven2/io/magentys/donut/0.0.1/donut-0.0.1-one-jar.jar">here</a></p>
+          <p>or download the latest release from: <a href="http://repo1.maven.org/maven2/report/donut/donut/1.2.1/donut-1.2.1-one-jar.jar">here</a></p>
           <h3><a id="run_from_command_line_16"></a>run from command line</h3>
           <pre><code>java -jar donut-&lt;Version&gt;.jar -s /source/dir
           </code></pre>
           <h3><a id="options_22"></a>options</h3>
-          <p><code>-s</code> or <code>--sourcedir</code> is a mandatory parameter, and it should be the directory that hold the generated JSON files to be visualised.</p>
+          <p><code>-n</code> or <code>--projectName</code> is a mandatory parameter, and it should be the name of the project.</p>
+          <p><code>-s</code> or <code>--resultSources</code> is a mandatory parameter, and it should be a comma separated list of the paths to the directories that hold the result files optionally prefixed with a format. The format defaults to <code>cucumber</code>.</p>
           <p>Other parameters can also be specified as bellow:</p>
           <pre><code>Donut help
           Usage: MagenTys Donut reports [options]
 
-            -s &lt;value&gt; | --sourcedir &lt;value&gt;
-                  Use --sourcedir /my/path/cucumber-reports -&gt; Required
-            -o &lt;value&gt; | --outputdir &lt;value&gt;
-                  Use --outputdir /my/path/output/donut
+            -s &lt;value&gt; | --resultSources &lt;value&gt;
+                  Use --resultSources /my/path/cucumber-reports -&gt; Required
+            -o &lt;value&gt; | --outputPath &lt;value&gt;
+                  Use --outputPath /my/path/output/donut
             -p &lt;value&gt; | --prefix &lt;value&gt;
                   Use --prefix fileNamePrefix
             -d &lt;value&gt; | --datetime &lt;value&gt;
@@ -64,10 +69,12 @@
                   Use --undefinedFails true/false
             --missingFails &lt;value&gt;
                   Use --missingFails true/false
-            --projectName &lt;value&gt;
-                  Use --projectName myProject
-            --projectVersion &lt;value&gt;
+            -n &lt;value&gt; | --projectName &lt;value&gt;
+                  Use --projectName myProject -&gt; Required
+            -v &lt;value&gt; | --projectVersion &lt;value&gt;
                   Use --projectVersion 1.0
+            -c &lt;value&gt; | --customAttributes &lt;value&gt;
+                  Use --customAttributes k1=v1,k2=v2...
           </code></pre>
           <p>default values:</p>
           <ul>
@@ -84,18 +91,18 @@
   &lt;dependency&gt;
     &lt;groupId&gt;io.magentys&lt;/groupId&gt;
     &lt;artifactId&gt;donut&lt;/artifactId&gt;
-    &lt;version&gt;0.0.1&lt;/version&gt;
+    &lt;version&gt;1.2.1&lt;/version&gt;
   &lt;/dependency&gt;
           </code></pre>
           <ul>
           <li>SBT</li>
           </ul>
-          <pre><code>libraryDependencies += &quot;io.magentys&quot; % &quot;donut&quot; % &quot;0.0.1&quot;
+          <pre><code>libraryDependencies += &quot;io.magentys&quot; % &quot;donut&quot; % &quot;1.2.1&quot;
           </code></pre>
           <ul>
           <li>Gradle</li>
           </ul>
-          <pre><code>compile 'io.magentys:donut:0.0.1'
+          <pre><code>compile 'report.donut:donut:1.2.1'
           </code></pre>
           <p>Example usage of the <code>Generator</code></p>
           <pre><code>ReportConsole report =
@@ -136,22 +143,21 @@
           <li>JQuery</li>
           <li>Bootstrap</li>
           <li>Highcharts</li>
+          <li>handlebars-scala</li>
           </ul>
           <h2><a id="Road_map_130"></a>Road map</h2>
           <p>We currently have plans to support:</p>
           <ul>
-          <li>junit</li>
-          <li>nunit</li>
-          <li>specflow</li>
           <li>jasmine</li>
-          <li>rspec</li>
+          <li>rspec (With the support available for JUnit, you can use this JUnit adapter for rspec - <a>https://github.com/sj26/rspec_junit_formatter</a>, to generate JUnit xmls, which can then be adapted to JSONs using the donut-junit-adapter</li>
+          <li>jbehave</li>
           </ul>
           <h3><a id="License_139"></a>License</h3>
           <p>This project is under an MIT license</p>
           <p>Powered by: <a href="http://magentys.io">MagenTys</a></p>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/MagenTys/donut">Donut</a> is maintained by <a href="https://github.com/MagenTys">MagenTys</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/MagenTys/donut">Donut</a> is maintained by <a href="https://github.com/MagenTys">MagenTys</a> & <a href="https://mechanicalrock.io/">Mechanical Rock</a>.</span>
 
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
