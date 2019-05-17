@@ -8,9 +8,9 @@ case class Argument(offset: Int, `val`: String = "")
 
 case class Match(location: String = "", arguments: Option[List[Argument]])
 
-case class BeforeHook(result: Result, `match`: Match)
+case class BeforeHook(result: Result, output: List[String], `match`: Match)
 
-case class AfterHook(result: Result, `match`: Match)
+case class AfterHook(result: Result, output: List[String], `match`: Match)
 
 case class Row(cells: List[String])
 

@@ -66,7 +66,6 @@ private[processors] object HTMLProcessor {
   }
 
   def addToList(e: Scenario, bddScenarios: ListBuffer[Scenario], nonBddScenarios: ListBuffer[Scenario], map: Map[String, ListBuffer[Scenario]]): ListBuffer[Scenario] = {
-
     if (map.keys.exists(key => key.equals(e.keyword))) {
       var list = map.get(e.keyword).get
       list += e
@@ -81,7 +80,6 @@ private[processors] object HTMLProcessor {
 
 
   def buildScenariosHtml(elements: List[Scenario], parentIndex: String, parentType: String): String = {
-
     scenarioType(elements.head).mkString +
       elements.zipWithIndex.map { case (e, i) => scenarios(e, e.keyword.replace(" ", "-").toLowerCase + "-" + parentIndex + i.toString.trim, parentType) }.mkString
   }
@@ -104,7 +102,9 @@ private[processors] object HTMLProcessor {
     val featureName = getFeatureLink(parentType, element.featureIndex, element.featureName)
     val icon = statusIcon(element.status.statusStr)
     val style = if (element.status.statusStr == "passed") """style="display:none;"""" else ""
-    val output = element.steps.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">$o</div>""").mkString
+    val beforeHookOutput = element.before.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
+    val stepOutput = element.steps.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
+    val afterHookOutput = element.after.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
     val screenshots = scenariosScreenshots(index, element.screenshotStyle, element.screenshotIDs, element.screenshotsSize, parentType)
     val backgroundHtml = HTMLProcessor.backgroundForScenario(element.background, index + "-background", parentType)
 
@@ -128,7 +128,9 @@ private[processors] object HTMLProcessor {
        |            ${stepList(element.steps)}
        |            ${examplesList(element.examples)}
        |          </ul>
-       |          $output
+       |          $beforeHookOutput
+       |          $stepOutput
+       |          $afterHookOutput
        |        </div>
        |        $screenshots
        |      </div>
@@ -143,9 +145,10 @@ private[processors] object HTMLProcessor {
   }
 
   def description(description: String) = {
-    if(!description.isEmpty)
+    if (!description.isEmpty)
       s"""<p class="wrapped-text" style="white-space: pre-wrap;">${escape(description)}</p>""".mkString
-    else """""".mkString
+    else
+      """""".mkString
   }
 
   def backgroundForScenario(elementOpt: Option[Scenario], index: String, parentType: String) = {
@@ -154,7 +157,9 @@ private[processors] object HTMLProcessor {
       case Some(element) =>
         val icon = statusIcon(element.status.statusStr)
         val style = if (element.status.statusStr == "passed") """style="display:none;"""" else ""
-        val output = element.steps.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">$o</div>""").mkString
+        val beforeHookOutput = element.before.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
+        val stepOutput = element.steps.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
+        val afterHookOutput = element.after.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
         val screenshots = scenariosScreenshots(index, element.screenshotStyle, element.screenshotIDs, element.screenshotsSize, parentType)
         s"""
            |        <p class="scenario">
@@ -168,7 +173,9 @@ private[processors] object HTMLProcessor {
            |          <ul class="list-group">
            |            ${stepList(element.steps)}
            |          </ul>
-           |          ${escape(output)}
+           |          $beforeHookOutput
+           |          $stepOutput
+           |          $afterHookOutput
            |        </div>
            |        $screenshots
      """.stripMargin
@@ -185,7 +192,6 @@ private[processors] object HTMLProcessor {
   }
 
   def stepError(step: Step) = {
-
     if (step.error_message != "")
       s"""
          |<div style="white-space: pre-wrap;margin-left:15px;">
@@ -225,19 +231,23 @@ private[processors] object HTMLProcessor {
   def examplesList(examples: List[Examples]): String = {
     if (examples.nonEmpty)
       s"""
-      |<div class="panel-body">${examples.map(exs => { s"""
-      |  <div class="row">
-      |    <div class="panel panel-default">
-      |      <div class="panel-body">
-      |        <p class="examples">
-      |          <b>${exs.keyword}: </b>${escape(exs.name)}
-      |          <div margin-left:15px;">${description(exs.description.get)}</div>
-      |          ${dataTable(exs.rows)}
-      |        </p>
-      |      </div>
-      |    </div>
-      |  </div>""".stripMargin}).mkString}
-      |</div>
+         |<div class="panel-body">${
+        examples.map(exs => {
+          s"""
+             |  <div class="row">
+             |    <div class="panel panel-default">
+             |      <div class="panel-body">
+             |        <p class="examples">
+             |          <b>${exs.keyword}: </b>${escape(exs.name)}
+             |          <div margin-left:15px;">${description(exs.description.get)}</div>
+             |          ${dataTable(exs.rows)}
+             |        </p>
+             |      </div>
+             |    </div>
+             |  </div>""".stripMargin
+        }).mkString
+      }
+         |</div>
     """.stripMargin
     else ""
   }
