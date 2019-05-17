@@ -11,7 +11,6 @@
         "steps": [
           {
             "result": {
-              "duration": 921068500,
               "status": "passed"
             },
             "line": 8,
@@ -19,8 +18,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -32,27 +31,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 4044739500,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 25740000,
+              "duration": 6693886400,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 32786700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -62,27 +55,21 @@
         "id": "inspect-text;div-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 44706700,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 26740800,
+              "duration": 37143300,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 28827600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -91,9 +78,14 @@
         "steps": [
           {
             "result": {
-              "duration": 125030300,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 12,
             "name": "inspecting text of the \"div\" element should return \"text\"",
             "match": {
@@ -114,12 +106,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 10,
             "name": "@complete"
           }
         ]
@@ -133,7 +120,7 @@
         "steps": [
           {
             "result": {
-              "duration": 159483400,
+              "duration": 1080902300,
               "status": "passed"
             },
             "line": 8,
@@ -141,8 +128,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -154,27 +141,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 24334600,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 24076700,
+              "duration": 27300000,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 27068800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -184,27 +165,21 @@
         "id": "inspect-text;hidden-by-css-div-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 21520500,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 19789700,
+              "duration": 23256300,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 20550500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -213,9 +188,15 @@
         "steps": [
           {
             "result": {
-              "duration": 73394500,
+              "duration": 75870900,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 16,
             "name": "inspecting text of the \"hidden by CSS div\" element should return \"hidden text\"",
             "match": {
@@ -236,12 +217,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 14,
             "name": "@complete"
           }
         ]
@@ -255,7 +231,7 @@
         "steps": [
           {
             "result": {
-              "duration": 155753100,
+              "duration": 179379100,
               "status": "passed"
             },
             "line": 8,
@@ -263,8 +239,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -276,27 +252,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 21856000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 25141700,
+              "duration": 21377000,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 23325000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -306,27 +276,21 @@
         "id": "inspect-text;hidden-by-attribute-div-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 26088400,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 21120100,
+              "duration": 25236000,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 34065500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -335,9 +299,15 @@
         "steps": [
           {
             "result": {
-              "duration": 63297300,
+              "duration": 74220800,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 20,
             "name": "inspecting text of the \"hidden by CSS div\" element should return \"hidden text\"",
             "match": {
@@ -358,12 +328,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 18,
             "name": "@complete"
           }
         ]
@@ -377,7 +342,7 @@
         "steps": [
           {
             "result": {
-              "duration": 156135400,
+              "duration": 200514100,
               "status": "passed"
             },
             "line": 8,
@@ -385,8 +350,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -398,27 +363,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 21794900,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 21214400,
+              "duration": 36370100,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 32438700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -428,27 +387,21 @@
         "id": "inspect-text;span-within-div-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 24082600,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 24180400,
+              "duration": 23252500,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 23719700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -457,9 +410,15 @@
         "steps": [
           {
             "result": {
-              "duration": 75650600,
+              "duration": 95445300,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 24,
             "name": "inspecting text of the \"span within div\" element should return \"text\"",
             "match": {
@@ -480,12 +439,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 22,
             "name": "@complete"
           }
         ]
@@ -499,7 +453,7 @@
         "steps": [
           {
             "result": {
-              "duration": 145523400,
+              "duration": 154786300,
               "status": "passed"
             },
             "line": 8,
@@ -507,8 +461,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -520,27 +474,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 18904500,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 19762400,
+              "duration": 21292400,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 25181400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -550,27 +498,21 @@
         "id": "inspect-text;hidden-by-css-span-within-div-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 20758500,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 19970100,
+              "duration": 21539900,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 22994400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -579,9 +521,15 @@
         "steps": [
           {
             "result": {
-              "duration": 59452300,
+              "duration": 60582500,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 28,
             "name": "inspecting text of the \"hidden by CSS span within div\" element should return \"hidden text\"",
             "match": {
@@ -602,12 +550,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 26,
             "name": "@complete"
           }
         ]
@@ -621,7 +564,7 @@
         "steps": [
           {
             "result": {
-              "duration": 158932900,
+              "duration": 153810900,
               "status": "passed"
             },
             "line": 8,
@@ -629,8 +572,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -642,27 +585,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 41646500,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 22499100,
+              "duration": 21708300,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 24873100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -672,27 +609,21 @@
         "id": "inspect-text;hidden-by-attribute-span-within-div-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 18017800,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 17695500,
+              "duration": 22919500,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 26401200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -701,9 +632,15 @@
         "steps": [
           {
             "result": {
-              "duration": 60078500,
+              "duration": 63767300,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 32,
             "name": "inspecting text of the \"hidden by attribute span within div\" element should return \"hidden text\"",
             "match": {
@@ -724,12 +661,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 30,
             "name": "@complete"
           }
         ]
@@ -743,7 +675,7 @@
         "steps": [
           {
             "result": {
-              "duration": 143944800,
+              "duration": 136689300,
               "status": "passed"
             },
             "line": 8,
@@ -751,8 +683,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -764,27 +696,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 17832000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18106500,
+              "duration": 24395500,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 23880900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -794,27 +720,21 @@
         "id": "inspect-text;input-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 19392800,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18172200,
+              "duration": 23700500,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 20828500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -823,7 +743,7 @@
         "steps": [
           {
             "result": {
-              "duration": 53720600,
+              "duration": 42423100,
               "status": "passed"
             },
             "line": 36,
@@ -845,7 +765,7 @@
           },
           {
             "result": {
-              "duration": 91410100,
+              "duration": 73594100,
               "status": "passed"
             },
             "line": 37,
@@ -867,9 +787,15 @@
           },
           {
             "result": {
-              "duration": 36734300,
+              "duration": 52780200,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 38,
             "name": "inspecting text of the \"input\" element should return \"xyz\"",
             "match": {
@@ -890,12 +816,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 34,
             "name": "@complete"
           }
         ]
@@ -909,7 +830,7 @@
         "steps": [
           {
             "result": {
-              "duration": 153929000,
+              "duration": 151375100,
               "status": "passed"
             },
             "line": 8,
@@ -917,8 +838,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -930,27 +851,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 17342400,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 17329800,
+              "duration": 21063500,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 21148800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -960,27 +875,21 @@
         "id": "inspect-text;hidden-by-css-input-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 20448400,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18337500,
+              "duration": 22376700,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 22328400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -989,9 +898,15 @@
         "steps": [
           {
             "result": {
-              "duration": 38989100,
+              "duration": 42132900,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 42,
             "name": "inspecting text of the \"hidden by CSS input\" element should return \"hidden text\"",
             "match": {
@@ -1012,12 +927,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 40,
             "name": "@complete"
           }
         ]
@@ -1031,7 +941,7 @@
         "steps": [
           {
             "result": {
-              "duration": 156948400,
+              "duration": 161160700,
               "status": "passed"
             },
             "line": 8,
@@ -1039,8 +949,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -1052,27 +962,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 27551900,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18287900,
+              "duration": 23856900,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 24834800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -1082,27 +986,21 @@
         "id": "inspect-text;hidden-by-attribute-input-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 17610400,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 19502200,
+              "duration": 23572300,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 27150400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -1111,9 +1009,15 @@
         "steps": [
           {
             "result": {
-              "duration": 43753200,
+              "duration": 44410200,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 46,
             "name": "inspecting text of the \"hidden by attribute input\" element should return \"hidden text\"",
             "match": {
@@ -1134,12 +1038,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 44,
             "name": "@complete"
           }
         ]
@@ -1153,7 +1052,7 @@
         "steps": [
           {
             "result": {
-              "duration": 144413000,
+              "duration": 141073900,
               "status": "passed"
             },
             "line": 8,
@@ -1161,8 +1060,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -1174,27 +1073,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 18782400,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18017900,
+              "duration": 22325000,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 21043400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -1204,27 +1097,21 @@
         "id": "inspect-text;textarea-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 19318000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18578800,
+              "duration": 23975900,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 22381800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -1233,7 +1120,7 @@
         "steps": [
           {
             "result": {
-              "duration": 45132100,
+              "duration": 50554900,
               "status": "passed"
             },
             "line": 50,
@@ -1255,7 +1142,7 @@
           },
           {
             "result": {
-              "duration": 102994500,
+              "duration": 52071000,
               "status": "passed"
             },
             "line": 51,
@@ -1277,9 +1164,15 @@
           },
           {
             "result": {
-              "duration": 43296200,
+              "duration": 60058000,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 52,
             "name": "inspecting text of the \"textarea\" element should return \"abcdefg\"",
             "match": {
@@ -1300,12 +1193,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 48,
             "name": "@complete"
           }
         ]
@@ -1319,7 +1207,7 @@
         "steps": [
           {
             "result": {
-              "duration": 139606100,
+              "duration": 144228200,
               "status": "passed"
             },
             "line": 8,
@@ -1327,8 +1215,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -1340,27 +1228,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 18341900,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 17353600,
+              "duration": 23239400,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 23697800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -1370,27 +1252,21 @@
         "id": "inspect-text;hidden-by-css-textarea-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 18975600,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 17579700,
+              "duration": 20518300,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 24103100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -1399,9 +1275,15 @@
         "steps": [
           {
             "result": {
-              "duration": 45357600,
+              "duration": 46062100,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write",
+              "Another before hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "Before hook scenario.write"
+            ],
             "line": 56,
             "name": "inspecting text of the \"hidden by CSS textarea\" element should return \"hidden text\"",
             "match": {
@@ -1422,12 +1304,7 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 54,
             "name": "@complete"
           }
         ]
@@ -1441,7 +1318,7 @@
         "steps": [
           {
             "result": {
-              "duration": 144183000,
+              "duration": 164424200,
               "status": "passed"
             },
             "line": 8,
@@ -1449,8 +1326,8 @@
             "match": {
               "arguments": [
                 {
-                  "val": "\"/text.html\"",
-                  "offset": 35
+                  "val": "/text.html",
+                  "offset": 36
                 }
               ],
               "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
@@ -1462,27 +1339,21 @@
       {
         "before": [
           {
-            "output": [
-              "Before hook scenario.write"
-            ],
             "result": {
-              "duration": 17446200,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.beforeScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another before hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 17616700,
+              "duration": 24070700,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 19919500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
             }
           }
         ],
@@ -1492,27 +1363,21 @@
         "id": "inspect-text;hidden-by-attribute-textarea-element",
         "after": [
           {
-            "output": [
-              "After hook scenario.write"
-            ],
             "result": {
-              "duration": 17484900,
-              "status": "passed"
-            },
-            "match": {
-              "location": "TextStepDef.afterScenario(Scenario)"
-            }
-          },
-          {
-            "output": [
-              "Another after hook scenario.write with escapable characters: >, <, &"
-            ],
-            "result": {
-              "duration": 18836800,
+              "duration": 23762300,
               "status": "passed"
             },
             "match": {
               "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 20706700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
             }
           }
         ],
@@ -1521,9 +1386,13 @@
         "steps": [
           {
             "result": {
-              "duration": 43945500,
+              "duration": 46224900,
               "status": "passed"
             },
+            "output": [
+              "After hook scenario.write with escapable characters: \u003e, \u003c, \u0026",
+              "After hook scenario.write"
+            ],
             "line": 60,
             "name": "inspecting text of the \"hidden by attribute textarea\" element should return \"hidden text\"",
             "match": {
@@ -1544,38 +1413,25 @@
         ],
         "tags": [
           {
-            "name": "@local"
-          },
-          {
-            "name": "@text"
-          },
-          {
+            "line": 58,
             "name": "@complete"
           }
         ]
       }
     ],
     "name": "Inspect Text",
-    "description": "  In order to inspect text\n  As a tester\n  I want to retrieve text from a page element",
+    "description": "In order to inspect text\nAs a tester\nI want to retrieve text from a page element",
     "id": "inspect-text",
     "keyword": "Feature",
-    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/local/text.feature",
+    "uri": "features/samples/local/text.feature",
     "tags": [
       {
-        "name": "@local",
-        "type": "Tag",
-        "location": {
-          "line": 1,
-          "column": 1
-        }
+        "line": 1,
+        "name": "@local"
       },
       {
-        "name": "@text",
-        "type": "Tag",
-        "location": {
-          "line": 1,
-          "column": 8
-        }
+        "line": 1,
+        "name": "@text"
       }
     ]
   }
