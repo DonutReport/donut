@@ -157,9 +157,7 @@ private[processors] object HTMLProcessor {
       case Some(element) =>
         val icon = statusIcon(element.status.statusStr)
         val style = if (element.status.statusStr == "passed") """style="display:none;"""" else ""
-        val beforeHookOutput = element.before.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
         val stepOutput = element.steps.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
-        val afterHookOutput = element.after.flatMap(s => s.output).map(o => s"""<div class="step-custom-output">${escape(o)}</div>""").mkString
         val screenshots = scenariosScreenshots(index, element.screenshotStyle, element.screenshotIDs, element.screenshotsSize, parentType)
         s"""
            |        <p class="scenario">
@@ -173,9 +171,7 @@ private[processors] object HTMLProcessor {
            |          <ul class="list-group">
            |            ${stepList(element.steps)}
            |          </ul>
-           |          $beforeHookOutput
            |          $stepOutput
-           |          $afterHookOutput
            |        </div>
            |        $screenshots
      """.stripMargin
