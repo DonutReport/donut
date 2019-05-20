@@ -95,7 +95,7 @@
         .table>tbody>tr>td>a {color:#2b2b2b;cursor:hand;}
         .table-feature-name {min-width:300px;}
         .table-tag-name {color:#2b2b2b;cursor:hand;}
-        .table-status: {max-width:30px;}
+        .table-status {max-width:30px;}
 
         .durationBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #333;background-color: #fff;border-color: #ccc}
         .tagBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;background-color: #777;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #fff;border-color: #ccc}
@@ -166,15 +166,7 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
-            {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
-                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
-                <div class="col-md-3 dashboard-panel">
-                {{else}}
-                <div class="col-md-4 dashboard-panel">
-                {{/if}}
-            {{else}}
-                <div class="col-md-4 dashboard-panel">
-            {{/if}}
+                <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}class="col-md-3 dashboard-panel"{{else}}class="col-md-4 dashboard-panel"{{/if}}>
                     <h2>Features</h2>
                     <div class="row">
                         <div class="col-md-3 stat-number">
@@ -191,13 +183,9 @@
                         <div id="features-donut-chart" class="chart"></div>
                         <br>
                     </div>
-                </div>
-            {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
-                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
-                <div class="col-md-3 dashboard-panel">
-                {{else}}
-                <div class="col-md-4 dashboard-panel">
-                {{/if}}
+            </div>
+
+            <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}class="col-md-3 dashboard-panel"{{else}}class="col-md-4 dashboard-panel"{{/if}}>
                     <h2>Scenarios</h2>
                     <div class="row">
                         <div class="col-md-3 stat-number">
@@ -215,42 +203,29 @@
                         <br>
                     </div>
                 </div>
-            {{/if}}
 
-            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
-                 {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
-                 <div class="col-md-3 dashboard-panel">
-                 {{else}}
-                 <div class="col-md-4 dashboard-panel">
-                 {{/if}}
-                    <h2>Unit Tests</h2>
-                    <div class="row">
-                        <div class="col-md-3 stat-number">
-                            {{dashboardPage.reportDashboard.unitTestMetrics.total}}
-                        </div>
-                        <div class="col-md-6 text-left">
-                            <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.unitTestsPassRate}}<span class="stat-percentage">%</span></span>
-                            <br>
-                            <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.unitTestsFailRate}}<span class="stat-percentage">%</span></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <br>
-                        <div id="unit-tests-donut-chart" class="chart"></div>
-                        <br>
-                    </div>
+        {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+        <div class="col-md-3 dashboard-panel">
+            <h2>Unit Tests</h2>
+            <div class="row">
+                <div class="col-md-3 stat-number">{{dashboardPage.reportDashboard.unitTestMetrics.total}}</div>
+                <div class="col-md-6 text-left">
+                    <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.unitTestsPassRate}}<span class="stat-percentage">%</span></span>
+                    <br>
+                    <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.unitTestsFailRate}}<span class="stat-percentage">%</span></span>
                 </div>
-            {{/if}}
-
-        {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
-            {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
-                <div class="col-md-2">
-            {{else}}
-                <div class="col-md-3">
-            {{/if}}
+            </div>
+            <div class="row">
+                <br>
+                <div id="unit-tests-donut-chart" class="chart"></div>
+                <br>
+            </div>
+        </div>
         {{else}}
-                <div class="col-md-3">
+        <div/>
         {{/if}}
+
+        <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}class="col-md-2"{{else}}class="col-md-3"{{/if}}>
                     <div class="row dashboard-panel-top">
                         <div class="col-md-12">
                             <h2>Steps</h2>
@@ -286,22 +261,22 @@
                     <h4>Duration: <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
                     <h4>
                         Project: <span class="white">{{projectMetadata.projectName}}</span>
-                        {{#if projectMetadata.projectVersion}}
-                            | Build: <span class="white">{{projectMetadata.projectVersion}}</span>
-                        {{/if}}
+                        {{#if projectMetadata.projectVersion}}| Build: <span class="white">{{projectMetadata.projectVersion}}</span>{{else}}<span/>{{/if}}
                         {{#each projectMetadata.customAttributes}}
                             | {{@key}}: <span class="white">{{this}}</span>
                         {{/each}}
                     </h4>
                 </div>
 
+                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasOrphanedUnitTests}}
                 <div class="col-md-3" >
-                    {{#if dashboardPage.reportDashboard.unitTestMetrics.hasOrphanedUnitTests}}
                      <h4>Orphaned unit tests:- Total: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphaned}}</span></h4>
                      <h4>Passed: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphanedPassed}}</span></h4>
                      <h4>Failed: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphanedFailed}}</span></h4>
-                    {{/if}}
                 </div>
+                {{else}}
+                <div/>
+                {{/if}}
             </div>
         </div>
     </div>
