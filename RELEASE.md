@@ -1,3 +1,8 @@
+## 1.2.2
+* Fix Scenario output not being rendered to HTML template (Issue #55)
+* Fix light template to cater for Unit tests
+* Gilt handlebars requires inverse for #if conditional
+
 ## 1.2.1
 * Fix regular expression in ResultLoader to handle absolute Windows path
 * Report exception details to the console
