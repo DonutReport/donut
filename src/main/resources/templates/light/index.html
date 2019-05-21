@@ -164,7 +164,15 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
-                <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}class="col-md-3 dashboard-panel"{{else}}class="col-md-4 dashboard-panel"{{/if}}>
+                <div {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                        {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                            class="col-md-3 dashboard-panel"
+                        {{else}}
+                            class="col-md-4 dashboard-panel"
+                        {{/if}}
+                    {{else}}
+                        class="col-md-4 dashboard-panel"
+                    {{/if}}>
                 <h2>Features</h2>
                 <div class="row">
                     <div class="col-md-3 stat-number">
@@ -183,7 +191,12 @@
                 </div>
             </div>
 
-            <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}class="col-md-3 dashboard-panel"{{else}}class="col-md-4 dashboard-panel"{{/if}}>
+            {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+            <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                    class="col-md-3 dashboard-panel"
+                 {{else}}
+                    class="col-md-4 dashboard-panel"
+                 {{/if}}>
             <h2>Scenarios</h2>
             <div class="row">
                 <div class="col-md-3 stat-number">
@@ -201,9 +214,16 @@
                 <br>
             </div>
         </div>
+        {{else}}
+        <div/>
+        {{/if}}
 
         {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
-        <div class="col-md-3 dashboard-panel">
+        <div {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                class="col-md-3 dashboard-panel"
+             {{else}}
+                class="col-md-4 dashboard-panel"
+             {{/if}}>
             <h2>Unit Tests</h2>
             <div class="row">
                 <div class="col-md-3 stat-number">{{dashboardPage.reportDashboard.unitTestMetrics.total}}</div>
@@ -223,7 +243,15 @@
         <div/>
         {{/if}}
 
-        <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}class="col-md-2"{{else}}class="col-md-3"{{/if}}>
+        <div {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                    class="col-md-2"
+                {{else}}
+                    class="col-md-3"
+                {{/if}}
+            {{else}}
+                class="col-md-3"
+            {{/if}}>
         <div class="row dashboard-panel-top">
             <div class="col-md-12">
                 <h2>Steps</h2>
@@ -243,7 +271,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="row dashboard-panel2">
             <div class="col-md-12">
                 <h2><span class="stat-number">{{dashboardPage.reportDashboard.totalTags}}</span>Tags</h2>
@@ -251,7 +278,6 @@
             </div>
         </div>
     </div>
-
     </div>
     <div class="row">
         <div class="col-md-3">
