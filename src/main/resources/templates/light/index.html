@@ -66,14 +66,14 @@
         .modal-lg{width:90%}
         .modal-title{padding-top: 5px;}
         .white{color:#797979}
-        .chart{min-width:300px;height:250px;max-width:600px;margin:0 auto}
+        .chart{min-width:250px;height:250px;max-width:600px;margin:0 auto}
         .dashboard-steps {border-bottom: 1px #ebeff2 solid; padding:8px}
         .steps{font-size:16px}
         .steps-icon-total {color:darkgrey;}
         .steps-icon-passed {color:#7AB340;}
         .steps-icon-failed {color:#D44848;}
         .steps-icon-skipped {color:#7cb5ec;}
-        .steps-icon-undefined {color:#FFFF99;}
+        .steps-icon-undefined {color:#CCCC00;}
         .steps-icon-pending {color:#f7a35c;}
         .step-table {border:1px black solid; margin-left:15px; margin-top:5px;}
         .step-table-cell {border:1px black solid;padding:5px;background-color:#ccc;}
@@ -95,7 +95,7 @@
         .table>tbody>tr>td>a {color:#2b2b2b;cursor:hand;}
         .table-feature-name {min-width:300px;}
         .table-tag-name {color:#2b2b2b;cursor:hand;}
-        .table-status: {max-width:30px;}
+        .table-status {max-width:30px;}
 
         .durationBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #333;background-color: #fff;border-color: #ccc}
         .tagBadge{display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;background-image: none;background-color: #777;border: 1px solid transparent;border-radius: 4px;padding: 1px 5px;font-size: 12px;line-height: 1.5;border-radius: 3px;color: #fff;border-color: #ccc}
@@ -164,89 +164,145 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 dashboard-panel">
-                    <h2>Features</h2>
-                    <div class="row">
-                        <div class="col-md-3 stat-number">
-                            {{dashboardPage.reportDashboard.featureMetrics.total}}
-                        </div>
-                        <div class="col-md-6 text-left">
-                            <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.featurePassRate}}<span class="stat-percentage">%</span></span>
-                            <br>
-                            <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.featureFailRate}}<span class="stat-percentage">%</span></span>
-                        </div>
+                <div {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                        {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                            class="col-md-3 dashboard-panel"
+                        {{else}}
+                            class="col-md-4 dashboard-panel"
+                        {{/if}}
+                    {{else}}
+                        class="col-md-4 dashboard-panel"
+                    {{/if}}>
+                <h2>Features</h2>
+                <div class="row">
+                    <div class="col-md-3 stat-number">
+                        {{dashboardPage.reportDashboard.featureMetrics.total}}
                     </div>
-                    <div class="row">
+                    <div class="col-md-6 text-left">
+                        <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.featurePassRate}}<span class="stat-percentage">%</span></span>
                         <br>
-                        <div id="features-donut-chart" class="chart"></div>
-                        <br>
+                        <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.featureFailRate}}<span class="stat-percentage">%</span></span>
                     </div>
                 </div>
-                <div class="col-md-4 dashboard-panel">
-
-                    <h2>Scenarios</h2>
-                    <div class="row">
-                        <div class="col-md-3 stat-number">
-                            {{dashboardPage.reportDashboard.scenarioMetrics.total}}
-                        </div>
-                        <div class="col-md-6 text-left">
-                            <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.scenariosPassRate}}<span class="stat-percentage">%</span></span>
-                            <br>
-                            <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.scenariosFailRate}}<span class="stat-percentage">%</span></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <br>
-                        <div id="scenarios-donut-chart" class="chart"></div>
-                        <br>
-                    </div>
+                <div class="row">
+                    <br>
+                    <div id="features-donut-chart" class="chart"></div>
+                    <br>
                 </div>
+            </div>
 
-                <div class="col-md-3" >
-                    <div class="row dashboard-panel-top">
-                        <div class="col-md-12">
-                            <h2>Steps</h2>
-                            <ul class="list-unstyled steps">
-                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-total"> Total</span>
-                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.total}}</b></span></li>
-                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-passed"> Passed</span>
-                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.passed}}</b></span></li>
-                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-failed"> Failed</span>
-                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.failed}}</b></span></li>
-                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-skipped"> Skipped</span>
-                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.skipped}}</b></span></li>
-                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-undefined"> Undefined</span>
-                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.undefined}}</b></span></li>
-                                <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-pending"> Pending</span>
-                                    <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.pending}}</b></span></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="row dashboard-panel2">
-                        <div class="col-md-12">
-                            <h2><span class="stat-number">{{dashboardPage.reportDashboard.totalTags}}</span>Tags</h2>
-                            <br><br>
-                        </div>
-                    </div>
+            {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+            <div {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                    class="col-md-3 dashboard-panel"
+                 {{else}}
+                    class="col-md-4 dashboard-panel"
+                 {{/if}}>
+            <h2>Scenarios</h2>
+            <div class="row">
+                <div class="col-md-3 stat-number">
+                    {{dashboardPage.reportDashboard.scenarioMetrics.total}}
+                </div>
+                <div class="col-md-6 text-left">
+                    <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.scenariosPassRate}}<span class="stat-percentage">%</span></span>
+                    <br>
+                    <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.scenariosFailRate}}<span class="stat-percentage">%</span></span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <h4>Started: <span class="white">{{dashboardPage.reportDashboard.executionDateTime}}</span></h4>
-                    <h4>Duration: <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
-                    <h4>
-                        Project: <span class="white">{{projectMetadata.projectName}}</span>
-                        {{#if projectMetadata.projectVersion}}
-                            | Build: <span class="white">{{projectMetadata.projectVersion}}</span>
-                        {{/if}}
-                        {{#each projectMetadata.customAttributes}}
-                            | {{@key}}: <span class="white">{{this}}</span>
-                        {{/each}}
-                    </h4>
-                </div>
+                <br>
+                <div id="scenarios-donut-chart" class="chart"></div>
+                <br>
             </div>
         </div>
+        {{else}}
+        <div/>
+        {{/if}}
+
+        {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+        <div {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                class="col-md-3 dashboard-panel"
+             {{else}}
+                class="col-md-4 dashboard-panel"
+             {{/if}}>
+            <h2>Unit Tests</h2>
+            <div class="row">
+                <div class="col-md-3 stat-number">{{dashboardPage.reportDashboard.unitTestMetrics.total}}</div>
+                <div class="col-md-6 text-left">
+                    <span class="stat-number-percentage-pass">{{dashboardPage.reportDashboard.unitTestsPassRate}}<span class="stat-percentage">%</span></span>
+                    <br>
+                    <span class="stat-number-percentage-fail">{{dashboardPage.reportDashboard.unitTestsFailRate}}<span class="stat-percentage">%</span></span>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <div id="unit-tests-donut-chart" class="chart"></div>
+                <br>
+            </div>
+        </div>
+        {{else}}
+        <div/>
+        {{/if}}
+
+        <div {{#if dashboardPage.reportDashboard.scenarioMetrics.hasScenarios}}
+                {{#if dashboardPage.reportDashboard.unitTestMetrics.hasUnitTests}}
+                    class="col-md-2"
+                {{else}}
+                    class="col-md-3"
+                {{/if}}
+            {{else}}
+                class="col-md-3"
+            {{/if}}>
+        <div class="row dashboard-panel-top">
+            <div class="col-md-12">
+                <h2>Steps</h2>
+                <ul class="list-unstyled steps">
+                    <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-total"> Total</span>
+                        <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.total}}</b></span></li>
+                    <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-passed"> Passed</span>
+                        <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.passed}}</b></span></li>
+                    <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-failed"> Failed</span>
+                        <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.failed}}</b></span></li>
+                    <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-skipped"> Skipped</span>
+                        <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.skipped}}</b></span></li>
+                    <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-undefined"> Undefined</span>
+                        <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.undefined}}</b></span></li>
+                    <li class="dashboard-steps"><span class="glyphicon glyphicon-record steps-icon-pending"> Pending</span>
+                        <span class="pull-right"><b>{{dashboardPage.reportDashboard.stepMetrics.pending}}</b></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row dashboard-panel2">
+            <div class="col-md-12">
+                <h2><span class="stat-number">{{dashboardPage.reportDashboard.totalTags}}</span>Tags</h2>
+                <br>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Started: <span class="white">{{dashboardPage.reportDashboard.executionDateTime}}</span></h4>
+            <h4>Duration: <span class="white">{{dashboardPage.reportDashboard.executionDuration}}</span></h4>
+            <h4>
+                Project: <span class="white">{{projectMetadata.projectName}}</span>
+                {{#if projectMetadata.projectVersion}}| Build: <span class="white">{{projectMetadata.projectVersion}}</span>{{else}}<span/>{{/if}}
+                {{#each projectMetadata.customAttributes}}
+                | {{@key}}: <span class="white">{{this}}</span>
+                {{/each}}
+            </h4>
+        </div>
+
+        {{#if dashboardPage.reportDashboard.unitTestMetrics.hasOrphanedUnitTests}}
+        <div class="col-md-3" >
+            <h4>Orphaned unit tests:- Total: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphaned}}</span></h4>
+            <h4>Passed: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphanedPassed}}</span></h4>
+            <h4>Failed: <span class="white">{{dashboardPage.reportDashboard.unitTestMetrics.orphanedFailed}}</span></h4>
+        </div>
+        {{else}}
+        <div/>
+        {{/if}}
+    </div>
+    </div>
     </div>
 </header>
 
@@ -260,7 +316,7 @@
                 <thead>
                 <tr>
                     <th></th>
-                    <th colspan="3" class="text-center">Scenarios</th>
+                    <th colspan="3" class="text-center">Scenarios & Tests</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -299,9 +355,9 @@
                         Passed Features: {{dashboardPage.reportDashboard.featureMetrics.passed}}<br>
                         Failed Features: {{dashboardPage.reportDashboard.featureMetrics.failed}}<br>
                     </th>
-                    <th class="text-center">{{dashboardPage.reportDashboard.scenarioMetrics.total}}</th>
-                    <th class="text-center">{{dashboardPage.reportDashboard.scenarioMetrics.failed}}</th>
-                    <th class="text-center">{{dashboardPage.reportDashboard.scenarioMetrics.passed}}</th>
+                    <th class="text-center">{{dashboardPage.reportDashboard.allTestsMetrics.total}}</th>
+                    <th class="text-center">{{dashboardPage.reportDashboard.allTestsMetrics.failed}}</th>
+                    <th class="text-center">{{dashboardPage.reportDashboard.allTestsMetrics.passed}}</th>
                     <th>{{dashboardPage.reportDashboard.executionDuration}}</th>
                     <th></th>
                 </tr>
@@ -341,7 +397,7 @@
 
                                 <div class="row">
                                     {{#htmlFeatureTags}}
-                                     <span class="tagBadge">
+                                    <span class="tagBadge">
                                           <a data-dismiss="modal" data-toggle="modal" data-target="#tag-{{.}}" href="#tag-{{.}}" class="tagBadgeStyle">
                                               <span class="sub_icon glyphicon glyphicon-tag"></span>{{.}}
                                           </a>
@@ -685,6 +741,51 @@
                 colorByPoint: true,
                 data: [{name: "Passed: " + {{dashboardPage.reportDashboard.scenarioMetrics.passed}}, y: {{dashboardPage.reportDashboard.scenarioMetrics.passed}}, color: '#5cb85c'},
                        {name: "Failed: " + {{dashboardPage.reportDashboard.scenarioMetrics.failed}}, y: {{dashboardPage.reportDashboard.scenarioMetrics.failed}}, color: '#d9534f', sliced: true, selected: true, url: '#failuresPage'}]
+            }]
+        });
+
+        $('#unit-tests-donut-chart').highcharts({
+            chart: {
+                plotBackgroundColor: 'transparent',
+                plotBorderWidth: 0,
+                plotShadow: false,
+                type: 'pie',
+                margin: [0, 0, 0, 0],
+                backgroundColor: "#ffffff"
+            },
+            title: { text: '' },
+            tooltip: { pointFormat: '<b>{point.percentage:.1f}</b>' },
+            credits: { enabled: false },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        color: '#797979',
+                        style: {
+                            fontFamily: '"Open Sans", sans-serif',
+                            fontSize: '15px',
+                            color: '#797979',
+                            textShadow: false
+                        }
+                    },
+                    showInLegend: false,
+                    point: {
+                        events:{
+                            click: function() {
+                                 if(this.options.name.startsWith('Failed')) {
+                                    $('html, body').stop().animate({ scrollTop: $(this.options.url).offset().top }, 1500, 'easeInOutExpo');
+                                    event.preventDefault();
+                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                innerSize: '60%',
+                colorByPoint: true,
+                data: [{name: "Passed: " + {{dashboardPage.reportDashboard.unitTestMetrics.passed}}, y: {{dashboardPage.reportDashboard.unitTestMetrics.passed}}, color: '#5cb85c'},
+                       {name: "Failed: " + {{dashboardPage.reportDashboard.unitTestMetrics.failed}}, y: {{dashboardPage.reportDashboard.unitTestMetrics.failed}}, color: '#d9534f', sliced: true, selected: true, url: '#failuresPage'}]
             }]
         });
 

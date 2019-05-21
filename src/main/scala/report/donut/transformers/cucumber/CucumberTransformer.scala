@@ -1,7 +1,7 @@
 package report.donut.transformers.cucumber
 
 import report.donut.gherkin.model._
-import report.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, Step => DonutStep, Examples => DonutExamples}
+import report.donut.gherkin.model.{ScenarioMetrics, StatusConfiguration, Duration => DonutDuration, Embedding => DonutEmbedding, Feature => DonutFeature, Row => DonutRow, Scenario => DonutScenario, BeforeHook => DonutBeforeHook, Step => DonutStep, AfterHook => DonutAfterHook, Examples => DonutExamples}
 import report.donut.gherkin.processors.{HTMLFeatureProcessor, ImageProcessor}
 import report.donut.log.Log
 
@@ -105,7 +105,16 @@ object CucumberTransformer extends Log {
       screenshots.screenshotsIds,
       screenshots.screenshotsStyle,
       e.`type`,
-      e.examples.map(mapToDonutExamples))
+      e.examples.map(mapToDonutExamples),
+      e.before.map(h => mapToDonutBeforeHook(h, statusConfiguration)),
+      e.after.map(h => mapToDonutAfterHook(h, statusConfiguration)))
+  }
+
+  private[cucumber] def mapToDonutBeforeHook(h: BeforeHook, statusConfiguration: StatusConfiguration) = {
+    DonutBeforeHook(h.output,
+      Status(statusConfiguration, h.result.status),
+      DonutDuration(h.result.duration),
+      h.result.error_message)
   }
 
   private[cucumber] def mapToDonutStep(s: Step, statusConfiguration: StatusConfiguration) = {
@@ -118,6 +127,13 @@ object CucumberTransformer extends Log {
       DonutDuration(s.result.duration),
       0L, 0L,
       s.result.error_message)
+  }
+
+  private[cucumber] def mapToDonutAfterHook(h: AfterHook, statusConfiguration: StatusConfiguration) = {
+    DonutAfterHook(h.output,
+      Status(statusConfiguration, h.result.status),
+      DonutDuration(h.result.duration),
+      h.result.error_message)
   }
 
   private[cucumber] def mapToDonutExamples(e: Examples) = {

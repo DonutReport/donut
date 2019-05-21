@@ -6,12 +6,8 @@ class GeneratorTest extends FlatSpec with Matchers {
 
   behavior of "Generator"
 
-  it should "throw an exception if source paths are not provided" in {
-    val sourcePaths = ""
-    val exception = intercept[DonutException] {
-      Generator.createReport(sourcePaths, projectName = "", projectVersion = "")
-    }
-    assert(exception.mgs === "Unable to extract the paths to the result sources. Please use this format:- cucumber:/my/path/cucumber-reports,cucumber:/my/other/path/adapted-reports")
+  it should "return an error message if result sources are not provided" in {
+    Generator.createReport("", projectName = "", projectVersion = "") shouldBe Left("Unable to extract the paths to the result sources. Please use this format:- cucumber:/my/path/cucumber-reports,cucumber:/my/other/path/adapted-reports")
   }
 
   it should "return report if valid cucumber json files are found" in {

@@ -1,0 +1,1582 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 921068500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 4044739500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 25740000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 11,
+        "name": "Div element",
+        "description": "",
+        "id": "inspect-text;div-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 44706700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 26740800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 125030300,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "inspecting text of the \"div\" element should return \"text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "div",
+                  "offset": 24
+                },
+                {
+                  "val": "text",
+                  "offset": 52
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 159483400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 24334600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 24076700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 15,
+        "name": "Hidden by CSS div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-div-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 21520500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 19789700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 73394500,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "inspecting text of the \"hidden by CSS div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 66
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 155753100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 21856000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 25141700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 19,
+        "name": "Hidden by attribute div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-div-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 26088400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 21120100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 63297300,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "inspecting text of the \"hidden by CSS div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 66
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 156135400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 21794900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 21214400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 23,
+        "name": "Span within div element",
+        "description": "",
+        "id": "inspect-text;span-within-div-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 24082600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 24180400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 75650600,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "inspecting text of the \"span within div\" element should return \"text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "span within div",
+                  "offset": 24
+                },
+                {
+                  "val": "text",
+                  "offset": 64
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 145523400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 18904500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 19762400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 27,
+        "name": "Hidden by CSS span within div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-span-within-div-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 20758500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 19970100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 59452300,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "inspecting text of the \"hidden by CSS span within div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS span within div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 78
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 158932900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 41646500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 22499100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 31,
+        "name": "Hidden by attribute span within div element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-span-within-div-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 18017800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 17695500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 60078500,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "inspecting text of the \"hidden by attribute span within div\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by attribute span within div",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 84
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 143944800,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 17832000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18106500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 35,
+        "name": "Input element",
+        "description": "",
+        "id": "inspect-text;input-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 19392800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18172200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 53720600,
+              "status": "passed"
+            },
+            "line": 36,
+            "name": "inspecting text of the \"input\" element should return \"default\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "input",
+                  "offset": 24
+                },
+                {
+                  "val": "default",
+                  "offset": 54
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 91410100,
+              "status": "passed"
+            },
+            "line": 37,
+            "name": "I enter text \"xyz\" into \"input\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "xyz",
+                  "offset": 14
+                },
+                {
+                  "val": "input",
+                  "offset": 25
+                }
+              ],
+              "location": "TextStepDef.i_enter_text_into(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 36734300,
+              "status": "passed"
+            },
+            "line": 38,
+            "name": "inspecting text of the \"input\" element should return \"xyz\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "input",
+                  "offset": 24
+                },
+                {
+                  "val": "xyz",
+                  "offset": 54
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 153929000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 17342400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 17329800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 41,
+        "name": "Hidden by CSS input element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-input-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 20448400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18337500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 38989100,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "inspecting text of the \"hidden by CSS input\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS input",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 68
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 156948400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 27551900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18287900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 45,
+        "name": "Hidden by attribute input element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-input-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 17610400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 19502200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 43753200,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "inspecting text of the \"hidden by attribute input\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by attribute input",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 74
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 144413000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 18782400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18017900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 49,
+        "name": "Textarea element",
+        "description": "",
+        "id": "inspect-text;textarea-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 19318000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18578800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 45132100,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "inspecting text of the \"textarea\" element should return \"text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "text",
+                  "offset": 57
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 102994500,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "I enter text \"abcdefg\" into \"textarea\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "abcdefg",
+                  "offset": 14
+                },
+                {
+                  "val": "textarea",
+                  "offset": 29
+                }
+              ],
+              "location": "TextStepDef.i_enter_text_into(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 43296200,
+              "status": "passed"
+            },
+            "line": 52,
+            "name": "inspecting text of the \"textarea\" element should return \"abcdefg\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "abcdefg",
+                  "offset": 57
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 139606100,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 18341900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 17353600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 55,
+        "name": "Hidden by CSS textarea element",
+        "description": "",
+        "id": "inspect-text;hidden-by-css-textarea-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 18975600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 17579700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 45357600,
+              "status": "passed"
+            },
+            "line": 56,
+            "name": "inspecting text of the \"hidden by CSS textarea\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by CSS textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 71
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      },
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 144183000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I have navigated to the local page \"/text.html\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/text.html\"",
+                  "offset": 35
+                }
+              ],
+              "location": "TableStepDef.i_have_navigated_to_the_local_page(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "output": [
+              "Before hook scenario.write"
+            ],
+            "result": {
+              "duration": 17446200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.beforeScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another before hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 17616700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherBeforeScenario(Scenario)"
+            }
+          }
+        ],
+        "line": 59,
+        "name": "Hidden by attribute textarea element",
+        "description": "",
+        "id": "inspect-text;hidden-by-attribute-textarea-element",
+        "after": [
+          {
+            "output": [
+              "After hook scenario.write"
+            ],
+            "result": {
+              "duration": 17484900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.afterScenario(Scenario)"
+            }
+          },
+          {
+            "output": [
+              "Another after hook scenario.write with escapable characters: >, <, &"
+            ],
+            "result": {
+              "duration": 18836800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TextStepDef.anotherAfterScenario(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 43945500,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "inspecting text of the \"hidden by attribute textarea\" element should return \"hidden text\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "hidden by attribute textarea",
+                  "offset": 24
+                },
+                {
+                  "val": "hidden text",
+                  "offset": 77
+                }
+              ],
+              "location": "TextStepDef.i_choose_to_inspect_element_text(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@local"
+          },
+          {
+            "name": "@text"
+          },
+          {
+            "name": "@complete"
+          }
+        ]
+      }
+    ],
+    "name": "Inspect Text",
+    "description": "  In order to inspect text\n  As a tester\n  I want to retrieve text from a page element",
+    "id": "inspect-text",
+    "keyword": "Feature",
+    "uri": "file:/C:/Users/DBassan/github/magentys/cinnamon/acceptance-test/src/test/resources/features/samples/local/text.feature",
+    "tags": [
+      {
+        "name": "@local",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@text",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 8
+        }
+      }
+    ]
+  }
+]
