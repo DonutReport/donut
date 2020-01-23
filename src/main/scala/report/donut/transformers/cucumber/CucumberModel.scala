@@ -10,7 +10,7 @@ case class Match(location: String = "", arguments: Option[List[Argument]])
 
 case class BeforeHook(result: Result, output: List[String], `match`: Match)
 
-case class AfterHook(result: Result, output: List[String], `match`: Match)
+case class AfterHook(result: Result, output: List[String], `match`: Match,embeddings: List[Embedding])
 
 case class Row(cells: List[String])
 
