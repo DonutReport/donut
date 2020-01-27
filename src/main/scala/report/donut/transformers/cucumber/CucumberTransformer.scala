@@ -159,7 +159,7 @@ object CucumberTransformer extends Log {
   }
 
   private[cucumber] def donutScenarioScreenshots(e: Element) = {
-    val elementScreenshots: List[Embedding] = e.steps.flatMap(s => s.embeddings)
+        val elementScreenshots: List[Embedding] = e.after.flatMap(s => if (s.embeddings != Nil) s.embeddings else e.steps.flatMap(t => t.embeddings))
     val screenshotsSize = elementScreenshots.size
     val screenshotStyle = if (elementScreenshots.nonEmpty) "" else "display:none;"
     val screenshots = elementScreenshots.map(e => DonutEmbedding(e.mime_type, e.data, e.id))
